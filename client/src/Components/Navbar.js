@@ -6,8 +6,10 @@ import logo from "../images/KhataBook.jpg"
 const navbar = () => {
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-  <NavLink className="navbar-brand" to="#">
+        
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            
+  <NavLink className="navbar-brand" to="#" >
         <img src={logo} alt="logo" />
   </NavLink>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,14 +18,14 @@ const navbar = () => {
 
   <div className="collapse navbar-collapse" id="navbarSupportedContent">
     <ul className="navbar-nav ms-auto">
-    <li className="nav-item active">
-        <NavLink className="nav-link" to="/">Home <span className="sr-only">(Daily Transaction)</span></NavLink>
+    <li className="nav-item">
+        <NavLink className="nav-link" to="/">Home</NavLink>
       </li>
       <li className="nav-item">
-        <NavLink className="nav-link" to="/ExpenseCategories">Expense Category</NavLink>
+        <NavLink className="nav-link" to="/DashBoard">DashBoard</NavLink>
       </li>
       <li className="nav-item">
-        <NavLink className="nav-link" to="/VisualizeExpense">Visualize Expense</NavLink>
+        <NavLink className="nav-link" to="/EditProfile">Edit Profile</NavLink>
       </li>
       <li className="nav-item">
         <NavLink className="nav-link" to="/PlanBudget">Plan Budget</NavLink>
@@ -38,6 +40,7 @@ const navbar = () => {
    
   </div>
 </nav>
+
         </>
     )
 }
