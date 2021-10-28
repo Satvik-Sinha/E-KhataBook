@@ -2,7 +2,8 @@
 .dark-mode {
   background : #333;
   color:white;
-  padding-top: 80px;
+  /* padding-top: 80px;
+  when you're using Ankit's Navbar then comment out this */
 
 }
 

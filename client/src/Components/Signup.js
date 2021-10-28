@@ -20,11 +20,11 @@ export const Signup = () => {
                </WelcomeText>
 
                <InputContainer>
-                   <Input type="text" placeholder="Name" />;
-                   <Input type="text" placeholder="Email" />;
-                   <Input type="text" placeholder="Username" />;
-                   <Input type="password" placeholder="Password" />;
-                   <Input type="password" placeholder="Confirm Password" />;
+                   <Input type="text" placeholder="Name" />
+                   <Input type="text" placeholder="Email" />
+                   <Input type="text" placeholder="Username" />
+                   <Input type="password" placeholder="Password" />
+                   <Input type="password" placeholder="Confirm Password" />
                </InputContainer>
 
                <ButtonContainer>
