@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components';
-
+import {FaGithub} from "react-icons/fa";
 import Input from "./Input"
 import Button from './Button';
 import Icon from './Icon';
@@ -11,7 +11,7 @@ import Icon from './Icon';
 export const Login = () => {
 
    // const {state,dispatch} =  useContext(Usercontext);
-    
+    const GithubBackground="linear-gradient(to right,#171515 0%, #171515 100%)"
     return (
         
             
@@ -36,7 +36,9 @@ export const Login = () => {
                
 
                 <IconsContainer>
-                    
+                    <Icon color={GithubBackground}>
+                        <FaGithub />
+                    </Icon>
                 </IconsContainer>
 
                 <ForgotPassword>Forgot Password ?</ForgotPassword>
@@ -100,7 +102,7 @@ width: 90%;
 const IconsContainer = styled.div `
     display: flex;
  justify-content: space-evenly;
- margin: 2rem 0 3rem 0;
+ margin: 1rem 0 1rem 0;
  width: 80%;
 `;
 
