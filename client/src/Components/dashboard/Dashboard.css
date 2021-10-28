@@ -1,0 +1,113 @@
+
+.navbar {
+    background-color: rgb(32, 32, 32);
+    overflow: hidden;
+    /* position: fixed; */
+    box-shadow: 1px 1px #000000; 
+    display: flex;
+    border-radius: 10px;
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+  
+  }
+  
+  /* Change the color of links on hover */
+  .navbar-items:hover {
+    background-color: black;
+    color: white;
+  }
+  
+  /* Add a color to the active/current link */
+  /* .navbar-items:active {
+    background-color: black;
+    color: white;
+  } */
+  
+  /* Right-aligned section inside the top navigation */
+  .topnav-right {
+    float: right;
+  }
+  
+  .navbar-items{
+    padding: .5em;
+    color: white;
+    text-decoration: none;
+  
+  }
+  .navbar-title{
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+    float:right;
+    padding-left: .5em;
+    margin-top: .1em;
+  }
+  .navbar-img{
+    margin-left: .5em;
+    height: 3.5em;
+    width: 3.5em
+  }
+  .flex-column{
+    background-color:rgb(32, 32, 32);
+    float: right;
+    text-align: center ;
+    color: white;
+
+    padding: 1em;
+    margin:1em;
+    box-shadow: 1px 1px #000000; 
+    justify-content: center;
+    display: flex;
+    border-radius: 10px;
+    align-items:center;
+  
+  }
+  .sidebar-img{
+    height: 5em;
+    width: 5em;
+  }
+  
+  .sidebar-items{
+    text-align: left;
+    margin: 1em;
+    color: rgb(179, 77, 9);
+  }
+  .sidebar-items input{
+    background-color: transparent;
+        
+  }
+  
+  .log-out{
+    background-color:rgb(5, 85, 5);
+    color:white;
+  }
+  
+  .mainContainer{
+    text-align:center;
+  }
+  
+  .firstBox{
+    padding: 1em;
+    margin:1em;
+    box-shadow: 1px 1px #000000; 
+    justify-content: center;
+    display: flex;
+    background-color:rgb(43, 39, 39);
+    border-radius: 10px;
+    width:auto;
+    height: fit-content;
+    align-items:center;
+    padding-left: 1em;
+  
+  }
+  .box {
+    justify-content: center;
+    margin:1em 4em;
+    background-color: green;
+    padding: 1em;
+    border-radius: 1rem;
+    box-shadow: 2px 2px #000000;
+  }     
+  
