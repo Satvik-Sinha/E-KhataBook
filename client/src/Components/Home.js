@@ -2,10 +2,12 @@ import React from 'react'
 
 export const Home = () => {
     return (
-        <div>
-            <h1>Welcome</h1>
-            <p>This is Home</p>
-        </div>
+        <section className="homepage">
+            <div className="homepage-1"></div>
+            <div className="homepage-2"></div>
+            <div className="homepage-3"></div>
+        </section>
+        
     )
 }
 export default Home
