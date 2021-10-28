@@ -22,8 +22,8 @@ export const Login = () => {
                </WelcomeText>
 
                <InputContainer>
-                   <Input type="text" placeholder="Email" />;
-                   <Input type="password" placeholder="Password" />;
+                   <Input type="text" placeholder="Email" />
+                   <Input type="password" placeholder="Password" />
                </InputContainer>
 
                <ButtonContainer>

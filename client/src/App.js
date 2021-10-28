@@ -1,7 +1,7 @@
 import React, { createContext, useReducer } from 'react'
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
-import Navbar from './Components/dashboard/Navbar';
+import Navbar from './Components/Navbar';
 import Sidebar from './Components/dashboard/Sidebar';
 import Home from './Components/Home';
 import Dashboard from './Components/dashboard/Dashboard';

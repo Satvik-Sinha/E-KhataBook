@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './Dashboard.css'
 import {Link} from "react-router-dom";
 import BarChart from "../Barchart/BarChart"
+import PieChart from "../Piechart/PieChart"
 
 export const Dashboard = () => {
     return (
@@ -24,6 +25,9 @@ export const Dashboard = () => {
             </div>
             <div className="firstBox">
             <BarChart />
+            </div>
+            <div className="firstBox">
+            <PieChart />
             </div>
 
         </div>
