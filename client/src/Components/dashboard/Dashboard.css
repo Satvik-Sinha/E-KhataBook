@@ -2,7 +2,6 @@
 .navbar {
     background-color: rgb(32, 32, 32);
     overflow: hidden;
-    /* position: fixed; */
     box-shadow: 1px 1px #000000; 
     display: flex;
     border-radius: 10px;
