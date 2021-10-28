@@ -1,5 +1,5 @@
 
-.navbar {
+/*.navbar {
     background-color: rgb(32, 32, 32);
     overflow: hidden;
     box-shadow: 1px 1px #000000; 
@@ -12,19 +12,20 @@
   
   }
   
-  /* Change the color of links on hover */
+  // Change the color of links on hover 
   .navbar-items:hover {
     background-color: black;
     color: white;
   }
   
-  /* Add a color to the active/current link */
-  /* .navbar-items:active {
+  // Add a color to the active/current link 
+
+   .navbar-items:active {
     background-color: black;
     color: white;
-  } */
+  } 
   
-  /* Right-aligned section inside the top navigation */
+  // Right-aligned section inside the top navigation 
   .topnav-right {
     float: right;
   }
@@ -47,7 +48,7 @@
     margin-left: .5em;
     height: 3.5em;
     width: 3.5em
-  }
+  }*/
   .flex-column{
     background-color:rgb(32, 32, 32);
     float: right;

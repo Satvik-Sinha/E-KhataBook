@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { NavLink } from "react-router-dom";
 import logo from "../images/KhataBook.jpg"
 
-const navbar = () => {
+const Navbar = () => {
     return (
         <>
         
@@ -22,6 +22,9 @@ const navbar = () => {
         <NavLink className="nav-link" to="/">Home</NavLink>
       </li>
       <li className="nav-item">
+        <NavLink className="nav-link" to="/DailyTransaction">Daily Transaction</NavLink>
+      </li>
+      <li className="nav-item">
         <NavLink className="nav-link" to="/DashBoard">DashBoard</NavLink>
       </li>
       <li className="nav-item">
@@ -30,6 +33,7 @@ const navbar = () => {
       <li className="nav-item">
         <NavLink className="nav-link" to="/PlanBudget">Plan Budget</NavLink>
       </li>
+     
       <li className="nav-item">
         <NavLink className="nav-link" to="/Login">Login</NavLink>
       </li>
@@ -45,4 +49,4 @@ const navbar = () => {
     )
 }
 
-export default navbar
+export default Navbar
