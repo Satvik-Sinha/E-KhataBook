@@ -9,12 +9,10 @@ const state = {
       backgroundColor: [
         '#B21F00',
         '#C9DE00',
-        
       ],
       hoverBackgroundColor: [
       '#501800',
       '#4B5000',
-      
       ],
       data: [65, 59]
     }
@@ -24,7 +22,8 @@ const state = {
 export default class App extends React.Component {
   render() {
     return (
-      <div>
+      <div style={{width: "100%",maxWidth:"30%",
+        overflow: "auto"}}>
         <Pie
           data={state}
           options={{
