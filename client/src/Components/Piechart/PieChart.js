@@ -16,7 +16,7 @@ const state = {
       '#4B5000',
       '#175000',
       ],
-      data: [65, 59, 80,4,4,2]
+      data: [65, 59, 80]
     }
   ]
 }
@@ -24,7 +24,8 @@ const state = {
 export default class App extends React.Component {
   render() {
     return (
-      <div>
+      <div style={{width: "100%",maxWidth:"30%",
+        overflow: "auto"}}>
         <Pie
           data={state}
           options={{

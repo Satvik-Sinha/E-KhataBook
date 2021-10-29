@@ -2,7 +2,11 @@
 .dark-mode {
   background : #333;
   color:white;
-  /* padding-top: 80px; */
+  min-height: 100vh;
+  /* min-width: 100vw; */
+  /* padding-top: 80px;
+  when you're using Ankit's Navbar then comment out this */
+
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300&display=swap');
