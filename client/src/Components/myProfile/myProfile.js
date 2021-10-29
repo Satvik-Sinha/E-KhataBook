@@ -3,7 +3,7 @@ import React from 'react'
 const myProfile = () => {
     return (
         <div>
-            hellow profiel;
+            hellow Profile;
         </div>
     )
 }
