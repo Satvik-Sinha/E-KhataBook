@@ -65,7 +65,7 @@ letter-spacing: 0.4rem;
 `;
 
 const WelcomeText = styled.h2`
-    margin: 3rem 0 2rem 0;
+    margin: 2rem 0 1rem 0;
 `;
 
 const InputContainer = styled.div `
@@ -73,7 +73,7 @@ const InputContainer = styled.div `
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 20%;
+  height: 60%;
   width: 100%;
 `;
 
