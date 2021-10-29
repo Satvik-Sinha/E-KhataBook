@@ -4,6 +4,7 @@ import './Dashboard.css'
 import {Link} from "react-router-dom";
 import profileIcon from "..\\..\\images\\img.png"
 import Image from 'react-bootstrap/Image'
+import Button from '..\\Button';
 
 const sidebar = () => {
   return (
@@ -23,7 +24,7 @@ const sidebar = () => {
         <input type="text" placeholder = "enter gifts" />
         <button style={{background:'green'}}>+</button>
       </li>
-      <button class="log-out">LOG OUT</button>
+      <Button content="LOG OUT" class="log-out"></Button>
     </ul>
   )
 }
