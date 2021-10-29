@@ -7,6 +7,7 @@ import Home from './Components/Home';
 import Dashboard from './Components/dashboard/Dashboard';
 import EditProfile from './Components/EditProfile';
 import PlanBudget from './Components/PlanBudget';
+import DailyTransaction from './Components/DailyTransaction';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
 
@@ -19,6 +20,10 @@ const Routing = () =>{
     <Switch style={{backgroundColor:"red"}}>
       <Route exact path="/">
       <Home />
+      </Route>
+
+      <Route path="/DailyTransaction">
+      <DailyTransaction />
       </Route>
 
       <Route path="/Dashboard">
