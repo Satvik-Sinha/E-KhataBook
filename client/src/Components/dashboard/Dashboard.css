@@ -101,14 +101,23 @@
     height: fit-content;
     align-items:center;
     padding-left: 1em;
+    overflow: auto;
+
   
   }
+/* 
+  .firstBox PieChart{
+    background-color: red;
+  } */
   .box {
     justify-content: center;
-    margin:1em 4em;
+    /* margin:1em 4em; */
     background-color: green;
     padding: 1em;
     border-radius: 1rem;
     box-shadow: 2px 2px #000000;
+    overflow: hidden;
+    margin: auto;
+
   }     
   

@@ -8,7 +8,8 @@ export const Container = styled.div`
   justify-content: flex-end;
   background-color:black;
   padding: 2em;
-  margin:  2em;
+  margin:  auto;
+  overflow: auto;
   box-shadow: 1px 1px #000000; 
   border-radius: 20px;
 `;
@@ -16,9 +17,10 @@ export const Container = styled.div`
 export const MainContainer = styled.div`
   display: flex;
   justify-content: center;
-  width: auto;
+  width: 100%;
   height: 1000%;
-
+  margin:  auto;
+  overflow: hidden;
 `;
 
 export const BarChartContainer = styled.div`
@@ -26,6 +28,7 @@ export const BarChartContainer = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  overflow: hidden;
 `;
 
 export const Chart = css`
@@ -52,6 +55,7 @@ export const WeekDay = styled.span`
   margin:3px;
   width: 86px;
   color: ${(props) => props.color};
+  overflow: hidden;
 `;
 
 
