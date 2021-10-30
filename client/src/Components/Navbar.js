@@ -28,9 +28,6 @@ const Navbar = () => {
         <NavLink className="nav-link" to="/DashBoard">DashBoard</NavLink>
       </li>
       <li className="nav-item">
-        <NavLink className="nav-link" to="/EditProfile">Edit Profile</NavLink>
-      </li>
-      <li className="nav-item">
         <NavLink className="nav-link" to="/PlanBudget">Plan Budget</NavLink>
       </li>
      

@@ -5,8 +5,14 @@ import Image from 'react-bootstrap/Image'
 import "./myProfileStyle.css";
 import styled from 'styled-components';
 import LoanTable from "./loanTable";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal'
+import { useState } from "react";
 
-export const myProfile = (props) => {
+export const MyProfile = (props) => {
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     return (
         <div class="profile-full">
             <div class="container-profile">
@@ -31,10 +37,24 @@ export const myProfile = (props) => {
                         Gender : {props.gender}
                     </h3>
                     <h3 style={{color: props.color}} className="label-profile">
-                        Salary : {props.salary}
+                        Salary : ${props.salary}
                     </h3>
-                    <button class="btn btn-primary my-1" >Update Profile</button>
+                    <Button  variant="primary" onClick={handleShow}>Edit Profile</Button>{' '}
 
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Edit Profile</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>Please edit your profile!</Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="secondary" onClick={handleClose}>
+                                Close
+                            </Button>
+                            <Button variant="primary" onClick={handleClose}>
+                                Save Changes
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
                 </div>
                 
             </div>
@@ -47,5 +67,5 @@ export const myProfile = (props) => {
     )
 }
 
-export default myProfile
+export default MyProfile
 
