@@ -24,7 +24,7 @@ const sidebar = () => {
         <input type="text" placeholder = "enter gifts" />
         <button style={{background:'green'}}>+</button>
       </li>
-      <Button content="LOG OUT" class="log-out"></Button>
+      <button class="btn btn-primary my-1" >LOG OUT</button>
     </ul>
   )
 }

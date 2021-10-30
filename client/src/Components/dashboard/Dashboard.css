@@ -1,7 +1,5 @@
+/*comment out from line no 3 to 52 to use Ankit's Navbar */
 /*.navbar {
-=======
-/* 
-.navbar {
     background-color: rgb(32, 32, 32);
     overflow: hidden;
     box-shadow: 1px 1px #000000; 
@@ -14,7 +12,6 @@
   
   } 
   .navbar-items:hover {
-=======
    Change the color of links on hover 
   .navbar-items:hover {
     background-color: black;
@@ -30,7 +27,6 @@
 
   // Right-aligned section inside the top navigation 
   .topnav-right {
-=======
   // Right-aligned section inside the top navigation 
    .topnav-right {
     float: right;
@@ -82,14 +78,6 @@
   .sidebar-items input{
     background-color: transparent;
         
-  }
-  
-  .log-out{
-    /* margin: 1rem 0 2rem 0;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center; */
   }
   
   .mainContainer{
