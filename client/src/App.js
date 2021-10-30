@@ -5,6 +5,7 @@ import Navbar from './Components/Navbar';
 import Sidebar from './Components/dashboard/Sidebar';
 import Home from './Components/Home';
 import Dashboard from './Components/dashboard/Dashboard';
+import MyProfile from './Components/myProfile/myProfile';
 import EditProfile from './Components/EditProfile';
 import PlanBudget from './Components/PlanBudget';
 import DailyTransaction from './Components/DailyTransaction';
@@ -45,6 +46,18 @@ const Routing = () =>{
 
       <Route path="/Signup">
       <Signup />
+      </Route>
+
+      <Route path="/MyProfile">
+      <MyProfile 
+        name = "Tony Stark"
+        username = "tonyStarkIsLove"
+        email = "tonyStark@3000.com"
+        age = {55}
+        gender = "Male"
+        salary = "$100,000"
+        color = "rgb(79, 3, 102)"
+      />
       </Route>
     </Switch>
   )
