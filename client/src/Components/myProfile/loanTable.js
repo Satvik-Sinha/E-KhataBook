@@ -148,16 +148,19 @@ export default class LoanTable extends React.Component {
             </table>
             <input
                 type="text"
-                 value={this.state.message1}
+                placeholder = "Loan Name"
+                value={this.state.message1}
                 onChange={this.updateMessage1.bind(this)}
             />
             <input
                 type="text"
+                placeholder = "Amount"
                 value={this.state.message2}
                 onChange={this.updateMessage2.bind(this)}
             />
             <input
                 type="text"
+                placeholder = "dd/mm/yyyy"
                 value={this.state.message3}
                 onChange={this.updateMessage3.bind(this)}
             />
