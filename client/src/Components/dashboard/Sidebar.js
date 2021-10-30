@@ -4,7 +4,7 @@ import './Dashboard.css'
 import {Link} from "react-router-dom";
 import profileIcon from "..\\..\\images\\img.png"
 import Image from 'react-bootstrap/Image'
-import Button from '..\\Button';
+import Button from 'react-bootstrap/Button';
 
 const sidebar = () => {
   return (
@@ -16,15 +16,16 @@ const sidebar = () => {
       <li class="sidebar-items">
         <h3>Food</h3>
         <input type="text" placeholder = "enter food" />
-        <button style={{background:'green'}}>+</button>
+        <Button as="input" size="sm" type="submit" value="+" />{' '}
         <h3>Shopping</h3>
         <input type="text" placeholder = "enter shopping" />
-        <button style={{background:'green'}}>+</button>
+        <Button as="input" size="sm" type="submit" value="+" />{' '}
         <h3>Gifts</h3>
         <input type="text" placeholder = "enter gifts" />
-        <button style={{background:'green'}}>+</button>
+        <Button as="input" size="sm" type="submit" value="+" />{' '}
+
       </li>
-      <button class="btn btn-primary my-1" >LOG OUT</button>
+      <Button variant="outline-success">LOG OUT</Button>{' '}
     </ul>
   )
 }
