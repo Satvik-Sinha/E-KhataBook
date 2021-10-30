@@ -8,6 +8,10 @@ import LoanTable from "./loanTable";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal'
 import { useState } from "react";
+import Form from 'react-bootstrap/Form'
+import FloatingLabel from 'react-bootstrap/FloatingLabel'
+import InputGroup from 'react-bootstrap/InputGroup'
+import FormControl from 'react-bootstrap/FormControl'
 
 export const MyProfile = (props) => {
     const [show, setShow] = useState(false);
@@ -45,7 +49,47 @@ export const MyProfile = (props) => {
                         <Modal.Header closeButton>
                             <Modal.Title>Edit Profile</Modal.Title>
                         </Modal.Header>
-                        <Modal.Body>Please edit your profile!</Modal.Body>
+                        <Modal.Body>
+                        
+                            <Form.Group controlId="formFile" className="mb-3">
+                                <Form.Label>Choose Profile Picture</Form.Label>
+                                <Form.Control type="file" />
+                            </Form.Group>
+                            
+                            <Form.Label>Username</Form.Label>
+                            <InputGroup className="mb-3">
+                                <InputGroup.Text>@</InputGroup.Text>
+                                <FormControl aria-label="Username" placeholder="Username"/>
+                            </InputGroup>
+                            <Form.Group className="mb-3" controlId="formGroupEmail">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control type="email" placeholder="Enter email" />
+                            </Form.Group>
+
+
+                            <Form.Label>Age</Form.Label>
+                            <InputGroup className="mb-3">
+                                <FormControl aria-label="Age" placeholder="Age" />
+                            </InputGroup>
+
+                            <Form.Label>Income</Form.Label>
+                            <InputGroup className="mb-3">
+                                <InputGroup.Text>$</InputGroup.Text>
+                                <FormControl aria-label="Amount(dollar)" placeholder="Income"/>
+                            </InputGroup>
+                            
+                            <Form.Group className="mb-3" controlId="formGroupPassword">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control type="password" placeholder="Password" />
+                            </Form.Group>
+                            
+                            <Form.Group className="mb-3" controlId="formGroupPassword">
+                                <Form.Label>Confirm Password</Form.Label>
+                                <Form.Control type="password" placeholder="Confirm Password" />
+                            </Form.Group>
+
+
+                        </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleClose}>
                                 Close
