@@ -1,0 +1,20 @@
+{
+  "name": "Web_Development_Project",
+  "version": "1.0.0",
+  "description": "Contributors :- Satvik Sinha, Ankit Kushawaha",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Satvik-Sinha/E-KhataBook.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Satvik-Sinha/E-KhataBook/issues"
+  },
+  "homepage": "https://github.com/Satvik-Sinha/E-KhataBook#readme"
+}
