@@ -18,7 +18,7 @@ export const Usercontext = createContext();
 const Routing = () =>{
   return (
     <Switch style={{backgroundColor:"red"}}>
-      <Route exact path="/">
+      <Route exact path="/Home">
       <Home />
       </Route>
 
