@@ -13,7 +13,7 @@ export const Signup = () => {
     return (
         
             
-            <section className="signup_signin">
+        <section className="signup_signin">
            <MainContainer>
                <WelcomeText>
                Register
@@ -32,9 +32,7 @@ export const Signup = () => {
                </ButtonContainer>
 
            </MainContainer>
-            
-            
-            </section>
+        </section>
     )
 }
 
