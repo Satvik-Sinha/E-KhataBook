@@ -1,20 +1,47 @@
 {
+<<<<<<< HEAD
   "name": "Web_Development_Project",
   "version": "1.0.0",
   "description": "Contributors :- Satvik Sinha, Ankit Kushawaha",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+=======
+  "name": "expense-manager",
+  "version": "1.0.0",
+  "description": "expense tracking web app",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server",
+    "server": "nodemon server/server",
+    "client":"npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"" 
+>>>>>>> 88b362b412392ba884970966bbca46b6be6143ec
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Satvik-Sinha/E-KhataBook.git"
   },
+<<<<<<< HEAD
   "keywords": [],
   "author": "",
+=======
+  "author": "Ankit Kushawaha, Satvik Sinha",
+>>>>>>> 88b362b412392ba884970966bbca46b6be6143ec
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Satvik-Sinha/E-KhataBook/issues"
   },
+<<<<<<< HEAD
   "homepage": "https://github.com/Satvik-Sinha/E-KhataBook#readme"
+=======
+  "homepage": "https://github.com/Satvik-Sinha/E-KhataBook#readme",
+  "devDependencies": {
+    "concurrently": "^6.3.0",
+    "nodemon": "^2.0.14"
+  },
+  "dependencies": {
+    "config": "^3.3.6"
+  }
+>>>>>>> 88b362b412392ba884970966bbca46b6be6143ec
 }
