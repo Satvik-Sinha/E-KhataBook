@@ -19,14 +19,9 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    age:{
-        type: String
-    },
-    income:{
-        type: String
-    },
-    profilePicture:{
-        type: String
+   confirmPassword:{
+       type: String,
+        required: true
     }
 })
 
