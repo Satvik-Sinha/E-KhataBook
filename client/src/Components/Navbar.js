@@ -22,10 +22,10 @@ const Navbar = () => {
                   <NavLink className="nav-link" to="/Home">Home</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/DailyTransaction">Daily Transaction</NavLink>
+                <NavLink className="nav-link" to="/DashBoard">DashBoard</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/DashBoard">DashBoard</NavLink>
+                <NavLink className="nav-link" to="/DailyTransaction">Daily Transaction</NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/PlanBudget">Plan Budget</NavLink>
