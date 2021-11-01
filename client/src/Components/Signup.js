@@ -1,15 +1,54 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React,{useState} from 'react'
+import { useHistory} from 'react-router-dom'
 import styled from 'styled-components';
 
 import Input from "./Input"
 import Button from './Button';
-import Icon from './Icon';
+//import Icon from './Icon';
 
 
 
 export const Signup = () => {
     
+    const [user,setUser] = useState({name:"" ,email:"",username:"",password:"",confirmpassword:""});
+
+    const history =useHistory();
+    let name,value;
+    const handleInputs =(e) =>{
+        console.log(e);
+        name = e.target.name;
+        value=e.target.value;
+
+        setUser({...user,[name]:value});
+    }
+
+    const PostData = async(e) =>{
+        console.log("Hi");
+        e.preventDefault();
+        const {name,email,username,password,confirmpassword}=user;
+
+        const res = await fetch("/Signup" , {
+            method : "POST",
+            headers:{
+                "Content-Type" : "appliction/json"
+            },
+            body : JSON.stringify({
+                name,email,username,password,confirmpassword
+            })
+        });
+
+        const data= await res.json();
+
+        if(res.status===422 || !data)
+       { window.alert("Invalid Registration");
+        console.log("Invalid Registration");}
+        else{
+            window.alert("Registration Successful");
+            console.log("Registration Successful");
+            history.push("/Login");
+        }
+    }
+
     return (
         
             
@@ -19,17 +58,40 @@ export const Signup = () => {
                Register
                </WelcomeText>
 
-               <InputContainer>
-                   <Input type="text" placeholder="Name" />
-                   <Input type="text" placeholder="Email" />
-                   <Input type="text" placeholder="Username" />
-                   <Input type="password" placeholder="Password" />
-                   <Input type="password" placeholder="Confirm Password" />
+                
+               <InputContainer >
+               <form>
+                   <Input type="text" 
+                   value={user.name}
+                   onChange={handleInputs}
+                   placeholder="Name" />
+
+                   <Input type="text" 
+                   value={user.email}
+                   onChange={handleInputs}
+                   placeholder="Email" />
+
+                   <Input type="text" 
+                   value={user.username}
+                   onChange={handleInputs}
+                   placeholder="Username" />
+
+                   <Input type="password" 
+                   value={user.password}
+                   onChange={handleInputs}
+                   placeholder="Password" />
+
+                   <Input type="password" 
+                   value={user.confirmpassword}
+                   onChange={handleInputs}
+                   placeholder="Confirm Password" />
+                   </form>
                </InputContainer>
 
                <ButtonContainer>
-                   <Button content="Sign Up" />
+                   <Button content="Sign Up" onClick = {PostData} />
                </ButtonContainer>
+            
 
            </MainContainer>
         </section>
