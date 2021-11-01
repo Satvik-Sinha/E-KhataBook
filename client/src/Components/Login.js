@@ -1,5 +1,5 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React,{useState} from 'react'
+import { NavLink, useHistory } from 'react-router-dom'
 import styled from 'styled-components';
 import {FaGithub} from "react-icons/fa";
 import Input from "./Input"
@@ -10,24 +10,74 @@ import Icon from './Icon';
 
 export const Login = () => {
 
+    const [user,setUser] = useState({email:"",password:""});
+
+    const history =useHistory();
+    let name,value;
+
+    const handleInputs = (e) =>{
+        name = e.target.name;
+        value=e.target.value;
+        setUser({...user,[name]:value});
+    }
+
+    const PostData = async(e) =>{
+        console.log(user);
+        e.preventDefault();
+        const {email,password}=user;
+
+        const res = await fetch("/api/users/login" , {
+            method : "POST",
+            headers:{
+                "Content-Type" : "application/json"
+            },
+            body : JSON.stringify({
+                email,password
+            })
+        });
+
+        const data= await res.json();
+
+        if(res.status===400 || !data)
+       { window.alert("Invalid SignIn");
+        console.log("Invalid SignIn");}
+        else{
+            window.alert("Sign In Successful");
+            console.log("Sign In Successful");
+            history.push("/DailyTransaction");
+        }
+    }
+
    // const {state,dispatch} =  useContext(Usercontext);
     const GithubBackground="linear-gradient(to right,#171515 0%, #171515 100%)"
     return (
         
             
-            <section className="signup_signin">
+            <form className="signup_signin" method="POST">
            <MainContainer>
                <WelcomeText>
                Login
                </WelcomeText>
 
                <InputContainer>
-                   <Input type="text" placeholder="Email" />
-                   <Input type="password" placeholder="Password" />
+               <input type="text" 
+                   value={user.email}
+                   name="email"
+                   id="email"
+                   onChange={handleInputs}
+                   placeholder="Email" />
+                   
+                   <input type="password" 
+                   value={user.password}
+                   name="password"
+                   id="password"
+                   onChange={handleInputs}
+                   placeholder="Password" />
                </InputContainer>
 
                <ButtonContainer>
-                   <Button content="Sign In" />
+               <input type="submit" name="signup" id="signup" 
+                   value="Sign In"  onClick={PostData}/>
                </ButtonContainer>
 
                <LoginWith>
@@ -45,7 +95,7 @@ export const Login = () => {
            </MainContainer>
             
             
-            </section>
+            </form>
     )
 }
 
