@@ -3,20 +3,28 @@ import 'bootstrap/dist/css/bootstrap.css';
 import profileIcon from "..\\..\\images\\img.png"
 import Image from 'react-bootstrap/Image'
 import "./myProfileStyle.css";
-import styled from 'styled-components';
 import LoanTable from "./loanTable";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal'
 import { useState } from "react";
 import Form from 'react-bootstrap/Form'
-import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
+import Axios from 'axios';
+const axios = require('axios').default;
 
 export const MyProfile = (props) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    async function getUser() {
+        try {
+          const response = await axios.get('/user?ID=12345');
+          console.log(response);
+        } catch (error) {
+          console.error(error);
+        }
+      }
     return (
         <div class="profile-full">
             <div class="container-profile">
