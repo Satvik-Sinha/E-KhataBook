@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const ExpenseDataSchema = new mongoose.Schema({
-    username:{
+    email:{
         type: String,
         required: true,
         unique: true
@@ -18,7 +18,7 @@ const ExpenseDataSchema = new mongoose.Schema({
     dailyAccessories:{
         type: Number,
     },
-    extraExpences:{
+    extraExpenses:{
         type: Number,
     },
     bonusReceived:{
@@ -26,8 +26,16 @@ const ExpenseDataSchema = new mongoose.Schema({
     },
     loan:{
         type: Array,
+    },
+    salary:{
+        type: Number,
+    },
+    totalExpenses:{
+        type: Number,
+    },
+    totalSalary:{
+        type: Number,
     }
-    
 })
 
 module.exports = ExpenseData = mongoose.model('expenseData', ExpenseDataSchema);

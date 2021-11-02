@@ -42,21 +42,6 @@ router.post('/register', async (req, res) => {
     var age = "NULL";
     var income = "NULL";
     var profilePicture = "NULL";
-    // if(!req.body.age){
-    //     console.log("Age Missing Update it in Your Profile Section")
-    // }else{
-    //     age = req.body.age;
-    // }
-    // if(!req.body.income){
-    //     console.log("Income Missing Update it in Your Profile Section")
-    // }else{
-    //     income = req.body.income;
-    // }
-    // if(!req.body.profilePicture){
-    //     console.log("ProfilePicture Missing Update it in Your Profile Section")
-    // }else{
-    //     profilePicture = req.body.profilePicture;
-    // }
 
     if(!name || !email || !username || !password || !confirmpassword)
     {
