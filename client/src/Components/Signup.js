@@ -14,23 +14,22 @@ export const Signup = () => {
 
     const history =useHistory();
     let name,value;
-    const handleInputs =(e) =>{
-        console.log(e);
+
+    const handleInputs = (e) =>{
         name = e.target.name;
         value=e.target.value;
-
         setUser({...user,[name]:value});
     }
 
     const PostData = async(e) =>{
-        console.log("Hi");
+        console.log(user);
         e.preventDefault();
         const {name,email,username,password,confirmpassword}=user;
 
-        const res = await fetch("/Signup" , {
+        const res = await fetch("/api/users/register" , {
             method : "POST",
             headers:{
-                "Content-Type" : "appliction/json"
+                "Content-Type" : "application/json"
             },
             body : JSON.stringify({
                 name,email,username,password,confirmpassword
@@ -50,9 +49,10 @@ export const Signup = () => {
     }
 
     return (
+       
         
-            
-        <section className="signup_signin">
+      
+        <form className="signup_signin" method="POST">
            <MainContainer>
                <WelcomeText>
                Register
@@ -60,41 +60,65 @@ export const Signup = () => {
 
                 
                <InputContainer >
-               <form>
-                   <Input type="text" 
+               
+                   <input type="text" 
+                   name="name"
+                   id="name"
                    value={user.name}
                    onChange={handleInputs}
                    placeholder="Name" />
-
-                   <Input type="text" 
+                
+                   <input type="text" 
                    value={user.email}
+                   name="email"
+                   id="email"
                    onChange={handleInputs}
                    placeholder="Email" />
 
-                   <Input type="text" 
+                   <input type="text" 
                    value={user.username}
+                   name="username"
+                   id="username"
                    onChange={handleInputs}
                    placeholder="Username" />
 
-                   <Input type="password" 
+                   <input type="password" 
                    value={user.password}
+                   name="password"
+                   id="password"
                    onChange={handleInputs}
                    placeholder="Password" />
 
-                   <Input type="password" 
+                   <input type="password" 
                    value={user.confirmpassword}
+                   name="confirmpassword"
+                   id="confirmpassword"
                    onChange={handleInputs}
                    placeholder="Confirm Password" />
-                   </form>
+                  
                </InputContainer>
 
-               <ButtonContainer>
-                   <Button content="Sign Up" onClick = {PostData} />
-               </ButtonContainer>
-            
+                <ButtonContainer>
+                   
+                   <input type="submit" name="signup" id="signup" 
+                   value="Sign Up"  onClick={PostData}/>
+               </ButtonContainer> 
+               
+               {/* <div >
+                   <input type="submit" name="signup" id="signup" 
+                   value="register" onClick={PostData}/>
+               </div> */}
+               
+
+               
+  
+
 
            </MainContainer>
-        </section>
+        </form>
+
+       
+        
     )
 }
 
