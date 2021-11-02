@@ -10,8 +10,6 @@ import Form from 'react-bootstrap/Form'
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
 import axios from 'axios';
-const db = "mongodb+srv://root:ExpenseManager@expensemanager.ydqmv.mongodb.net/User?retryWrites=true";
-
 
 export const MyProfile = (props) => {
     
@@ -66,7 +64,7 @@ export const MyProfile = (props) => {
     }
 
     const handleSubmit = event => {
-        
+
         if(accData.password.length < 6){
             alert("Please provide password having length greater than 6!");
         }else{
