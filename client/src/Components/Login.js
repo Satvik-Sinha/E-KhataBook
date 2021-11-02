@@ -76,7 +76,7 @@ export const Login = () => {
                </InputContainer>
 
                <ButtonContainer>
-               <input type="submit" name="signup" id="signup" 
+               <input type="submit" name="signin" id="signin" 
                    value="Sign In"  onClick={PostData}/>
                </ButtonContainer>
 
