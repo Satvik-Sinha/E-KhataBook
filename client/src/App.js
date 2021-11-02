@@ -52,6 +52,7 @@ const Routing = () =>{
         gender = "Male"
         salary = {100000}
         color = "rgb(79, 3, 102)"
+        ID = "617e7ca7d14a165280bdaa21"
       />
       </Route>
     </Switch>
