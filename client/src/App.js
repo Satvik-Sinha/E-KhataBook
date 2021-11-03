@@ -18,13 +18,17 @@ export const Usercontext = createContext();
 const Routing = () =>{
   return (
     <Switch style={{backgroundColor:"red"}}>
-      <Route exact path="/Home">
+      <Route exact path="/">
+      <Home />
+      </Route>
+
+      <Route path="/Home">
       <Home />
       </Route>
 
       <Route path="/DailyTransaction">
       <DailyTransaction 
-        ID="618226a73986c7df614a251e"
+        ID="61824e012cf462cf37e19613"
 
       />
       </Route>
@@ -55,7 +59,7 @@ const Routing = () =>{
         gender = "Male"
         salary = {100000}
         color = "rgb(79, 3, 102)"
-        ID = "617e7ca7d14a165280bdaa21"
+        ID = "61824e012cf462cf37e19613"
       />
       </Route>
     </Switch>

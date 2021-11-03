@@ -5,75 +5,65 @@ import PieChartSatvik from "../Components/PieChartSatvik"
 import styled from 'styled-components';
 import axios from 'axios';
 
-export default function Dailythansaction(props) {
+export default function DailyTransaction(props) {
 
-    const [user,setUser] = useState({food:0, clothing:0, travel:0, dailyAccessories:0, extraExpenses:0, bonusReceived:0});
+    const [user,setUser] = useState({
+        food:0,
+        clothing:0,
+        travel:0,
+        dailyAccessories:0, 
+        extraExpenses:0, 
+        bonusReceived:0
+    });
 
     const history =useHistory();
-    let name,value;
 
     useEffect(() => {
         console.log(user);
-        axios.get("http://localhost:4000/api/users/get/618226a73986c7df614a251e")
+        axios.get(`http://localhost:4000/api/users/get/${props.ID}`)
         .then((res) => {
             setUser(res.data);
-            // console.log(res.data);
-            // console.log(user);
-            user.food=res.data.food;
-            user.clothing=res.data.clothing;
-            user.travel=res.data.travel;
-            user.dailyAccessories=res.data.dailyAccessories;
-            user.extraExpenses=res.data.extraExpenses;
-            user.bonusReceived=res.data.bonusReceived;
-            //console.log(user);
         })
         .catch( (error) => {
             console.log(error);
         })
-        //console.log(user);
+        console.log(user);
     }, [])
 
-    const handleInputs = (e) =>{
+    const handleInputs = event =>{
        // console.log(e);
-        name = e.target.name;
-        value=e.target.value;
-        setUser({...user,[name]:value});
+        const { value, name } = event.target;
+        setUser({...user,[name]:parseInt(value, 10)});
+        // console.log(user);
     }
 
 
      const UpdateData = e =>{
-     
-       e.preventDefault();
-                axios.put("http://localhost:4000/api/users/update/618226a73986c7df614a251e", user)
-                .then(res => {
-                    alert("Data Updated Successfully");
-                })
-                .catch(error =>{
-                    console.log(error);
-                })
-                console.log(user);
-    //     e.preventDefault();
-    //     const {food, clothing, travel, dailyAccessories, extraExpenses, bonusReceived}=user;
-
-    //     const res = await fetch("/api/users/transaction" , {
-    //         method : "POST",
-    //         headers:{
-    //             "Content-Type" : "application/json"
-    //         },
-    //         body : JSON.stringify({
-    //             food, clothing, travel, dailyAccessories, extraExpenses, bonusReceived
-    //         })
-    //     });
-
-    //     const data= await res.json();
-
-    //     if(res.status===400 || !data)
-    //    { window.alert("Server Error");
-    //     console.log("Server Error");}
-    //     else{
-    //         window.alert("Database Updated");
-    //         console.log("Database Updated");
-    //     }
+        e.preventDefault();
+        //this is to use adding of previous and updated expenses
+        
+        // axios.get(`http://localhost:4000/api/users/get/${props.ID}`)
+        // .then((res) => {
+        //     // setUser(res.data);
+        //     user.food += res.data.food;
+        //     user.clothing += res.data.clothing;
+        //     user.travel += res.data.travel;
+        //     user.dailyAccessories += res.data.dailyAccessories;
+        //     user.extraExpenses += res.data.extraExpenses;
+        //     user.bonusReceived += res.data.bonusReceived;
+        //     // setUser({...user,["food"]: user.food + res.data.food});
+        // })
+        // .catch( (error) => {
+        //     console.log(error);
+        // })
+        axios.put(`http://localhost:4000/api/users/update/${props.ID}`, user)
+        .then(res => {
+            alert("Data Updated Successfully");
+            // console.log(user);
+        })
+        .catch(error =>{
+            console.log(error);
+        })
      }
 
 

@@ -2,15 +2,9 @@ import React,{useState} from 'react'
 import { useHistory} from 'react-router-dom'
 import styled from 'styled-components';
 
-import Input from "./Input"
-import Button from './Button';
-//import Icon from './Icon';
-
-
-
 export const Signup = () => {
     
-    const [user,setUser] = useState({name:"" ,email:"",username:"",password:"",confirmpassword:""});
+    const [user,setUser] = useState({name:"" ,email:"",username:"",password:"",cnfPass:""});
 
     const history =useHistory();
     let name,value;
@@ -24,34 +18,41 @@ export const Signup = () => {
     const PostData = async(e) =>{
         console.log(user);
         e.preventDefault();
-        const {name,email,username,password,confirmpassword}=user;
+        const {name,email,username,password,cnfPass}=user;
 
-        const res = await fetch("/api/users/register" , {
-            method : "POST",
-            headers:{
-                "Content-Type" : "application/json"
-            },
-            body : JSON.stringify({
-                name,email,username,password,confirmpassword
-            })
-        });
+        if(password.length < 6){
+            alert("please enter password of length more than 6 char!")
+        }else{
+            if(password === cnfPass){
+                const res = await fetch("/api/users/register" , {
+                method : "POST",
+                headers:{
+                    "Content-Type" : "application/json"
+                },
+                body : JSON.stringify({
+                    name,email,username,password
+                })
+                });
 
-        const data= await res.json();
+                const data= await res.json();
 
-        if(res.status===422 || !data)
-       { window.alert("Invalid Registration");
-        console.log("Invalid Registration");}
-        else{
-            window.alert("Registration Successful");
-            console.log("Registration Successful");
-            history.push("/Login");
+                if(res.status===422 || !data){
+                    window.alert("Invalid Registration");
+                    console.log("Invalid Registration");}
+                else{
+                    window.alert("Registration Successful");
+                    console.log("Registration Successful");
+                    history.push("/Login");
+                }
+            }else{
+                alert("please enter correct passwords!");
+            }
         }
+       
     }
 
     return (
        
-        
-      
         <form className="signup_signin" method="POST">
            <MainContainer>
                <WelcomeText>
@@ -91,8 +92,8 @@ export const Signup = () => {
 
                    <input type="password" 
                    value={user.confirmpassword}
-                   name="confirmpassword"
-                   id="confirmpassword"
+                   name="cnfPass"
+                   id="cnfPass"
                    onChange={handleInputs}
                    placeholder="Confirm Password" />
                   

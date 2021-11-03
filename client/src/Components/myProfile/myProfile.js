@@ -10,8 +10,6 @@ import Form from 'react-bootstrap/Form'
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
 import axios from 'axios';
-const db = "mongodb+srv://root:ExpenseManager@expensemanager.ydqmv.mongodb.net/User?retryWrites=true";
-
 
 export const MyProfile = (props) => {
     
@@ -24,7 +22,7 @@ export const MyProfile = (props) => {
         cnfPass:'',
         gender:''
     });
-    // var confPass ='';
+    // var confPass ='';    
     useEffect(() => {
         axios.get(`http://localhost:4000/api/users/get/${props.ID}`)
         .then((res) => {
@@ -35,6 +33,7 @@ export const MyProfile = (props) => {
         })
         
     }, [])
+    
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => {
@@ -66,7 +65,7 @@ export const MyProfile = (props) => {
     }
 
     const handleSubmit = event => {
-        
+
         if(accData.password.length < 6){
             alert("Please provide password having length greater than 6!");
         }else{
