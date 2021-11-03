@@ -44,7 +44,7 @@ export const Login = () => {
         else{
             window.alert("Sign In Successful");
             console.log("Sign In Successful");
-            history.push("/DailyTransaction");
+            history.push("/DashBoard");
         }
     }
 

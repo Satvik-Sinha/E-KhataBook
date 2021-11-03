@@ -4,6 +4,7 @@ const {check, validationResult } = require('express-validator/check')
 const User = require('../../models/User')
 var defaultURL = require("../../config/default.json");
 
+const ExepenseData = User;
 
 //this is to get all the data present in database
 router.get('/', async (req, res) =>{
@@ -68,24 +69,26 @@ router.post('/', async (req, res) => {
 }); 
 
 router.post('/register', async (req, res) => {
-
+    
+    
     const name = req.body.name;
     const email = req.body.email;
     const username = req.body.username;
     const password = req.body.password;
-    const confirmpassword = req.body.confirmpassword;
-    var age = "NULL";
-    var income = "NULL";
-    var profilePicture = "NULL";
-
-    if(!name || !email || !username || !password || !confirmpassword)
-    {
-        return res.status(422).json({error : "Field Incomplete"});
-    }
-    if(password != confirmpassword)
-    {
-        return res.status(422).json({error : "Re-enter Password"});
-    }
+    const age = 0;
+    const gender = "Null";
+    const income=0;
+    const profilePicture = "NULL";
+    
+    const food = 0;
+    const clothing = 0;
+    const travel = 0;
+    const dailyAccessories = 0;
+    const extraExpenses = 0;
+    const bonusReceived = 0;
+    const loan=0;
+    const totalExpenses=0;
+    const totalIncome=0;
 
     try{
         user = new User({
@@ -93,9 +96,19 @@ router.post('/register', async (req, res) => {
             email,
             username,
             password,
-            confirmpassword,
-            age,
-            income
+             age,
+            gender,
+            income,
+            profilePicture,
+            food,
+            clothing,
+            travel,
+            dailyAccessories,
+            extraExpenses,
+            bonusReceived,
+            loan,
+            totalExpenses,
+            totalIncome,
         });
         // console.log(age);
         await user.save();
@@ -112,7 +125,9 @@ router.get('/get/:id',(req, res) => {
 
     User.findById(req.params.id, (error, data) => {
         if (error) {
-            return next(error)
+            // return next(error)
+            res.status(422).json({error : "user not find"});
+            console.log(error);
         } else {
             res.json(data)
         }
@@ -122,27 +137,61 @@ router.get('/get/:id',(req, res) => {
 //this is to update the specific user
 router.put('/update/:id', (req, res) => {
     console.log(req.body);
-    User.findOne({__id: req.params.id}, (err, foundUser) =>{
+
+    const user = {
+        name:              req.body.name,
+        username:          req.body.username,
+        age:               req.body.age,
+        income:            req.body.income,
+        password:          req.body.password,
+        gender:            req.body.gender,
+        food :             req.body.food,
+        clothing :         req.body.clothing,
+        travel :           req.body.travel,
+        dailyAccessories : req.body.dailyAccessories,
+        extraExpenses :    req.body.extraExpenses,
+        bonusReceived :    req.body.bonusReceived
+    }
+    User.findByIdAndUpdate(req.params.id , user, function(err, updatedProfile){
         if(err){
             console.log(err);
+            // console.log("2nd error");
         }else{
-            const user = {
-                name:       req.body.name,
-                username:   req.body.username,
-                email:      req.body.email,
-                age:        req.body.age,
-                income:     req.body.income,
-                password:   req.body.password,
-                gender:     req.body.gender,
-            }
-            User.findByIdAndUpdate(foundUser._id, user, function(err, updatedProfile){
-                if(err){
-                    console.log(err);
-                }else{
-                    console.log(user);
-                    res.statusCode === 200 ? res.json("profile updated") : res.json('oops something went wrong')
-                }
-            })
+            console.log(user);
+            res.statusCode === 200 ? res.json("profile updated") : res.json('oops something went wrong')
+        }
+    })
+
+
+    // User.findOne({__id: req.params.id}, (err, foundUser) =>{
+    //     if(err){
+    //         console.log(err);
+    //         // console.log("1st error");
+
+    //     }else{
+    //         const user = {
+    //             name:              req.body.name,
+    //             // username:          req.body.username,
+    //             age:               req.body.age,
+    //             income:            req.body.income,
+    //             password:          req.body.password,
+    //             gender:            req.body.gender,
+    //             food :             req.body.food,
+    //             clothing :         req.body.clothing,
+    //             travel :           req.body.travel,
+    //             dailyAccessories : req.body.dailyAccessories,
+    //             extraExpenses :    req.body.extraExpenses,
+    //             bonusReceived :    req.body.bonusReceived
+    //         }
+    //         User.findByIdAndUpdate(foundUser._id, user, function(err, updatedProfile){
+    //             if(err){
+    //                 console.log(err);
+    //                 // console.log("2nd error");
+    //             }else{
+    //                 console.log(user);
+    //                 res.statusCode === 200 ? res.json("profile updated") : res.json('oops something went wrong')
+    //             }
+    //         })
 
             // below line is to create user if not found
 
@@ -163,8 +212,8 @@ router.put('/update/:id', (req, res) => {
             //     })
             
             // }
-        }
-    });
+    //     }
+    // });
 });
 
 //this will be used to delete given user
@@ -209,5 +258,6 @@ router.post('/login',(req,res) =>{
        
     }).catch((err) =>res.status(400).json({error : "Invalid Details"}));
 });
+ 
 module.exports = router;
 

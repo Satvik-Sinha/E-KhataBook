@@ -14,7 +14,7 @@ export default class LoanTable extends React.Component {
       loanData: [],
     }
 
-    axios.get(`http://localhost:4000/api/usersExpenseData/get/${props.ID}`)
+    axios.get(`http://localhost:4000/api/users/get/${props.ID}`)
     .then((res) => {
         // setAccData(res.data);
         console.log(res.data);

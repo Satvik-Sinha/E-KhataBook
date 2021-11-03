@@ -22,7 +22,7 @@ export const MyProfile = (props) => {
         cnfPass:'',
         gender:''
     });
-    // var confPass ='';
+    // var confPass ='';    
     useEffect(() => {
         axios.get(`http://localhost:4000/api/users/get/${props.ID}`)
         .then((res) => {

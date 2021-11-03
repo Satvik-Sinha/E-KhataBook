@@ -27,7 +27,10 @@ const Routing = () =>{
       </Route>
 
       <Route path="/DailyTransaction">
-      <DailyTransaction />
+      <DailyTransaction 
+        ID="61824e012cf462cf37e19613"
+
+      />
       </Route>
 
       <Route path="/Dashboard">
@@ -56,7 +59,7 @@ const Routing = () =>{
         gender = "Male"
         salary = {100000}
         color = "rgb(79, 3, 102)"
-        ID = "617e7ca7d14a165280bdaa21"
+        ID = "61824e012cf462cf37e19613"
       />
       </Route>
     </Switch>

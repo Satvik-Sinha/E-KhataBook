@@ -3,38 +3,59 @@ const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
     name:{
         type: String,
-        required: true
     },
     email:{
         type: String,
-        required: true,
         unique: true
     },
     username:{
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     password:{
         type: String,
-        required: true
     },
     confirmpassword:{
         type: String,
-        required: true
     },
     age:{
-        type: String
+        type: Number
     },
-    
     gender:{
         type: String
     },
     income:{
-        type: String
+        type: Number
     },
     profilePicture:{
         type: String
+    },
+    food:{
+        type: Number,
+    },
+    clothing:{
+        type: Number,
+    },
+    travel:{
+        type: Number,
+    },
+    dailyAccessories:{
+        type: Number,
+    },
+    extraExpenses:{
+        type: Number,
+    },
+    bonusReceived:{
+        type: Number,
+    },
+    loan:{
+        type: Array,
+    },
+    totalExpenses:{
+        type: Number,
+    },
+    totalIncome:{
+        type: Number,
     }
 })
 
