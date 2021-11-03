@@ -7,7 +7,16 @@ import axios from 'axios';
 
 export default function DailyTransaction(props) {
 
-    const [user,setUser] = useState({
+    var [user,setUser] = useState({
+        food:0,
+        clothing:0,
+        travel:0,
+        dailyAccessories:0, 
+        extraExpenses:0, 
+        bonusReceived:0
+    });
+    
+    var [expenseData,setExpenseData] = useState({
         food:0,
         clothing:0,
         travel:0,
@@ -22,13 +31,14 @@ export default function DailyTransaction(props) {
         console.log(user);
         axios.get(`http://localhost:4000/api/users/get/${props.ID}`)
         .then((res) => {
-            setUser(res.data);
+            setExpenseData(res.data);
+            
         })
         .catch( (error) => {
             console.log(error);
         })
         console.log(user);
-    }, [])
+    }, [user])
 
     const handleInputs = event =>{
        // console.log(e);
@@ -41,29 +51,31 @@ export default function DailyTransaction(props) {
      const UpdateData = e =>{
         e.preventDefault();
         //this is to use adding of previous and updated expenses
-        
+
         // axios.get(`http://localhost:4000/api/users/get/${props.ID}`)
         // .then((res) => {
-        //     // setUser(res.data);
-        //     user.food += res.data.food;
-        //     user.clothing += res.data.clothing;
-        //     user.travel += res.data.travel;
-        //     user.dailyAccessories += res.data.dailyAccessories;
-        //     user.extraExpenses += res.data.extraExpenses;
-        //     user.bonusReceived += res.data.bonusReceived;
-        //     // setUser({...user,["food"]: user.food + res.data.food});
+        //     setExpenseData(res.data);
         // })
         // .catch( (error) => {
         //     console.log(error);
         // })
-        axios.put(`http://localhost:4000/api/users/update/${props.ID}`, user)
+
+        console.log(expenseData.food + " " +user.food);
+        axios.put(`http://localhost:4000/api/users/update/${props.ID}`, {
+            food: expenseData.food + user.food,
+            clothing: expenseData.clothing + user.clothing,
+            travel: expenseData.travel + user.travel,
+            dailyAccessories: expenseData.dailyAccessories + user.dailyAccessories,
+            extraExpenses: expenseData.extraExpenses + user.extraExpenses,
+            bonusReceived: expenseData.bonusReceived + user.bonusReceived
+        })
         .then(res => {
             alert("Data Updated Successfully");
-            // console.log(user);
         })
         .catch(error =>{
             console.log(error);
         })
+
      }
 
 

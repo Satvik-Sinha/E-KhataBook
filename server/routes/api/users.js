@@ -96,7 +96,7 @@ router.post('/register', async (req, res) => {
             email,
             username,
             password,
-             age,
+            age,
             gender,
             income,
             profilePicture,
