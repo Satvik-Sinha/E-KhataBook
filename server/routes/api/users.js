@@ -4,6 +4,7 @@ const {check, validationResult } = require('express-validator/check')
 const User = require('../../models/User')
 var defaultURL = require("../../config/default.json");
 
+const ExepenseData = User;
 
 //this is to get all the data present in database
 router.get('/', async (req, res) =>{
@@ -69,6 +70,58 @@ router.post('/', async (req, res) => {
 
 router.post('/register', async (req, res) => {
 
+
+    
+    let food = 0, clothing = 0, travel = 0, dailyAccessories = 0, extraExpenses = 0, bonusReceived = 0,loan=0, salary=0,totalExpenses=0,totalSalary=0;
+
+    
+    if(req.body.food){
+        food = req.body.food;
+    }
+    if(req.body.clothing){
+        clothing = req.body.clothing;
+    }
+    if(req.body.travel){
+        travel = req.body.travel;
+    }
+    if(req.body.dailyAccessories){
+        dailyAccessories = req.body.dailyAccessories;
+    }
+    if(req.body.extraExpenses){
+        extraExpenses = req.body.extraExpenses;
+    }
+    if(req.body.bonusReceived){
+        bonusReceived = req.body.bonusReceived;
+    }
+    if(req.body.loan){
+        loan = req.body.loan;
+    }
+    if(req.body.salary){
+        salary = req.body.salary;
+    }
+    if(req.body.totalExpenses){
+        totalExpenses = req.body.totalExpenses;
+    }
+    if(req.body.totalSalary){
+        totalSalary = req.body.totalSalary;
+    }
+
+    food = parseInt(food, 10);
+    clothing = parseInt(clothing, 10);
+    travel = parseInt(travel, 10);
+    dailyAccessories = parseInt(dailyAccessories, 10);
+    extraExpenses = parseInt(extraExpenses, 10);
+    bonusReceived = parseInt(bonusReceived, 10);
+    salary = parseInt(salary, 10);
+    totalExpenses = parseInt(totalExpenses, 10);
+    totalSalary = parseInt(totalSalary, 10);
+
+    totalExpenses+=food+clothing+travel+dailyAccessories+extraExpenses ;
+     totalSalary+= bonusReceived+salary;
+
+     req.body.totalExpenses=totalExpenses;
+     req.body.totalSalary=totalSalary;
+
     const name = req.body.name;
     const email = req.body.email;
     const username = req.body.username;
@@ -95,7 +148,8 @@ router.post('/register', async (req, res) => {
             password,
             confirmpassword,
             age,
-            income
+            income,
+            email, food, clothing, travel, dailyAccessories, extraExpenses, bonusReceived, loan, salary,totalExpenses,totalSalary
         });
         // console.log(age);
         await user.save();
@@ -134,6 +188,12 @@ router.put('/update/:id', (req, res) => {
                 income:     req.body.income,
                 password:   req.body.password,
                 gender:     req.body.gender,
+                food : req.data.food,
+                clothing : req.data.clothing,
+                travel : req.data.travel,
+                dailyAccessories : req.data.dailyAccessories,
+                extraExpenses : req.data.extraExpenses,
+                bonusReceived : req.data.bonusReceived
             }
             User.findByIdAndUpdate(foundUser._id, user, function(err, updatedProfile){
                 if(err){
@@ -209,5 +269,6 @@ router.post('/login',(req,res) =>{
        
     }).catch((err) =>res.status(400).json({error : "Invalid Details"}));
 });
+ 
 module.exports = router;
 

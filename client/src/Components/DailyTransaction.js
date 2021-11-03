@@ -1,15 +1,37 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
 import ReactDOM from "react-dom";
 import PieChartSatvik from "../Components/PieChartSatvik"
 import styled from 'styled-components';
+import axios from 'axios';
 
-export default function Dailythansaction() {
+export default function Dailythansaction(props) {
 
     const [user,setUser] = useState({food:0, clothing:0, travel:0, dailyAccessories:0, extraExpenses:0, bonusReceived:0});
 
     const history =useHistory();
     let name,value;
+
+    useEffect(() => {
+        console.log(user);
+        axios.get("http://localhost:4000/api/users/get/618226a73986c7df614a251e")
+        .then((res) => {
+            setUser(res.data);
+            // console.log(res.data);
+            // console.log(user);
+            user.food=res.data.food;
+            user.clothing=res.data.clothing;
+            user.travel=res.data.travel;
+            user.dailyAccessories=res.data.dailyAccessories;
+            user.extraExpenses=res.data.extraExpenses;
+            user.bonusReceived=res.data.bonusReceived;
+            //console.log(user);
+        })
+        .catch( (error) => {
+            console.log(error);
+        })
+        //console.log(user);
+    }, [])
 
     const handleInputs = (e) =>{
        // console.log(e);
@@ -18,31 +40,41 @@ export default function Dailythansaction() {
         setUser({...user,[name]:value});
     }
 
-    const PostData = async(e) =>{
+
+     const UpdateData = e =>{
      
-        e.preventDefault();
-        const {food, clothing, travel, dailyAccessories, extraExpenses, bonusReceived}=user;
+       e.preventDefault();
+                axios.put("http://localhost:4000/api/users/update/618226a73986c7df614a251e", user)
+                .then(res => {
+                    alert("Data Updated Successfully");
+                })
+                .catch(error =>{
+                    console.log(error);
+                })
+                console.log(user);
+    //     e.preventDefault();
+    //     const {food, clothing, travel, dailyAccessories, extraExpenses, bonusReceived}=user;
 
-        const res = await fetch("/api/usersExpenseData/transaction" , {
-            method : "POST",
-            headers:{
-                "Content-Type" : "application/json"
-            },
-            body : JSON.stringify({
-                food, clothing, travel, dailyAccessories, extraExpenses, bonusReceived
-            })
-        });
+    //     const res = await fetch("/api/users/transaction" , {
+    //         method : "POST",
+    //         headers:{
+    //             "Content-Type" : "application/json"
+    //         },
+    //         body : JSON.stringify({
+    //             food, clothing, travel, dailyAccessories, extraExpenses, bonusReceived
+    //         })
+    //     });
 
-        const data= await res.json();
+    //     const data= await res.json();
 
-        if(res.status===400 || !data)
-       { window.alert("Server Error");
-        console.log("Server Error");}
-        else{
-            window.alert("Database Updated");
-            console.log("Database Updated");
-        }
-    }
+    //     if(res.status===400 || !data)
+    //    { window.alert("Server Error");
+    //     console.log("Server Error");}
+    //     else{
+    //         window.alert("Database Updated");
+    //         console.log("Database Updated");
+    //     }
+     }
 
 
     return (
@@ -76,7 +108,7 @@ export default function Dailythansaction() {
             </CategoryInp>
 
             <CategoryBtn>
-            <button type="submit" name="submit" id="submit" value="submit"  onClick={PostData} class="btn btn-primary my-1">Submit</button>
+            <button type="submit" name="submit" id="submit" value="submit"  onClick={UpdateData} class="btn btn-primary my-1">Submit</button>
             </CategoryBtn>
             </form>
           

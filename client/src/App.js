@@ -23,7 +23,10 @@ const Routing = () =>{
       </Route>
 
       <Route path="/DailyTransaction">
-      <DailyTransaction />
+      <DailyTransaction 
+        ID="618226a73986c7df614a251e"
+
+      />
       </Route>
 
       <Route path="/Dashboard">
