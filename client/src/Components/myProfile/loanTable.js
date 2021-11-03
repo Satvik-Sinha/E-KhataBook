@@ -11,17 +11,31 @@ export default class LoanTable extends React.Component {
       message3: "",
       items: [],
       loanDetails: [],
-      loanData: [],
+      props: props
     }
-
     axios.get(`http://localhost:4000/api/users/get/${props.ID}`)
     .then((res) => {
-        // setAccData(res.data);
-        console.log(res.data);
+      var items = res.data.loan;
+      this.setState({
+        items: items
+      })
     })
     .catch( (error) => {
-        console.log(error);
+      console.log(error);
     })
+  }
+  
+  updateLoanData(loanData){
+      console.log(loanData);
+      axios.put(`http://localhost:4000/api/users/update/${this.state.props.ID}`, {loan: loanData})
+      .then(res => {
+          // alert("Profile Updated Successfully");
+          console.log("Profile Updated Successfully");
+      })
+      .catch(error =>{
+          console.log(error);
+      })
+
   }
 
   updateMessage1(event) {
@@ -41,20 +55,27 @@ export default class LoanTable extends React.Component {
   }
 
   handleClick() {
-    var items = this.state.items;
-    var loanDetails = this.state.loanDetails;
-
-    loanDetails.push(this.state.message1)
-    loanDetails.push(this.state.message2)
-    loanDetails.push(this.state.message3)
-    items.push(loanDetails)
-    this.setState({
-      items: items,
-      loanDetails: [],
-      message1: "",
-      message2: "",
-      message3: "",
-    });
+    if(this.state.message1 && this.state.message2 && this.state.message3){
+      
+      var items = this.state.items;
+      var loanDetails = this.state.loanDetails;
+  
+      loanDetails.push(this.state.message1)
+      loanDetails.push(this.state.message2)
+      loanDetails.push(this.state.message3)
+      items.push(loanDetails)
+      // console.log(items);
+      this.updateLoanData(items);
+      this.setState({
+        items: items,
+        loanDetails: [],
+        message1: "",
+        message2: "",
+        message3: "",
+      });
+    }else{
+      alert("Please fill all the Data!");
+    }
   }
 
   handleItemChanged1(i, event) {
@@ -86,7 +107,7 @@ export default class LoanTable extends React.Component {
     var items = this.state.items;
 
     items.splice(i, 1);
-
+    this.updateLoanData(items);
     this.setState({
       items: items
     });

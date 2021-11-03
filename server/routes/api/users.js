@@ -71,24 +71,24 @@ router.post('/', async (req, res) => {
 router.post('/register', async (req, res) => {
     
     
-    const name = req.body.name;
-    const email = req.body.email;
-    const username = req.body.username;
-    const password = req.body.password;
-    const age = 0;
-    const gender = "Null";
-    const income=0;
-    const profilePicture = "NULL";
+    const name              = req.body.name;
+    const email             = req.body.email;
+    const username          = req.body.username;
+    const password          = req.body.password;
+    const age               = 0;
+    const gender            = "-";
+    const income            = 0;
+    const profilePicture    = "-";
     
-    const food = 0;
-    const clothing = 0;
-    const travel = 0;
-    const dailyAccessories = 0;
-    const extraExpenses = 0;
-    const bonusReceived = 0;
-    const loan=0;
-    const totalExpenses=0;
-    const totalIncome=0;
+    const food              = 0;
+    const clothing          = 0;
+    const travel            = 0;
+    const dailyAccessories  = 0;
+    const extraExpenses     = 0;
+    const bonusReceived     = 0;
+    const loan              = [["newLoan", "10000", "31/12/2021"],["2ndLoan", "5000", "02/01/2022"]];
+    const totalExpenses     = 0;
+    const totalIncome       = 0;
 
     try{
         user = new User({
@@ -141,16 +141,20 @@ router.put('/update/:id', (req, res) => {
     const user = {
         name:              req.body.name,
         username:          req.body.username,
-        age:               req.body.age,
-        income:            req.body.income,
         password:          req.body.password,
+        age:               req.body.age,
         gender:            req.body.gender,
+        income:            req.body.income,
+        profilePicture :   req.body.profilePicture,
         food :             req.body.food,
         clothing :         req.body.clothing,
         travel :           req.body.travel,
         dailyAccessories : req.body.dailyAccessories,
         extraExpenses :    req.body.extraExpenses,
-        bonusReceived :    req.body.bonusReceived
+        bonusReceived :    req.body.bonusReceived,
+        loan :             req.body.loan,
+        totalExpenses :    req.body.totalExpenses,
+        totalIncome :      req.body.totalIncome,
     }
     User.findByIdAndUpdate(req.params.id , user, function(err, updatedProfile){
         if(err){
