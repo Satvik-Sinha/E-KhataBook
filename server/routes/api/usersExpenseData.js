@@ -142,5 +142,16 @@ router.post('/transaction', async (req, res) => {
     // }).catch((err) =>res.status(400).json({error : "Invalid Details"}));
 }); 
 
+//this is to get data of a specific user
+router.get('/get/:id',(req, res) => {
+
+    User.findById(req.params.id, (error, data) => {
+        if (error) {
+            return next(error)
+        } else {
+            res.json(data)
+        }
+    })
+})
 module.exports = router;
 

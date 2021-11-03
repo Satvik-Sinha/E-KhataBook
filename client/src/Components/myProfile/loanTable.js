@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 export default class LoanTable extends React.Component {
   constructor(props) {
@@ -9,8 +10,18 @@ export default class LoanTable extends React.Component {
       message2: "",
       message3: "",
       items: [],
-      loanDetails: []
+      loanDetails: [],
+      loanData: [],
     }
+
+    axios.get(`http://localhost:4000/api/usersExpenseData/get/${props.ID}`)
+    .then((res) => {
+        // setAccData(res.data);
+        console.log(res.data);
+    })
+    .catch( (error) => {
+        console.log(error);
+    })
   }
 
   updateMessage1(event) {
