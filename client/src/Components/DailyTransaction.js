@@ -7,7 +7,7 @@ import axios from 'axios';
 
 export default function DailyTransaction(props) {
 
-    const [user,setUser] = useState({
+    var [user,setUser] = useState({
         food:0,
         clothing:0,
         travel:0,
@@ -15,55 +15,75 @@ export default function DailyTransaction(props) {
         extraExpenses:0, 
         bonusReceived:0
     });
-
+    
+    var [expenseData,setExpenseData] = useState({
+        food:0,
+        clothing:0,
+        travel:0,
+        dailyAccessories:0, 
+        extraExpenses:0, 
+        bonusReceived:0
+    });
+    const [Zero, setZero] = useState({
+        food:'',
+        clothing:'',
+        travel:'',
+        dailyAccessories:'', 
+        extraExpenses:'', 
+        bonusReceived:''
+    })
     const history =useHistory();
 
     useEffect(() => {
         console.log(user);
         axios.get(`http://localhost:4000/api/users/get/${props.ID}`)
         .then((res) => {
-            setUser(res.data);
+            setExpenseData(res.data);
+            
         })
         .catch( (error) => {
             console.log(error);
         })
         console.log(user);
-    }, [])
+    }, [user])
 
     const handleInputs = event =>{
        // console.log(e);
         const { value, name } = event.target;
         setUser({...user,[name]:parseInt(value, 10)});
+        setZero({...Zero, [name]: value});
         // console.log(user);
     }
 
 
      const UpdateData = e =>{
         e.preventDefault();
-        //this is to use adding of previous and updated expenses
-        
-        // axios.get(`http://localhost:4000/api/users/get/${props.ID}`)
-        // .then((res) => {
-        //     // setUser(res.data);
-        //     user.food += res.data.food;
-        //     user.clothing += res.data.clothing;
-        //     user.travel += res.data.travel;
-        //     user.dailyAccessories += res.data.dailyAccessories;
-        //     user.extraExpenses += res.data.extraExpenses;
-        //     user.bonusReceived += res.data.bonusReceived;
-        //     // setUser({...user,["food"]: user.food + res.data.food});
-        // })
-        // .catch( (error) => {
-        //     console.log(error);
-        // })
-        axios.put(`http://localhost:4000/api/users/update/${props.ID}`, user)
+
+        console.log(expenseData.food + " " +user.food);
+        axios.put(`http://localhost:4000/api/users/update/${props.ID}`, {
+            food: expenseData.food + user.food,
+            clothing: expenseData.clothing + user.clothing,
+            travel: expenseData.travel + user.travel,
+            dailyAccessories: expenseData.dailyAccessories + user.dailyAccessories,
+            extraExpenses: expenseData.extraExpenses + user.extraExpenses,
+            bonusReceived: expenseData.bonusReceived + user.bonusReceived
+        })
         .then(res => {
             alert("Data Updated Successfully");
-            // console.log(user);
         })
         .catch(error =>{
             console.log(error);
         })
+
+        setZero({
+            food:'',
+            clothing:'',
+            travel:'',
+            dailyAccessories:'', 
+            extraExpenses:'', 
+            bonusReceived:''
+        })
+
      }
 
 
@@ -86,12 +106,12 @@ export default function DailyTransaction(props) {
             <CategoryInp>
             
             <div class="col-6">
-            <input type="number" name="food" id="food"  onChange={handleInputs} placeholder="Food"/>
-                <input type="number" name="clothing" id="clothing" onChange={handleInputs} placeholder="Clothing"/>
-                <input type="number" name="travel" id="travel" onChange={handleInputs} placeholder="Travel"/>
-                <input type="number" name="dailyAccessories" id="dailyAccessories" onChange={handleInputs} placeholder="Daily Accessories"/>
-                <input type="number" name="extraExpenses" id="extraExpenses" onChange={handleInputs} placeholder="Extra Expenses"/>
-                <input type="number" name="bonusReceived" id="bonusReceived" onChange={handleInputs} placeholder="Bonus Received"/>
+            <input type="number" name="food" value={Zero.food} onChange={handleInputs} placeholder="Food"/>
+                <input type="number" name="clothing" value={Zero.clothing} onChange={handleInputs} placeholder="Clothing"/>
+                <input type="number" name="travel" value={Zero.travel} onChange={handleInputs} placeholder="Travel"/>
+                <input type="number" name="dailyAccessories" value={Zero.dailyAccessories} onChange={handleInputs} placeholder="Daily Accessories"/>
+                <input type="number" name="extraExpenses" value={Zero.extraExpenses} onChange={handleInputs} placeholder="Extra Expenses"/>
+                <input type="number" name="bonusReceived"  value={Zero.bonusReceived} onChange={handleInputs} placeholder="Bonus Received"/>
             
             </div>
             
