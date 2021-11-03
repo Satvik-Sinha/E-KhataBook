@@ -24,7 +24,14 @@ export default function DailyTransaction(props) {
         extraExpenses:0, 
         bonusReceived:0
     });
-
+    const [Zero, setZero] = useState({
+        food:'',
+        clothing:'',
+        travel:'',
+        dailyAccessories:'', 
+        extraExpenses:'', 
+        bonusReceived:''
+    })
     const history =useHistory();
 
     useEffect(() => {
@@ -44,21 +51,13 @@ export default function DailyTransaction(props) {
        // console.log(e);
         const { value, name } = event.target;
         setUser({...user,[name]:parseInt(value, 10)});
+        setZero({...Zero, [name]: value});
         // console.log(user);
     }
 
 
      const UpdateData = e =>{
         e.preventDefault();
-        //this is to use adding of previous and updated expenses
-
-        // axios.get(`http://localhost:4000/api/users/get/${props.ID}`)
-        // .then((res) => {
-        //     setExpenseData(res.data);
-        // })
-        // .catch( (error) => {
-        //     console.log(error);
-        // })
 
         console.log(expenseData.food + " " +user.food);
         axios.put(`http://localhost:4000/api/users/update/${props.ID}`, {
@@ -74,6 +73,15 @@ export default function DailyTransaction(props) {
         })
         .catch(error =>{
             console.log(error);
+        })
+
+        setZero({
+            food:'',
+            clothing:'',
+            travel:'',
+            dailyAccessories:'', 
+            extraExpenses:'', 
+            bonusReceived:''
         })
 
      }
@@ -98,12 +106,12 @@ export default function DailyTransaction(props) {
             <CategoryInp>
             
             <div class="col-6">
-            <input type="number" name="food" id="food"  onChange={handleInputs} placeholder="Food"/>
-                <input type="number" name="clothing" id="clothing" onChange={handleInputs} placeholder="Clothing"/>
-                <input type="number" name="travel" id="travel" onChange={handleInputs} placeholder="Travel"/>
-                <input type="number" name="dailyAccessories" id="dailyAccessories" onChange={handleInputs} placeholder="Daily Accessories"/>
-                <input type="number" name="extraExpenses" id="extraExpenses" onChange={handleInputs} placeholder="Extra Expenses"/>
-                <input type="number" name="bonusReceived" id="bonusReceived" onChange={handleInputs} placeholder="Bonus Received"/>
+            <input type="number" name="food" value={Zero.food} onChange={handleInputs} placeholder="Food"/>
+                <input type="number" name="clothing" value={Zero.clothing} onChange={handleInputs} placeholder="Clothing"/>
+                <input type="number" name="travel" value={Zero.travel} onChange={handleInputs} placeholder="Travel"/>
+                <input type="number" name="dailyAccessories" value={Zero.dailyAccessories} onChange={handleInputs} placeholder="Daily Accessories"/>
+                <input type="number" name="extraExpenses" value={Zero.extraExpenses} onChange={handleInputs} placeholder="Extra Expenses"/>
+                <input type="number" name="bonusReceived"  value={Zero.bonusReceived} onChange={handleInputs} placeholder="Bonus Received"/>
             
             </div>
             
