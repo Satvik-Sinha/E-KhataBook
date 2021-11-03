@@ -63,3 +63,13 @@
 .WelcomeText-profile{
     margin: 2rem 0 2rem 0;
 }
+
+#message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+#inner-message {
+    margin: 0 auto;
+}

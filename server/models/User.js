@@ -15,9 +15,6 @@ const UserSchema = new mongoose.Schema({
     password:{
         type: String,
     },
-    confirmpassword:{
-        type: String,
-    },
     age:{
         type: Number
     },

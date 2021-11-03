@@ -179,7 +179,8 @@ export const MyProfile = (props) => {
                 
             </div>
             <div class="container-profile">
-                <LoanTable/>                            
+                <LoanTable
+                ID = {props.ID}/>                            
             </div>
 
         </div>
