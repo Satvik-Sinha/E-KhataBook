@@ -11,6 +11,7 @@
     width: 100%;
   
   } 
+  /*
   .navbar-items:hover {
    Change the color of links on hover 
   .navbar-items:hover {
@@ -74,6 +75,8 @@
     text-align: left;
     margin: 1em;
     color: rgb(179, 77, 9);
+    display:block;
+    justify-items: center;
   }
   .sidebar-items input{
     background-color: transparent;
