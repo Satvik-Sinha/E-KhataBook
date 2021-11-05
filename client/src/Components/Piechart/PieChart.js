@@ -1,33 +1,55 @@
-import React from 'react';
 import {Pie} from 'react-chartjs-2';
+import axios from 'axios';
+import React,{useState, useEffect} from "react";
 
-const state = {
-  labels: ['Food','Shopping','Gifts'],
-  datasets: [
-    {
-      label: 'Expenses',
-      backgroundColor: [
-        '#B21F00',
-        '#C9DE00',
-        '#2FDE00',
-      ],
-      hoverBackgroundColor: [
-      '#501800',
-      '#4B5000',
-      '#175000',
-      ],
-      data: [65, 59, 80]
-    }
-  ]
+
+
+
+function newfun(props){
+  console.log(props);
+
+  return {
+    labels: ['Food','Clothing','Travel','Daily Accessories','Extra Expenses'],
+    datasets: [
+      {
+        label: 'Expenses',
+        backgroundColor: [
+          '#B21F00',
+          '#7b20a8',
+          '#2FDE00',
+          '#1d36a8',
+          '#714511',
+        ],
+        hoverBackgroundColor: [
+          '#501800',
+          '#33014d',
+          '#175000',
+          '#010e4a',
+          '#4a2800',
+        ],
+        data: [
+          props.accData.food,
+          props.accData.clothing,
+          props.accData.travel,
+          props.accData.dailyAccessories,
+          props.accData.extraExpenses,
+        ]
+      }
+    ]
+  }
+
 }
-
 export default class App extends React.Component {
+  constructor(props){
+    super(props);
+    newfun(props);
+  }
   render() {
     return (
       <div style={{width: "100%",maxWidth:"30%",
         overflow: "auto"}}>
         <Pie
-          data={state}
+          data={newfun(this.props)}
           options={{
             title:{
               display:true,

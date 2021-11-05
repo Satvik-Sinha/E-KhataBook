@@ -47,6 +47,7 @@ export const Login = () => {
             dispatch({type:"USER",payload : true})
             window.alert("Sign In Successful");
             console.log("Sign In Successful");
+            localStorage.setItem("userID", data.userID);
             history.push("/DashBoard");
         }
     }
@@ -56,49 +57,59 @@ export const Login = () => {
     return (
         
             
-            <form className="signup_signin" method="POST">
-           <MainContainer>
-               <WelcomeText>
-               Login
-               </WelcomeText>
+        <form className="signup_signin" method="POST">
+            <MainContainer>
+                <WelcomeText>Login</WelcomeText>
+                <InputContainer>
+                <input 
+                    style={{margin:'em'}}
+                    type="email" 
+                    value={user.email}
+                    name="email"
+                    id="email"
+                    class="form-control" 
+                    onChange={handleInputs}
+                    placeholder="Enter email" 
+                />
+                <input
+                    style={{margin:'1em'}}
+                    type="password" 
+                    class="form-control" 
+                    value={user.password}
+                    name="password"
+                    id="password"
+                    onChange={handleInputs}
+                    placeholder="Password"
+                />
+                </InputContainer>
 
-               <InputContainer>
-               <input type="text" 
-                   value={user.email}
-                   name="email"
-                   id="email"
-                   onChange={handleInputs}
-                   placeholder="Email" />
-                   
-                   <input type="password" 
-                   value={user.password}
-                   name="password"
-                   id="password"
-                   onChange={handleInputs}
-                   placeholder="Password" />
-               </InputContainer>
+                <ButtonContainer>
+                    <button 
+                        type="submit" 
+                        name="signin" 
+                        id="signin" 
+                        onClick={PostData} 
+                        class="btn btn-dark"
+                        >
+                            LOGIN
+                    </button>
+                </ButtonContainer>
 
-               <ButtonContainer>
-               <input type="submit" name="signin" id="signin" 
-                   value="Sign In"  onClick={PostData}/>
-               </ButtonContainer>
-
-               <LoginWith>
-                   or Login With
-               </LoginWith>
-               
-
+                <LoginWith>
+                    or Login With
+                </LoginWith>
+                
                 <IconsContainer>
                     <Icon color={GithubBackground}>
                         <FaGithub />
                     </Icon>
                 </IconsContainer>
 
-                <ForgotPassword>Forgot Password ?</ForgotPassword>
-           </MainContainer>
+                    <ForgotPassword>Forgot Password ?</ForgotPassword>
+            </MainContainer>
             
             
-            </form>
+        </form>
     )
 }
 
@@ -106,7 +117,7 @@ const MainContainer = styled.div`
 display : flex;
 align-items : center;
 flex-direction : column;
-height : 80vh;
+height : 70vh;
 width : 30vw;
 background:rgba(255,255,255,0.15);
 box-shadow : 0 8px 32px 0 rgba(31,38,135,0.37);
@@ -118,24 +129,26 @@ letter-spacing: 0.4rem;
 `;
 
 const WelcomeText = styled.h2`
-    margin: 2rem 0 1rem 0;
+    margin: 3rem 0 1rem 0;
 `;
 
 const InputContainer = styled.div `
-    display: flex;
+  display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  height: 60%;
-  width: 100%;
+//   height: 60%;
+//   width: 100%;
 `;
-
+const InputText = styled.input`
+`;
 const ButtonContainer = styled.div `
     margin: 1rem 0 2rem 0;
  width: 100%;
  display: flex;
  align-items: center;
  justify-content: center;
+ color: green;
 `;
 
 const LoginWith = styled.h5 `

@@ -6,14 +6,16 @@ import { UserContext } from "../App";
 const Logout = () => {
 
     const {state,dispatch} = useContext(UserContext);
+    console.log(state);
 
     const history =useHistory();
     const ChangeNavbar = async(e) =>{
         
         e.preventDefault();
        
-            dispatch({type:"USER",payload : false})
-            window.alert("Logout Successful");
+            dispatch({type:"USER",payload : false});
+
+            alert("Logout Successful");
             console.log("Logout Successful");
             history.push("/");
     }

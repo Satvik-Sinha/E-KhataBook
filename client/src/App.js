@@ -12,7 +12,7 @@ import Login from './Components/Login';
 import Signup from './Components/Signup';
 import Logout from './Components/Logout';
 
-import {initialState,reducer} from "../src/reducer/UseReducer"
+import {initialState,reducer} from "./reducer/UseReducer"
 
 export const UserContext = createContext();
 
@@ -20,18 +20,15 @@ const Routing = () =>{
   return (
     <Switch style={{backgroundColor:"red"}}>
       <Route exact path="/">
-      <Home />
+      <Home value={false}/>
       </Route>
 
       <Route path="/Home">
-      <Home />
+      <Home value={true}/>
       </Route>
 
       <Route path="/DailyTransaction">
-      <DailyTransaction 
-        ID="61824e012cf462cf37e19613"
-
-      />
+      <DailyTransaction />
       </Route>
 
       <Route path="/Dashboard">
@@ -51,20 +48,9 @@ const Routing = () =>{
       <Signup />
       </Route>
 
-      <Route path="/Logout">
-      <Logout />
-      </Route>
-
       <Route path="/MyProfile">
       <MyProfile 
-        name = "Tony Stark"
-        username = "tonyStarkIsLove"
-        email = "tonyStark@3000.com"
-        age = {55}
-        gender = "Male"
-        salary = {100000}
         color = "rgb(79, 3, 102)"
-        ID = "61824e012cf462cf37e19613"
       />
       </Route>
     </Switch>

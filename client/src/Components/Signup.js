@@ -62,58 +62,73 @@ export const Signup = () => {
                 
                <InputContainer >
                
-                   <input type="text" 
-                   name="name"
-                   id="name"
-                   value={user.name}
-                   onChange={handleInputs}
-                   placeholder="Name" />
-                
-                   <input type="text" 
-                   value={user.email}
-                   name="email"
-                   id="email"
-                   onChange={handleInputs}
-                   placeholder="Email" />
+                   <input 
+                        style={{margin:'1em'}}
+                        type="text" 
+                        class="form-control" 
+                        placeholder="Name"
+                        name="name"
+                        id="name"
+                        value={user.name}
+                        onChange={handleInputs}
+                    />
 
-                   <input type="text" 
-                   value={user.username}
-                   name="username"
-                   id="username"
-                   onChange={handleInputs}
-                   placeholder="Username" />
+                   <input 
+                        style={{margin:'1em'}}
+                        type="email" 
+                        value={user.email}
+                        name="email"
+                        id="email"
+                        class="form-control" 
+                        onChange={handleInputs}
+                        placeholder="Enter email" 
+                    />
+                    
+                   <input 
+                        style={{margin:'1em'}}
+                        type="email" 
+                        class="form-control" 
+                        value={user.username}
+                        name="username"
+                        id="username"
+                        onChange={handleInputs}
+                        placeholder="Username" 
+                    />
 
-                   <input type="password" 
-                   value={user.password}
-                   name="password"
-                   id="password"
-                   onChange={handleInputs}
-                   placeholder="Password" />
-
-                   <input type="password" 
-                   value={user.confirmpassword}
-                   name="cnfPass"
-                   id="cnfPass"
-                   onChange={handleInputs}
-                   placeholder="Confirm Password" />
+                   <input
+                        style={{margin:'1em'}}
+                        type="password" 
+                        class="form-control" 
+                        value={user.password}
+                        name="password"
+                        id="password"
+                        onChange={handleInputs}
+                        placeholder="Password"
+                    />
+                   
+                    <input
+                        style={{margin:'1em'}}
+                        type="password" 
+                        class="form-control" 
+                        value={user.confirmpassword}
+                        name="cnfPass"
+                        id="cnfPass"
+                        onChange={handleInputs}
+                        placeholder="Confirm Password"
+                    />
                   
                </InputContainer>
 
-                <ButtonContainer>
-                   
-                   <input type="submit" name="signup" id="signup" 
-                   value="Sign Up"  onClick={PostData}/>
+                <ButtonContainer>           
+                   <button 
+                        type="submit" 
+                        name="signup" 
+                        id="signup" 
+                        value="Sign Up"  
+                        class="btn btn-dark"
+                        onClick={PostData}>Register
+                    </button>
                </ButtonContainer> 
-               
-               {/* <div >
-                   <input type="submit" name="signup" id="signup" 
-                   value="register" onClick={PostData}/>
-               </div> */}
-               
-
-               
-  
-
 
            </MainContainer>
         </form>
@@ -127,7 +142,7 @@ const MainContainer = styled.div`
 display : flex;
 align-items : center;
 flex-direction : column;
-height : 90vh;
+height : 80vh;
 width : 30vw;
 background:rgba(255,255,255,0.15);
 box-shadow : 0 8px 32px 0 rgba(31,38,135,0.37);
@@ -144,19 +159,19 @@ const WelcomeText = styled.h2`
 
 const InputContainer = styled.div `
     display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  height: 60%;
-  width: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+//   height: 60%;
+//   width: 100%;
 `;
 
 const ButtonContainer = styled.div `
     margin: 1rem 0 2rem 0;
- width: 100%;
- display: flex;
- align-items: center;
- justify-content: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 export default Signup;

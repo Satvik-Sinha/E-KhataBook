@@ -86,7 +86,7 @@ router.post('/register', async (req, res) => {
     const dailyAccessories  = 0;
     const extraExpenses     = 0;
     const bonusReceived     = 0;
-    const loan              = [["newLoan", "10000", "31/12/2021"],["2ndLoan", "5000", "02/01/2022"]];
+    const loan              = [];
     const totalExpenses     = 0;
     const totalIncome       = 0;
 
@@ -248,7 +248,10 @@ router.post('/login',(req,res) =>{
         {
             if(password==userLogin.password)
             {
-                res.status(200).json({message : "User Signin Successfully"});
+                res.status(200).json({
+                    message : "User Signin Successfully",
+                    userID  : userLogin.id
+                });
             }
             else
             {
