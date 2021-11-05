@@ -53,49 +53,45 @@ export const Login = () => {
     return (
         
             
-            <form className="signup_signin" method="POST">
-           <MainContainer>
-               <WelcomeText>
-               Login
-               </WelcomeText>
+        <form className="signup_signin" method="POST">
+            <MainContainer>
+                <WelcomeText>Login</WelcomeText>
+                <InputContainer>
+                <input type="text" 
+                    value={user.email}
+                    name="email"
+                    id="email"
+                    onChange={handleInputs}
+                    placeholder="Email" />
+                    
+                    <input type="password" 
+                    value={user.password}
+                    name="password"
+                    id="password"
+                    onChange={handleInputs}
+                    placeholder="Password" />
+                </InputContainer>
 
-               <InputContainer>
-               <input type="text" 
-                   value={user.email}
-                   name="email"
-                   id="email"
-                   onChange={handleInputs}
-                   placeholder="Email" />
-                   
-                   <input type="password" 
-                   value={user.password}
-                   name="password"
-                   id="password"
-                   onChange={handleInputs}
-                   placeholder="Password" />
-               </InputContainer>
+                <ButtonContainer>
+                <input type="submit" name="signin" id="signin" 
+                    value="Sign In"  onClick={PostData}/>
+                </ButtonContainer>
 
-               <ButtonContainer>
-               <input type="submit" name="signin" id="signin" 
-                   value="Sign In"  onClick={PostData}/>
-               </ButtonContainer>
-
-               <LoginWith>
-                   or Login With
-               </LoginWith>
-               
-
+                <LoginWith>
+                    or Login With
+                </LoginWith>
+                
                 <IconsContainer>
                     <Icon color={GithubBackground}>
                         <FaGithub />
                     </Icon>
                 </IconsContainer>
 
-                <ForgotPassword>Forgot Password ?</ForgotPassword>
-           </MainContainer>
+                    <ForgotPassword>Forgot Password ?</ForgotPassword>
+            </MainContainer>
             
             
-            </form>
+        </form>
     )
 }
 

@@ -20,7 +20,8 @@ export const MyProfile = (props) => {
         income:'',
         password:'',
         cnfPass:'',
-        gender:''
+        gender:'',
+        profilePicture:''
     });
     // var confPass ='';    
     useEffect(() => {
@@ -124,7 +125,7 @@ export const MyProfile = (props) => {
                         
                             <Form.Group controlId="formFile" className="mb-3">
                                 <Form.Label>Choose Profile Picture</Form.Label>
-                                <Form.Control type="file" />
+                                <Form.Control type="file" Name="profilePicture" onChange={handleChange}/>
                             </Form.Group>
                             
                             <Form.Label>Username</Form.Label>

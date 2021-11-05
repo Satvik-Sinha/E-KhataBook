@@ -89,6 +89,7 @@ router.post('/register', async (req, res) => {
     const loan              = [["newLoan", "10000", "31/12/2021"],["2ndLoan", "5000", "02/01/2022"]];
     const totalExpenses     = 0;
     const totalIncome       = 0;
+    const totalBalance      = 0;
 
     try{
         user = new User({
@@ -109,6 +110,7 @@ router.post('/register', async (req, res) => {
             loan,
             totalExpenses,
             totalIncome,
+            totalBalance,
         });
         // console.log(age);
         await user.save();
@@ -155,6 +157,7 @@ router.put('/update/:id', (req, res) => {
         loan :             req.body.loan,
         totalExpenses :    req.body.totalExpenses,
         totalIncome :      req.body.totalIncome,
+        totalBalance :     req.body.totalIncome,
     }
     User.findByIdAndUpdate(req.params.id , user, function(err, updatedProfile){
         if(err){

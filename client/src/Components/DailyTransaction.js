@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import PieChartSatvik from "../Components/PieChartSatvik"
 import styled from 'styled-components';
 import axios from 'axios';
+import "../App.css";
 
 export default function DailyTransaction(props) {
 
@@ -22,7 +23,9 @@ export default function DailyTransaction(props) {
         travel:0,
         dailyAccessories:0, 
         extraExpenses:0, 
-        bonusReceived:0
+        bonusReceived:0,
+        totalExpenses:0,
+        totalIncome:0
     });
     const [Zero, setZero] = useState({
         food:'',
@@ -66,7 +69,9 @@ export default function DailyTransaction(props) {
             travel: expenseData.travel + user.travel,
             dailyAccessories: expenseData.dailyAccessories + user.dailyAccessories,
             extraExpenses: expenseData.extraExpenses + user.extraExpenses,
-            bonusReceived: expenseData.bonusReceived + user.bonusReceived
+            bonusReceived: expenseData.bonusReceived + user.bonusReceived,
+            totalExpenses: expenseData.totalExpenses + user.food + user.clothing + user.travel + user.dailyAccessories + user.extraExpenses,
+            totalIncome: expenseData.totalIncome + user.bonusReceived
         })
         .then(res => {
             alert("Data Updated Successfully");
@@ -89,54 +94,42 @@ export default function DailyTransaction(props) {
 
     return (
         <div>
-             <div className="firstBox">
-            <PieChartSatvik />
+            <div className="firstBox">
+                <PieChartSatvik />
             </div>
-           <div>
+            <form class="form-inline center_div">
+                <Category>
+                    <label>Categories</label>
+                </Category>
+                <CategoryInp>
+                    <div class="col-6">
+                        <input type="number" name="food" value={Zero.food} onChange={handleInputs} placeholder="Food"/>
+                        <input type="number" name="clothing" value={Zero.clothing} onChange={handleInputs} placeholder="Clothing"/>
+                        <input type="number" name="travel" value={Zero.travel} onChange={handleInputs} placeholder="Travel"/>
+                        <input type="number" name="dailyAccessories" value={Zero.dailyAccessories} onChange={handleInputs} placeholder="Daily Accessories"/>
+                        <input type="number" name="extraExpenses" value={Zero.extraExpenses} onChange={handleInputs} placeholder="Extra Expenses"/>
+                        <input type="number" name="bonusReceived"  value={Zero.bonusReceived} onChange={handleInputs} placeholder="Bonus Received"/>
+                    </div>
+                </CategoryInp>
 
-           </div>
-
-           
-           <form class="form-inline">
-           <Category>
-            
-               <label>Categories</label>
-            </Category>
-
-            <CategoryInp>
-            
-            <div class="col-6">
-            <input type="number" name="food" value={Zero.food} onChange={handleInputs} placeholder="Food"/>
-                <input type="number" name="clothing" value={Zero.clothing} onChange={handleInputs} placeholder="Clothing"/>
-                <input type="number" name="travel" value={Zero.travel} onChange={handleInputs} placeholder="Travel"/>
-                <input type="number" name="dailyAccessories" value={Zero.dailyAccessories} onChange={handleInputs} placeholder="Daily Accessories"/>
-                <input type="number" name="extraExpenses" value={Zero.extraExpenses} onChange={handleInputs} placeholder="Extra Expenses"/>
-                <input type="number" name="bonusReceived"  value={Zero.bonusReceived} onChange={handleInputs} placeholder="Bonus Received"/>
-            
-            </div>
-            
-            </CategoryInp>
-
-            <CategoryBtn>
-            <button type="submit" name="submit" id="submit" value="submit"  onClick={UpdateData} class="btn btn-primary my-1">Submit</button>
-            </CategoryBtn>
+                <CategoryBtn>
+                    <button type="submit" name="submit" id="submit" value="submit"  onClick={UpdateData} class="btn btn-primary my-1">Submit</button>
+                </CategoryBtn>
             </form>
           
         </div>
     )
 }
 const Category = styled.div `
-    padding-left : 30rem;
     padding-bottom : 1rem;
-    padding-top : 4rem;
+    padding-top : 1rem;
 `;
 const CategoryInp = styled.div `
-    padding-left : 28rem;
+    padding-left : 31em;
     padding-bottom : 1.5rem;
     padding-top : 1rem;
+    margin: auto;
 `;
 const CategoryBtn = styled.div `
-    padding-left : 36rem;
     padding-bottom : 2.5rem;
-    padding-top : 1rem;
 `;

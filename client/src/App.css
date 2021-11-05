@@ -45,3 +45,26 @@
   background-size: 100% 100%;
   background-attachment: fixed;
 }
+
+.homeIcon{
+  margin-left: 1em;
+  height: 10%;
+  width: 10%;
+  /* height: 3em;
+  width: 3em; */
+}
+
+.center_div{
+  text-align: center;
+  padding: 1em;
+  margin:1em;
+  box-shadow: 1px 1px #000000; 
+  justify-content: center;
+  background-color:rgb(43, 39, 39);
+  border-radius: 10px;
+  width:fit-content;
+  height: fit-content;
+  align-items:center;
+  padding-left: 1em;
+  overflow: auto;
+}
