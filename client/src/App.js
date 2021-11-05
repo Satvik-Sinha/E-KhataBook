@@ -10,7 +10,7 @@ import PlanBudget from './Components/PlanBudget';
 import DailyTransaction from './Components/DailyTransaction';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
-import Logout from './Components/Logout';
+import About from './Components/About';
 
 import {initialState,reducer} from "./reducer/UseReducer"
 
@@ -38,6 +38,10 @@ const Routing = () =>{
 
       <Route path="/PlanBudget">
       <PlanBudget />
+      </Route>
+      
+      <Route path="/About">
+      <About />
       </Route>
 
       <Route path="/Login">

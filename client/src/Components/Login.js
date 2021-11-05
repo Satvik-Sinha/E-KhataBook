@@ -45,7 +45,7 @@ export const Login = () => {
         console.log("Invalid SignIn");}
         else{
             dispatch({type:"USER",payload : true})
-            window.alert("Sign In Successful");
+            // window.alert("Sign In Successful");
             console.log("Sign In Successful");
             localStorage.setItem("userID", data.userID);
             history.push("/DashBoard");
@@ -140,8 +140,8 @@ const InputContainer = styled.div `
 //   height: 60%;
 //   width: 100%;
 `;
-const InputText = styled.input`
-`;
+// const InputText = styled.input`
+// `;
 const ButtonContainer = styled.div `
     margin: 1rem 0 2rem 0;
  width: 100%;
@@ -155,15 +155,6 @@ const LoginWith = styled.h5 `
 cursor: pointer;
 `;
 
-const HorizontalRule = styled.hr `
-width: 90%;
- height: 0.3rem;
- border-radius: 0.8rem;
- border: none;
- margin: 1.5em 0 1rem 0;
- background: linear-gradient(to right, #14163c 0%, #03217b 79%);
- backdrop-filter: blur(25px);
-`;
 
 const IconsContainer = styled.div `
     display: flex;

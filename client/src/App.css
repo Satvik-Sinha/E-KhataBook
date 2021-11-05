@@ -68,3 +68,42 @@
   padding-left: 1em;
   overflow: auto;
 }
+
+.mainAbout{
+  background-image: url('./images/background.jpg');
+  text-align: center;
+  padding: 1em;
+  margin:1em;
+  display: block ;
+  display: flex;
+  box-shadow: 1px 1px #000000; 
+  justify-content: center;
+  /* background-color:rgb(22, 17, 17); */
+  /* border-radius: 50px; */
+  align-items:center;
+  padding-left: 1em;
+  overflow: auto;
+  padding: auto;
+  margin: auto;
+  /* margin-top: 10em; */
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+
+}
+
+.IconsContainer{
+  text-align: center;
+  display: block ;
+  display: flex;
+  box-shadow: 3px 3px #000000; 
+  justify-content: center;
+  background-color:rgb(29, 4, 53);
+  border-radius: 50px;
+  align-items:center;
+  overflow: auto;
+  padding: auto;
+  margin: auto;
+  width: 30vw;
+  height: 40vh;
+}

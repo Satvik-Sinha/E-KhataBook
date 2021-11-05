@@ -17,7 +17,7 @@ const Sidebar = () => {
     event.preventDefault();
 
     dispatch({type:"USER",payload : false});
-    alert("Logout Successful");
+    // alert("Logout Successful");
     console.log("Logout Successful");
     history.push("/");
 
@@ -26,7 +26,7 @@ const Sidebar = () => {
     <ul class="nav flex-column">
       <div> <Image className="sidebar-img" src={profileIcon} /></div>
       <li>
-        <Link class="nav-link" to="MyProfile">My Profile</Link>
+        <Link style={{margin:'1em'}} class="nav-link" to="MyProfile" type="button" class="btn btn-outline-secondary btn-sm">My Profile</Link>
       </li>
       <li class="sidebar-items">
         <h3>Food</h3>
@@ -40,7 +40,7 @@ const Sidebar = () => {
         <Button as="input" size="sm" type="submit" value="+" />{' '}
 
       </li>
-      <Button variant="outline-success" onClick={logOut}>LOG OUT</Button>{' '}
+      <button style={{margin:'2em', diplay:'baseline'}} class="btn btn-outline-danger btn-lg" onClick={logOut}>LOG OUT</button>{' '}
     </ul>
   )
 }

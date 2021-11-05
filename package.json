@@ -24,6 +24,7 @@
     "nodemon": "^2.0.14"
   },
   "dependencies": {
-    "config": "^3.3.6"
+    "config": "^3.3.6",
+    "react-external-link": "^1.2.2"
   }
 }
