@@ -1,14 +1,16 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
 import styled from 'styled-components';
 import {FaGithub} from "react-icons/fa";
 import Input from "./Input"
 import Button from './Button';
 import Icon from './Icon';
+import { UserContext } from "../App";
 
-//import {Usercontext} from "../App";
 
 export const Login = () => {
+
+    const {state,dispatch} = useContext(UserContext);
 
     const [user,setUser] = useState({email:"",password:""});
 
@@ -42,6 +44,7 @@ export const Login = () => {
        { window.alert("Invalid SignIn");
         console.log("Invalid SignIn");}
         else{
+            dispatch({type:"USER",payload : true})
             window.alert("Sign In Successful");
             console.log("Sign In Successful");
             history.push("/DashBoard");

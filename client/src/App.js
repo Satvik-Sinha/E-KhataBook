@@ -10,10 +10,11 @@ import PlanBudget from './Components/PlanBudget';
 import DailyTransaction from './Components/DailyTransaction';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
+import Logout from './Components/Logout';
 
-import {initialState,reducer} from "../src/reducer/useReducer"
+import {initialState,reducer} from "../src/reducer/UseReducer"
 
-export const Usercontext = createContext();
+export const UserContext = createContext();
 
 const Routing = () =>{
   return (
@@ -50,6 +51,10 @@ const Routing = () =>{
       <Signup />
       </Route>
 
+      <Route path="/Logout">
+      <Logout />
+      </Route>
+
       <Route path="/MyProfile">
       <MyProfile 
         name = "Tony Stark"
@@ -71,10 +76,10 @@ const App = () => {
   return (
     
     <div className= "dark-mode">
-    <Usercontext.Provider value={{state, dispatch}}>
+    <UserContext.Provider value={{state, dispatch}}>
     <Navbar />
     <Routing />
-    </Usercontext.Provider>
+    </UserContext.Provider>
     </div>
   );
 }
