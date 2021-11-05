@@ -1,12 +1,19 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState,useContext, useEffect} from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
 import ReactDOM from "react-dom";
 import PieChartSatvik from "../Components/PieChartSatvik"
 import styled from 'styled-components';
 import axios from 'axios';
 import "../App.css";
+import { UserContext } from "../App";
 
 export default function DailyTransaction(props) {
+
+    const {state,dispatch} = useContext(UserContext);
+    useEffect(() =>{
+      dispatch({type:"USER",payload : true});
+      // console.log(state);
+    }, [])
 
     var [user,setUser] = useState({
         food:0,
@@ -17,16 +24,7 @@ export default function DailyTransaction(props) {
         bonusReceived:0
     });
     
-    var [expenseData,setExpenseData] = useState({
-        food:0,
-        clothing:0,
-        travel:0,
-        dailyAccessories:0, 
-        extraExpenses:0, 
-        bonusReceived:0,
-        totalExpenses:0,
-        totalIncome:0
-    });
+    var [expenseData,setExpenseData] = useState({});
     const [Zero, setZero] = useState({
         food:'',
         clothing:'',
@@ -39,7 +37,7 @@ export default function DailyTransaction(props) {
 
     useEffect(() => {
         console.log(user);
-        axios.get(`http://localhost:4000/api/users/get/${props.ID}`)
+        axios.get(`http://localhost:4000/api/users/get/${localStorage.getItem('userID')}`)
         .then((res) => {
             setExpenseData(res.data);
             
@@ -63,7 +61,7 @@ export default function DailyTransaction(props) {
         e.preventDefault();
 
         console.log(expenseData.food + " " +user.food);
-        axios.put(`http://localhost:4000/api/users/update/${props.ID}`, {
+        axios.put(`http://localhost:4000/api/users/update/${localStorage.getItem('userID')}`, {
             food: expenseData.food + user.food,
             clothing: expenseData.clothing + user.clothing,
             travel: expenseData.travel + user.travel,

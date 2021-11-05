@@ -54,9 +54,6 @@ const UserSchema = new mongoose.Schema({
     totalIncome:{
         type: Number,
     },
-    totalBalance:{
-        type: Number,
-    },
 })
 
 module.exports = User = mongoose.model('user', UserSchema);

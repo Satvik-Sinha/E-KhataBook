@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState, useContext, useEffect} from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
 import profileIcon from "..\\..\\images\\img.png"
 import Image from 'react-bootstrap/Image'
@@ -10,9 +10,14 @@ import Form from 'react-bootstrap/Form'
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
 import axios from 'axios';
+import { UserContext } from "../../App";
 
 export const MyProfile = (props) => {
-    
+  const {state,dispatch} = useContext(UserContext);
+  useEffect(() =>{
+    dispatch({type:"USER",payload : true});
+    // console.log(state);
+  }, [])
     const[accData, setAccData] = useState({
         name:'',
         username:'',
@@ -25,7 +30,7 @@ export const MyProfile = (props) => {
     });
     // var confPass ='';    
     useEffect(() => {
-        axios.get(`http://localhost:4000/api/users/get/${props.ID}`)
+        axios.get(`http://localhost:4000/api/users/get/${localStorage.getItem('userID')}`)
         .then((res) => {
             setAccData(res.data);
         })
