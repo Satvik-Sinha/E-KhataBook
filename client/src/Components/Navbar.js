@@ -49,7 +49,7 @@ const Navbar = () => {
 
     return (
         <>
-          <Nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark nav-pills red">
+          <Nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark nav-pills">
             
           <NavLink to="#" >
             <img src={logo} alt="logo" className="homeIcon"/>

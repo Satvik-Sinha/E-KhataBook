@@ -11,7 +11,37 @@ import { UserContext } from "../App";
 export default function DailyTransaction(props) {
 
     const[accData, setAccData] = useState({});
-    
+    const UpdateData = e =>{
+        e.preventDefault();
+
+        console.log(expenseData.food + " " +user.food);
+        axios.put(`http://localhost:4000/api/users/update/${localStorage.getItem('userID')}`, {
+            food: expenseData.food + user.food,
+            clothing: expenseData.clothing + user.clothing,
+            travel: expenseData.travel + user.travel,
+            dailyAccessories: expenseData.dailyAccessories + user.dailyAccessories,
+            extraExpenses: expenseData.extraExpenses + user.extraExpenses,
+            bonusReceived: expenseData.bonusReceived + user.bonusReceived,
+            totalExpenses: expenseData.totalExpenses + user.food + user.clothing + user.travel + user.dailyAccessories + user.extraExpenses,
+            totalIncome: expenseData.totalIncome + user.bonusReceived
+        })
+        .then(res => {
+            alert("Data Updated Successfully");
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+
+        setZero({
+            food:'',
+            clothing:'',
+            travel:'',
+            dailyAccessories:'', 
+            extraExpenses:'', 
+            bonusReceived:''
+        })
+
+     }
       useEffect(() => {
           // console.log(accData);
           axios.get(`http://localhost:4000/api/users/get/${localStorage.getItem('userID')}`)
@@ -24,7 +54,7 @@ export default function DailyTransaction(props) {
               console.log(error);
           })
           // console.log(accData);
-      }, [])
+      }, [UpdateData])
 
     const {state,dispatch} = useContext(UserContext);
     useEffect(() =>{
@@ -74,37 +104,7 @@ export default function DailyTransaction(props) {
     }
 
 
-     const UpdateData = e =>{
-        e.preventDefault();
-
-        console.log(expenseData.food + " " +user.food);
-        axios.put(`http://localhost:4000/api/users/update/${localStorage.getItem('userID')}`, {
-            food: expenseData.food + user.food,
-            clothing: expenseData.clothing + user.clothing,
-            travel: expenseData.travel + user.travel,
-            dailyAccessories: expenseData.dailyAccessories + user.dailyAccessories,
-            extraExpenses: expenseData.extraExpenses + user.extraExpenses,
-            bonusReceived: expenseData.bonusReceived + user.bonusReceived,
-            totalExpenses: expenseData.totalExpenses + user.food + user.clothing + user.travel + user.dailyAccessories + user.extraExpenses,
-            totalIncome: expenseData.totalIncome + user.bonusReceived
-        })
-        .then(res => {
-            alert("Data Updated Successfully");
-        })
-        .catch(error =>{
-            console.log(error);
-        })
-
-        setZero({
-            food:'',
-            clothing:'',
-            travel:'',
-            dailyAccessories:'', 
-            extraExpenses:'', 
-            bonusReceived:''
-        })
-
-     }
+    
 
 
     return (
