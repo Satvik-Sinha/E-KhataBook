@@ -1,6 +1,7 @@
 import React,{useState,useContext, useEffect} from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
 import ReactDOM from "react-dom";
+
 import PieChartSatvik from "../Components/PieChartSatvik"
 import styled from 'styled-components';
 import axios from 'axios';
@@ -8,6 +9,22 @@ import "../App.css";
 import { UserContext } from "../App";
 
 export default function DailyTransaction(props) {
+
+    const[accData, setAccData] = useState({});
+    
+      useEffect(() => {
+          // console.log(accData);
+          axios.get(`http://localhost:4000/api/users/get/${localStorage.getItem('userID')}`)
+          .then((res) => {
+              setAccData(res.data);
+              // console.log(res.data); 
+              // console.log(accData);
+          })
+          .catch( (error) => {
+              console.log(error);
+          })
+          // console.log(accData);
+      }, [])
 
     const {state,dispatch} = useContext(UserContext);
     useEffect(() =>{
@@ -93,7 +110,8 @@ export default function DailyTransaction(props) {
     return (
         <div>
             <div className="firstBox">
-                <PieChartSatvik />
+            <PieChartSatvik ID={localStorage.getItem('userID')}
+            accData = {accData} />
             </div>
             <form class="form-inline center_div">
                 <Category>
