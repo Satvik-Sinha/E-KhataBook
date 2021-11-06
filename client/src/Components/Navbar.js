@@ -49,7 +49,7 @@ const Navbar = () => {
 
     return (
         <>
-          <Nav variant="pills" className="navbar navbar-expand-lg navbar-dark bg-dark">
+          <Nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark nav-pills red">
             
           <NavLink to="#" >
             <img src={logo} alt="logo" className="homeIcon"/>

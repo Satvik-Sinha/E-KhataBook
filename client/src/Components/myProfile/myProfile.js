@@ -67,7 +67,6 @@ export const MyProfile = (props) => {
     const handleChange = event =>{
         const { value, name } = event.target;
         setAccData({...accData, [name]:value});
-        console.log(accData);
     }
 
     const handleSubmit = event => {
@@ -78,7 +77,7 @@ export const MyProfile = (props) => {
             if(accData.password === accData.cnfPass){
                 
                 event.preventDefault();
-                axios.put(`http://localhost:4000/api/users/update/${props.ID}`, accData)
+                axios.put(`http://localhost:4000/api/users/update/${localStorage.getItem('userID')}`, accData)
                 .then(res => {
                     alert("Profile Updated Successfully");
                 })
@@ -120,7 +119,7 @@ export const MyProfile = (props) => {
                     <h3 style={{color: props.color}} className="label-profile">
                         Salary : {accData.income}
                     </h3>
-                    <Button  variant="primary" onClick={handleShow}>Edit Profile</Button>{' '}
+                    <Button  variant="dark" onClick={handleShow}>Edit Profile</Button>{' '}
 
                     <Modal show={show} onHide={handleClose}>
                         <Modal.Header closeButton>
@@ -133,33 +132,38 @@ export const MyProfile = (props) => {
                                 <Form.Control type="file" Name="profilePicture" onChange={handleChange}/>
                             </Form.Group>
                             
+                            <Form.Group className="mb-3" controlId="formGroupEmail">
+                            <Form.Label>Name</Form.Label>
+                            <Form.Control Name="name" placeholder="Name" onChange={handleChange}/>
+                            </Form.Group>
+                            
+                            
+                            <Form.Label>Age</Form.Label>
+                            <InputGroup className="mb-3">
+                            <FormControl type="number" Name="age" placeholder="Age" onChange={handleChange}/>
+                            </InputGroup>
+                            
+                           
+                            <Form.Label>Gender</Form.Label>
+                            <Form.Select Name="gender" placeholder="Gender" onChange={handleChange} defaultValue="">
+                                <option>Gender</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Other</option>
+                            </Form.Select>
+
+                            <Form.Label>Income</Form.Label>
+                            <InputGroup className="mb-3">
+                            <InputGroup.Text>$</InputGroup.Text>
+                            <FormControl type="number" Name="income" placeholder="Income" onChange={handleChange}/>
+                            </InputGroup>
+                            
                             <Form.Label>Username</Form.Label>
                             <InputGroup className="mb-3">
                                 <InputGroup.Text>@</InputGroup.Text>
                                 <FormControl Name="username" placeholder="Username" onChange={handleChange}/>
                             </InputGroup>
-                            <Form.Group className="mb-3" controlId="formGroupEmail">
-                                <Form.Label>Name</Form.Label>
-                                <Form.Control Name="name" placeholder="Name" onChange={handleChange}/>
-                            </Form.Group>
 
-
-                            <Form.Label>Age</Form.Label>
-                            <InputGroup className="mb-3">
-                                <FormControl Name="age" placeholder="Age" onChange={handleChange}/>
-                            </InputGroup>
-                            
-                            <Form.Label>Gender</Form.Label>
-                            <InputGroup className="mb-3">
-                                <FormControl Name="gender" placeholder="Gender" onChange={handleChange}/>
-                            </InputGroup>
-
-                            <Form.Label>Income</Form.Label>
-                            <InputGroup className="mb-3">
-                                <InputGroup.Text>$</InputGroup.Text>
-                                <FormControl Name="income" placeholder="Income" onChange={handleChange}/>
-                            </InputGroup>
-                            
                             <Form.Group className="mb-3" controlId="formGroupPassword">
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" Name="password" placeholder="Password" onChange={handleChange}/>
@@ -176,7 +180,7 @@ export const MyProfile = (props) => {
                             <Button variant="secondary" onClick={handleClose}>
                                 Close
                             </Button>
-                            <Button variant="primary" disabled={false} onClick = {handleSubmit}>
+                            <Button variant="dark" disabled={false} onClick = {handleSubmit}>
                                 Update Profile
                             </Button>
                         </Modal.Footer>
@@ -186,7 +190,7 @@ export const MyProfile = (props) => {
             </div>
             <div class="container-profile">
                 <LoanTable
-                ID = {props.ID}/>                            
+                ID = {localStorage.getItem('userID')}/>                            
             </div>
 
         </div>

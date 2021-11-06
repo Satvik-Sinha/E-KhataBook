@@ -3,6 +3,7 @@ const router = express.Router();
 const {check, validationResult } = require('express-validator/check')
 const User = require('../../models/User')
 var defaultURL = require("../../config/default.json");
+const mongoose = require('mongoose');
 
 const ExepenseData = User;
 
@@ -122,16 +123,17 @@ router.post('/register', async (req, res) => {
 
 //this is to get data of a specific user
 router.get('/get/:id',(req, res) => {
-
-    User.findById(req.params.id, (error, data) => {
-        if (error) {
-            // return next(error)
-            res.status(422).json({error : "user not find"});
-            console.log(error);
-        } else {
-            res.json(data)
-        }
-    })
+    if(mongoose.Types.ObjectId.isValid(req.params.id)) {
+        User.findById(req.params.id, (error, data) => {
+            if (error) {
+                // return next(error)
+                res.status(422).json({error : "user not find"});
+                console.log(error);
+            } else {
+                res.json(data)
+            }
+        })
+    }
 })
 
 //this is to update the specific user

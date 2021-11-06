@@ -1,8 +1,6 @@
 import React from 'react'
 import {FaGithub} from "react-icons/fa";
-import { Link, NavLink } from 'react-router-dom'
 import Icon from './Icon';
-import styled from 'styled-components';
 import { ExternalLink } from 'react-external-link';
 import { UserContext } from "../App";
 import { useContext, useEffect } from "react";
