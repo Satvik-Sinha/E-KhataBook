@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import { useHistory} from 'react-router-dom'
 import styled from 'styled-components';
+var validator = require('validator');
 
 export const Signup = () => {
     
@@ -20,33 +21,39 @@ export const Signup = () => {
         e.preventDefault();
         const {name,email,username,password,cnfPass}=user;
 
-        if(password.length < 6){
-            alert("please enter password of length more than 6 char!")
-        }else{
-            if(password === cnfPass){
-                const res = await fetch("/api/users/register" , {
-                method : "POST",
-                headers:{
-                    "Content-Type" : "application/json"
-                },
-                body : JSON.stringify({
-                    name,email,username,password
-                })
-                });
-
-                const data= await res.json();
-
-                if(res.status===422 || !data){
-                    window.alert("Invalid Registration");
-                    console.log("Invalid Registration");}
-                else{
-                    window.alert("Registration Successful");
-                    console.log("Registration Successful");
-                    history.push("/Login");
-                }
+        if(validator.isEmail(email)){
+            
+            if(password.length < 6){
+                alert("please enter password of length more than 6 char!")
             }else{
-                alert("please enter correct passwords!");
+                if(password === cnfPass){
+                    const res = await fetch("/api/users/register" , {
+                    method : "POST",
+                    headers:{
+                        "Content-Type" : "application/json"
+                    },
+                    body : JSON.stringify({
+                        name,email,username,password
+                    })
+                    });
+    
+                    const data= await res.json();
+    
+                    if(res.status===422 || !data){
+                        window.alert("Invalid Registration");
+                        console.log("Invalid Registration");}
+                    else{
+                        window.alert("Registration Successful");
+                        console.log("Registration Successful");
+                        history.push("/Login");
+                    }
+                }else{
+                    alert("please enter correct passwords!");
+                }
             }
+
+        }else{
+            alert("Please Enter a valid Email Id!");
         }
        
     }

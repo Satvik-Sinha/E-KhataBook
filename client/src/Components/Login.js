@@ -62,7 +62,7 @@ export const Login = () => {
                 <WelcomeText>Login</WelcomeText>
                 <InputContainer>
                 <input 
-                    style={{margin:'em'}}
+                    style={{margin:'2em'}}
                     type="email" 
                     value={user.email}
                     name="email"

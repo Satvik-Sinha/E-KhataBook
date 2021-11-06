@@ -61,8 +61,10 @@ export default class LoanTable extends React.Component {
       var loanDetails = this.state.loanDetails;
   
       loanDetails.push(this.state.message1)
-      loanDetails.push(this.state.message2)
+      loanDetails.push(parseInt(this.state.message2, 10))
       loanDetails.push(this.state.message3)
+      // var date = new Date(this.state.message3);
+      // loanDetails.push(date);
       items.push(loanDetails)
       // console.log(items);
       this.updateLoanData(items);
@@ -128,21 +130,27 @@ export default class LoanTable extends React.Component {
                   </td>
                   <td>
                     <input
-                      type="text"
+                      type="number"
                       value={o[1]}
                       onChange={context.handleItemChanged2.bind(context, i)}
                     />
                   </td>
                   <td>
                     <input
-                      type="text"
+                      type="date"
                       value={o[2]}
                       onChange={context.handleItemChanged3.bind(context, i)}
                     />
                   </td>
                   <td>
-                    <button onClick={context.handleItemDeleted.bind(context, i)} >
-                      Delete
+                    <button 
+                        type="submit" 
+                        name="signin" 
+                        id="signin" 
+                        onClick={context.handleItemDeleted.bind(context, i)} 
+                        class="btn btn-dark btn-sm"
+                        >
+                            DELETE
                     </button>
                   </td>
                 </tr>
@@ -185,20 +193,26 @@ export default class LoanTable extends React.Component {
                 onChange={this.updateMessage1.bind(this)}
             />
             <input
-                type="text"
+                type="number"
                 placeholder = "Amount"
                 value={this.state.message2}
                 onChange={this.updateMessage2.bind(this)}
             />
             <input
-                type="text"
+                type="date" 
                 placeholder = "dd/mm/yyyy"
                 value={this.state.message3}
                 onChange={this.updateMessage3.bind(this)}
             />
-            <button onClick={this.handleClick.bind(this)} >
-                Add Loan
-            </button>
+            <button 
+                type="submit" 
+                name="signin" 
+                id="signin" 
+                onClick={this.handleClick.bind(this)}
+                class="btn btn-dark btn-sm"
+                >
+                    Add Loan
+              </button>
         </div>
     );
   }
