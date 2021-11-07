@@ -10,7 +10,6 @@ import { UserContext } from "../App";
 
 export default function DailyTransaction(props) {
 
-    const[accData, setAccData] = useState({});
     const UpdateData = e =>{
         e.preventDefault();
 
@@ -42,19 +41,6 @@ export default function DailyTransaction(props) {
         })
 
      }
-      useEffect(() => {
-          // console.log(accData);
-          axios.get(`http://localhost:4000/api/users/get/${localStorage.getItem('userID')}`)
-          .then((res) => {
-              setAccData(res.data);
-              // console.log(res.data); 
-              // console.log(accData);
-          })
-          .catch( (error) => {
-              console.log(error);
-          })
-          // console.log(accData);
-      }, [UpdateData])
 
     const {state,dispatch} = useContext(UserContext);
     useEffect(() =>{
@@ -83,7 +69,7 @@ export default function DailyTransaction(props) {
     const history =useHistory();
 
     useEffect(() => {
-        console.log(user);
+        // console.log(user);
         axios.get(`http://localhost:4000/api/users/get/${localStorage.getItem('userID')}`)
         .then((res) => {
             setExpenseData(res.data);
@@ -92,8 +78,8 @@ export default function DailyTransaction(props) {
         .catch( (error) => {
             console.log(error);
         })
-        console.log(user);
-    }, [user])
+        // console.log(user);
+    }, [user, UpdateData])
 
     const handleInputs = event =>{
        // console.log(e);
@@ -111,25 +97,97 @@ export default function DailyTransaction(props) {
         <div>
             <div className="firstBox">
             <PieChartSatvik ID={localStorage.getItem('userID')}
-            accData = {accData} />
+            accData = {expenseData} />
             </div>
             <form class="form-inline center_div">
                 <Category>
-                    <label>Categories</label>
+                    <h3>Categories</h3>
                 </Category>
                 <CategoryInp>
                     <div class="col-6">
-                        <input type="number" name="food" value={Zero.food} onChange={handleInputs} placeholder="Food"/>
-                        <input type="number" name="clothing" value={Zero.clothing} onChange={handleInputs} placeholder="Clothing"/>
-                        <input type="number" name="travel" value={Zero.travel} onChange={handleInputs} placeholder="Travel"/>
-                        <input type="number" name="dailyAccessories" value={Zero.dailyAccessories} onChange={handleInputs} placeholder="Daily Accessories"/>
-                        <input type="number" name="extraExpenses" value={Zero.extraExpenses} onChange={handleInputs} placeholder="Extra Expenses"/>
-                        <input type="number" name="bonusReceived"  value={Zero.bonusReceived} onChange={handleInputs} placeholder="Bonus Received"/>
+                        <input 
+                        type="number" 
+                        name="food" 
+                        value={Zero.food} 
+                        onChange={handleInputs} 
+                        placeholder="Food"
+                        min="0" 
+                        onKeyPress={(event) => {
+                            if (!/[0-9]/.test(event.key)) {
+                            event.preventDefault();
+                            }
+                        }}
+                    />
+                        <input 
+                            type="number" 
+                            name="clothing" 
+                            value={Zero.clothing} 
+                            onChange={handleInputs} 
+                            placeholder="Clothing"
+                            min="0" 
+                            onKeyPress={(event) => {
+                                if (!/[0-9]/.test(event.key)) {
+                                event.preventDefault();
+                                }
+                            }}
+                            />
+                        <input 
+                            type="number" 
+                            name="travel" 
+                            value={Zero.travel} 
+                            onChange={handleInputs} 
+                            placeholder="Travel"
+                            min="0" 
+                            onKeyPress={(event) => {
+                                if (!/[0-9]/.test(event.key)) {
+                                event.preventDefault();
+                                }
+                            }}
+                            />
+                        <input 
+                            type="number" 
+                            name="dailyAccessories" 
+                            value={Zero.dailyAccessories} 
+                            onChange={handleInputs} 
+                            placeholder="Daily Accessories"
+                            min="0" 
+                            onKeyPress={(event) => {
+                                if (!/[0-9]/.test(event.key)) {
+                                event.preventDefault();
+                                }
+                            }}
+                            />
+                        <input 
+                            type="number" 
+                            name="extraExpenses" 
+                            value={Zero.extraExpenses} 
+                            onChange={handleInputs} 
+                            placeholder="Extra Expenses"
+                            min="0" 
+                            onKeyPress={(event) => {
+                                if (!/[0-9]/.test(event.key)) {
+                                event.preventDefault();
+                                }
+                            }}
+                            />
+                        <input 
+                            type="number" 
+                            name="bonusReceived"  
+                            value={Zero.bonusReceived} 
+                            onChange={handleInputs}
+                            placeholder="Bonus Received"
+                            min="0" 
+                            onKeyPress={(event) => {
+                                if (!/[0-9]/.test(event.key)) {
+                                event.preventDefault();
+                                }
+                            }}
+                            />
                     </div>
                 </CategoryInp>
 
                 <CategoryBtn>
-                    <button type="submit" name="submit" id="submit" value="submit"  onClick={UpdateData} class="btn btn-primary my-1">Submit</button>
+                    <button type="submit" name="submit" id="submit" value="submit"  onClick={UpdateData} class="btn btn-success my-1">Submit</button>
                 </CategoryBtn>
             </form>
           

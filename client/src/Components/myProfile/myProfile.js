@@ -140,7 +140,13 @@ export const MyProfile = (props) => {
                             
                             <Form.Label>Age</Form.Label>
                             <InputGroup className="mb-3">
-                            <FormControl type="number" Name="age" placeholder="Age" onChange={handleChange}/>
+                            <FormControl type="number" Name="age" placeholder="Age" onChange={handleChange} min="0" 
+                                onKeyPress={(event) => {
+                                    if (!/[0-9]/.test(event.key)) {
+                                    event.preventDefault();
+                                    }
+                                }}
+                            />
                             </InputGroup>
                             
                            
@@ -155,7 +161,13 @@ export const MyProfile = (props) => {
                             <Form.Label>Income</Form.Label>
                             <InputGroup className="mb-3">
                             <InputGroup.Text>$</InputGroup.Text>
-                            <FormControl type="number" Name="income" placeholder="Income" onChange={handleChange}/>
+                            <FormControl type="number" Name="income" placeholder="Income" onChange={handleChange} min="0" 
+                                onKeyPress={(event) => {
+                                    if (!/[0-9]/.test(event.key)) {
+                                    event.preventDefault();
+                                    }
+                                }}
+                            />
                             </InputGroup>
                             
                             <Form.Label>Username</Form.Label>

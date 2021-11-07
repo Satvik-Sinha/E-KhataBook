@@ -47,6 +47,12 @@
     height: 1px;
     background-color: rgb(79, 3, 102);
 }
+.blackLine-vertical{
+    margin-top: 1rem;
+    width: 10px;
+    height: 90%;
+    background-color: rgb(241, 13, 13);
+}
 
 .sidebar-img-profile{
     height: 50vh;
