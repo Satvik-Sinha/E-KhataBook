@@ -11,6 +11,8 @@ import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
 import axios from 'axios';
 import { UserContext } from "../../App";
+var validator = require('validator');
+
 
 export const MyProfile = (props) => {
   const {state,dispatch} = useContext(UserContext);
@@ -70,25 +72,30 @@ export const MyProfile = (props) => {
     }
 
     const handleSubmit = event => {
-
-        if(accData.password.length < 6){
-            alert("Please provide password having length greater than 6!");
-        }else{
-            if(accData.password === accData.cnfPass){
-                
-                event.preventDefault();
-                axios.put(`http://localhost:4000/api/users/update/${localStorage.getItem('userID')}`, accData)
-                .then(res => {
-                    alert("Profile Updated Successfully");
-                })
-                .catch(error =>{
-                    console.log(error);
-                })
-                handleClose();
-    
+        
+        if(validator.isURL(accData.profilePicture)){
+            
+            if(accData.password.length < 6){
+                alert("Please provide password having length greater than 6!");
             }else{
-                alert("passwords didn't matched!")
+                if(accData.password === accData.cnfPass){
+                    
+                    event.preventDefault();
+                    axios.put(`http://localhost:4000/api/users/update/${localStorage.getItem('userID')}`, accData)
+                    .then(res => {
+                        alert("Profile Updated Successfully");
+                    })
+                    .catch(error =>{
+                        console.log(error);
+                    })
+                    handleClose();
+        
+                }else{
+                    alert("passwords didn't matched!")
+                }
             }
+        }else{
+            alert("Please enter a valid URL for your profile picture!");
         }
 
     }
@@ -96,7 +103,7 @@ export const MyProfile = (props) => {
     return (
         <div class="profile-full">
             <div class="container-profile">
-                <div> <Image className="sidebar-img-profile" src={profileIcon} /></div>
+                <div> <Image className="sidebar-img-profile" src={accData.profilePicture} /></div>
 
                 <div class="mainContainer-profile">
                     <h1 style={{color: props.color}} className="WelcomeText-profile">
@@ -129,7 +136,7 @@ export const MyProfile = (props) => {
                         
                             <Form.Group controlId="formFile" className="mb-3">
                                 <Form.Label>Choose Profile Picture</Form.Label>
-                                <Form.Control type="file" Name="profilePicture" onChange={handleChange}/>
+                                <Form.Control type="url" Name="profilePicture" placeholder="Please enter a valid Link of your Profile Picture" onChange={handleChange}/>
                             </Form.Group>
                             
                             <Form.Group className="mb-3" controlId="formGroupEmail">
