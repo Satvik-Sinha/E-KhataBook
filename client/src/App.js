@@ -12,7 +12,7 @@ import Login from './Components/Login';
 import Signup from './Components/Signup';
 import About from './Components/About';
 
-import {initialState,reducer} from "./reducer/UseReducer"
+import {initialState,reducer} from "./reducer/useReducer"
 
 export const UserContext = createContext();
 
