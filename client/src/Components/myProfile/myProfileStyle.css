@@ -43,7 +43,7 @@
 
 .blackLine-profile{
     margin-top: 1rem;
-    width: 100%;
+    width: 80%;
     height: 1px;
     background-color: rgb(79, 3, 102);
 }
@@ -57,7 +57,7 @@
 .sidebar-img-profile{
     height: 50vh;
     display: block;
-    border-radius: 3000px;
+    /* border-radius: 3000px; */
 }
 
 .Button-profile{

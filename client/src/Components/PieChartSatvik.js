@@ -43,7 +43,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div style={{width: "100%",maxWidth:"30%",
-        overflow: "auto"}}>
+        overflow: "hidden"}}>
         <Pie
           data={newfun(this.props)}
           options={{

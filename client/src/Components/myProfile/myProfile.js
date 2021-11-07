@@ -72,8 +72,8 @@ export const MyProfile = (props) => {
     }
 
     const handleSubmit = event => {
-        
-        if(validator.isURL(accData.profilePicture)){
+        // console.log(accData.name);
+        if(validator.isURL(accData.profilePicture) || accData.profilePicture===undefined){
             
             if(accData.password.length < 6){
                 alert("Please provide password having length greater than 6!");
@@ -103,7 +103,7 @@ export const MyProfile = (props) => {
     return (
         <div class="profile-full">
             <div class="container-profile">
-                <div> <Image className="sidebar-img-profile" src={accData.profilePicture} /></div>
+                <div> <Image className="sidebar-img-profile" src={accData.profilePicture} alt="new" roundedCircle/></div>
 
                 <div class="mainContainer-profile">
                     <h1 style={{color: props.color}} className="WelcomeText-profile">

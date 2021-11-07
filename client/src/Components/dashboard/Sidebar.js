@@ -2,7 +2,7 @@ import React, {useState,useContext, useEffect} from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
 import './Dashboard.css'
 import {Link, useHistory} from "react-router-dom";
-import profileIcon from "..\\..\\images\\img.png"
+// import profileIcon from "..\\..\\images\\img.png"
 import Image from 'react-bootstrap/Image'
 import Button from 'react-bootstrap/Button';
 import { UserContext } from "../../App";
@@ -20,7 +20,8 @@ const Sidebar = (props) => {
           totalExpenses: expenseData.totalExpenses + user.food,
       })
       .then(res => {
-          alert("Data Updated Successfully");
+        //   alert("Data Updated Successfully");
+          window.location.reload(false);
       })
       .catch(error =>{
           console.log(error);
@@ -40,7 +41,8 @@ const Sidebar = (props) => {
           totalExpenses: expenseData.totalExpenses+ user.dailyAccessories,
       })
       .then(res => {
-          alert("Data Updated Successfully");
+        //   alert("Data Updated Successfully");
+          window.location.reload(false);
       })
       .catch(error =>{
           console.log(error);
@@ -116,15 +118,13 @@ const Sidebar = (props) => {
   }
   return (
     <ul class="nav flex-column">
-      <div> <Image className="sidebar-img" src={expenseData.profilePicture} alt="new" roundedCircle/></div>
-      <h1 style={{color: "rgb(179, 77, 9)"}}>
-                        Welcome {expenseData.name}
-                        <div style={{color: "rgb(179, 77, 9)"}} className="blackLine-profile" style={{color: "rgb(179, 77, 9)"}}></div>
-                    </h1>
-      <li>
+        <div> <Image className="sidebar-img" src={expenseData.profilePicture} alt="new" roundedCircle/></div>
+        <h4 style={{color: "rgb(179, 77, 9)", margin:'.4em'}}>{expenseData.name}</h4>
+        <li>
         <Link style={{margin:'1em'}} class="nav-link" to="MyProfile" type="button" class="btn btn-outline-secondary btn-sm">My Profile</Link>
-      </li>
-      <li class="sidebar-items">
+        </li>
+        <div style={{color: "rgb(179, 77, 9)"}} className="blackLine-profile"></div>
+        <li class="sidebar-items">
         <h3>Food</h3>
         <input 
             type="number" 
@@ -162,6 +162,7 @@ const Sidebar = (props) => {
         <h3></h3>
         <Link to="/DailyTransaction">more...</Link>
       </li>
+      <div style={{color: "rgb(179, 77, 9)"}} className="blackLine-profile"></div>
       <button style={{margin:'2em', diplay:'baseline'}} class="btn btn-outline-danger btn-lg" onClick={logOut}>LOG OUT</button>{' '}
     </ul>
   )
