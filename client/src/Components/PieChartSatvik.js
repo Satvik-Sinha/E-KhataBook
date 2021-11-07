@@ -9,7 +9,7 @@ function newfun(props){
   console.log(props);
 
   return {
-    labels: ['Total Income','Total Expenses'],
+    labels: ['Income','Expenses','Balance'],
     datasets: [
       {
         label: 'Expenses',
@@ -17,15 +17,18 @@ function newfun(props){
           
           '#1d36a8',
           '#714511',
+          '#7b20a8',
         ],
         hoverBackgroundColor: [
           
           '#010e4a',
           '#4a2800',
+          '#33014d',
         ],
         data: [
           props.accData.totalIncome,
           props.accData.totalExpenses,
+          props.accData.totalIncome - props.accData.totalExpenses,
         ]
       }
     ]

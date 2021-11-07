@@ -7,6 +7,8 @@ import PieChart from "../Piechart/PieChart"
 import axios from 'axios';
 import { UserContext } from "../../App";
 import { useContext } from "react";
+import PieChartSatvik from "../PieChartSatvik"
+
 export const Dashboard = (props) => {
 
         const[accData, setAccData] = useState({});
@@ -17,6 +19,7 @@ export const Dashboard = (props) => {
         }, [])
         useEffect(() => {
             // console.log(accData);
+            console.log("dashboard randored");
             axios.get(`http://localhost:4000/api/users/get/${localStorage.getItem('userID')}`)
             .then((res) => {
                 setAccData(res.data);
@@ -48,6 +51,8 @@ export const Dashboard = (props) => {
                     <h3 style={{color:"#e0a106"}}>${accData.totalExpenses}</h3>
                     <p>Expenses</p>
                 </div>
+                <PieChartSatvik ID={localStorage.getItem('userID')}
+            accData = {accData} />
             </div>
             <div className="firstBox">
             <BarChart />

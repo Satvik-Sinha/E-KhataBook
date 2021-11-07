@@ -14,18 +14,18 @@ function newfun(props){
       {
         label: 'Expenses',
         backgroundColor: [
-          '#B21F00',
-          '#7b20a8',
-          '#2FDE00',
           '#1d36a8',
+          '#7b20a8',
+          '#B21F00',
           '#714511',
+          '#2FDE00',
         ],
         hoverBackgroundColor: [
-          '#501800',
-          '#33014d',
-          '#175000',
           '#010e4a',
+          '#33014d',
+          '#501800',
           '#4a2800',
+          '#175000',
         ],
         data: [
           props.accData.food,

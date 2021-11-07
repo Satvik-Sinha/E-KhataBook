@@ -133,6 +133,12 @@ export default class LoanTable extends React.Component {
                       type="number"
                       value={o[1]}
                       onChange={context.handleItemChanged2.bind(context, i)}
+                      min="0" 
+                      onKeyPress={(event) => {
+                          if (!/[0-9]/.test(event.key)) {
+                          event.preventDefault();
+                          }
+                      }}
                     />
                   </td>
                   <td>
@@ -197,6 +203,12 @@ export default class LoanTable extends React.Component {
                 placeholder = "Amount"
                 value={this.state.message2}
                 onChange={this.updateMessage2.bind(this)}
+                min="0" 
+                onKeyPress={(event) => {
+                    if (!/[0-9]/.test(event.key)) {
+                    event.preventDefault();
+                    }
+                }}
             />
             <input
                 type="date" 
