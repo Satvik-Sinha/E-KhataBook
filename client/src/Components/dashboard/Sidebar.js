@@ -116,7 +116,7 @@ const Sidebar = (props) => {
   }
   return (
     <ul class="nav flex-column">
-      <div> <Image className="sidebar-img" src={profileIcon} /></div>
+      <div> <Image className="sidebar-img" src={expenseData.profilePicture} alt="new" roundedCircle/></div>
       <h1 style={{color: "rgb(179, 77, 9)"}}>
                         Welcome {expenseData.name}
                         <div style={{color: "rgb(179, 77, 9)"}} className="blackLine-profile" style={{color: "rgb(179, 77, 9)"}}></div>
