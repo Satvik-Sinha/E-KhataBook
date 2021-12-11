@@ -1,6 +1,5 @@
 import React,{useState, useContext, useEffect} from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
-import profileIcon from "..\\..\\images\\img.png"
 import Image from 'react-bootstrap/Image'
 import "./myProfileStyle.css";
 import LoanTable from "./loanTable";
@@ -32,7 +31,7 @@ export const MyProfile = (props) => {
     });
     // var confPass ='';    
     useEffect(() => {
-        axios.get(`http://localhost:4000/api/users/get/${localStorage.getItem('userID')}`)
+        axios.get(`/api/users/get/${localStorage.getItem('userID')}`)
         .then((res) => {
             setAccData(res.data);
         })
@@ -81,7 +80,7 @@ export const MyProfile = (props) => {
                 if(accData.password === accData.cnfPass){
                     
                     event.preventDefault();
-                    axios.put(`http://localhost:4000/api/users/update/${localStorage.getItem('userID')}`, accData)
+                    axios.put(`/api/users/update/${localStorage.getItem('userID')}`, accData)
                     .then(res => {
                         alert("Profile Updated Successfully");
                     })

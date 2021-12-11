@@ -14,22 +14,30 @@ import {
   WeekName
 } from "./styles";
 
-export default function BarChart() {
+export default function BarChart(props) {
+  console.log(props.expenseData);
+  var maxHeight = 0;
+
+  for (const [key, value] of Object.entries(props.expenseData)) {
+    maxHeight = Math.max(maxHeight, value.height);
+  }
+  console.log(maxHeight);
+
   return (
     <Container>
       <MainContainer>
-        {expenseData.map(({ height, colors }, i) => {
+        {props.expenseData.map(({ height, colors }, i) => {
           return (
             <BarChartContainer key={i}>
               <Number color={colors[1]}>${height}</Number>
-              <MakeBar height={height * 2} colors={colors} />
+              <MakeBar height={height / maxHeight * 90 } colors={colors} />
             </BarChartContainer>
           );
         })}
       </MainContainer>
       <BlackLine />
       <WeekName>
-        {expenseData.map(({ colors, day }, i) => {
+        {props.expenseData.map(({ colors, day }, i) => {
           return (
             <BarChartContainer key={i}>
               <WeekDay color={colors[0]}>{day}</WeekDay>

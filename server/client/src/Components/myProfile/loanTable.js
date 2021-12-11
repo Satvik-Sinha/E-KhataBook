@@ -13,7 +13,7 @@ export default class LoanTable extends React.Component {
       loanDetails: [],
       props: props
     }
-    axios.get(`http://localhost:4000/api/users/get/${props.ID}`)
+    axios.get(`/api/users/get/${props.ID}`)
     .then((res) => {
       var items = res.data.loan;
       this.setState({
@@ -27,7 +27,7 @@ export default class LoanTable extends React.Component {
   
   updateLoanData(loanData){
       console.log(loanData);
-      axios.put(`http://localhost:4000/api/users/update/${this.state.props.ID}`, {loan: loanData})
+      axios.put(`/api/users/update/${this.state.props.ID}`, {loan: loanData})
       .then(res => {
           // alert("Profile Updated Successfully");
           console.log("Profile Updated Successfully");

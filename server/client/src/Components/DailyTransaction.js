@@ -14,7 +14,7 @@ export default function DailyTransaction(props) {
         e.preventDefault();
 
         console.log(expenseData.food + " " +user.food);
-        axios.put(`http://localhost:4000/api/users/update/${localStorage.getItem('userID')}`, {
+        axios.put(`/api/users/update/${localStorage.getItem('userID')}`, {
             food: expenseData.food + user.food,
             clothing: expenseData.clothing + user.clothing,
             travel: expenseData.travel + user.travel,
@@ -70,7 +70,7 @@ export default function DailyTransaction(props) {
 
     useEffect(() => {
         // console.log(user);
-        axios.get(`http://localhost:4000/api/users/get/${localStorage.getItem('userID')}`)
+        axios.get(`/api/users/get/${localStorage.getItem('userID')}`)
         .then((res) => {
             setExpenseData(res.data);
             
