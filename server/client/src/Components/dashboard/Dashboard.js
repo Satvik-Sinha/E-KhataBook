@@ -34,41 +34,59 @@ export const Dashboard = (props) => {
             })
             // console.log(accData);
         }, [])
-        
 
+
+        // this will update barchart based on day and expenses used within last 7 day
+        // one problem remains that this will give error if 7 day week is in 2 diff months
+        
+        var today = new Date();
+        var month = today.getMonth() + 1;
+        var fullDate = '/' + month + '/' + today.getFullYear();  
+
+        var currDay = today.getDate();
+        var tmp = "";
+        var bar = [tmp.concat(currDay - 6, fullDate), 
+                    tmp.concat(currDay - 5, fullDate), 
+                    tmp.concat(currDay - 4, fullDate), 
+                    tmp.concat(currDay - 3, fullDate), 
+                    tmp.concat(currDay - 2, fullDate),
+                    tmp.concat(currDay - 1, fullDate),
+                    tmp.concat(currDay, fullDate)
+        ];
+        console.log(bar);
         const expenseData = [
             {
-              height: monExpenses["05/12/2021"],
+              height: monExpenses[bar[0]] === undefined ? 0 : monExpenses[bar[0]],
               day: "Sun",
               colors: ["#ffd847", "#e0a106"]
             },
             {
-              height: monExpenses["06/12/2021"],
+              height: monExpenses[bar[1]] === undefined ? 0 : monExpenses[bar[1]],
               day: "Mon",
               colors: ["#af8ebf", "#7b20a8"]
             },
             {
-              height: monExpenses["07/12/2021"],
+              height: monExpenses[bar[2]] === undefined ? 0 : monExpenses[bar[2]],
               day: "Tue",
               colors: ["#add9c0", "#1da890"]
             },
             {
-              height: monExpenses["08/12/2021"],
+              height: monExpenses[bar[3]] === undefined ? 0 : monExpenses[bar[3]],
               day: "Wed",
               colors: ["#cbd9ad", "#7ca81d"]
             },
             {
-              height: monExpenses["09/12/2021"],
+              height: monExpenses[bar[4]] === undefined ? 0 : monExpenses[bar[4]],
               day: "Thur",
               colors: ["#d9c1ad", "#714511"]
             },
             {
-              height: monExpenses["10/12/2021"],
+              height: monExpenses[bar[5]] === undefined ? 0 : monExpenses[bar[5]],
               day: "Fri",
               colors: ["#ba737a", "#851d28"]
             },
             {
-              height: monExpenses["11/12/2021"],
+              height: monExpenses[bar[6]] === undefined ? 0 : monExpenses[bar[6]],
               day: "Sat",
               colors: ["#98a3d4", "#1d36a8"]
             }
