@@ -10,8 +10,24 @@ import { UserContext } from "../App";
 
 export default function DailyTransaction(props) {
 
+
     const UpdateData = e =>{
         e.preventDefault();
+
+        var today = new Date();
+        var month = today.getMonth() + 1;
+        var fullDate = today.getDate() + '/' + month + '/' + today.getFullYear();  
+        var totalExp = user.food + user.clothing + user.travel + user.dailyAccessories + user.extraExpenses;
+
+        if(expenseData.monthlyExpenses[fullDate] === undefined){
+            expenseData.monthlyExpenses[fullDate] = totalExp;
+        }else{
+            expenseData.monthlyExpenses[fullDate] += totalExp;
+        }
+
+        console.log(expenseData.monthlyExpenses);
+        console.log(user.food);
+        console.log(user.clothing);
 
         console.log(expenseData.food + " " +user.food);
         axios.put(`/api/users/update/${localStorage.getItem('userID')}`, {
@@ -21,24 +37,36 @@ export default function DailyTransaction(props) {
             dailyAccessories: expenseData.dailyAccessories + user.dailyAccessories,
             extraExpenses: expenseData.extraExpenses + user.extraExpenses,
             bonusReceived: expenseData.bonusReceived + user.bonusReceived,
-            totalExpenses: expenseData.totalExpenses + user.food + user.clothing + user.travel + user.dailyAccessories + user.extraExpenses,
-            totalIncome: expenseData.totalIncome + user.bonusReceived
+            totalExpenses: expenseData.totalExpenses + totalExp,
+            totalIncome: expenseData.totalIncome + user.bonusReceived,
+            monthlyExpenses: expenseData.monthlyExpenses
         })
         .then(res => {
-            alert("Data Updated Successfully");
+            console.log("Data Updated Successfully");
+            setUser({
+                food:0,
+                clothing:0,
+                travel:0,
+                dailyAccessories:0, 
+                extraExpenses:0, 
+                bonusReceived:0
+            })
+            setZero({
+                food:'',
+                clothing:'',
+                travel:'',
+                dailyAccessories:'', 
+                extraExpenses:'', 
+                bonusReceived:''
+            })
+            totalExp = 0;
+
         })
         .catch(error =>{
             console.log(error);
         })
 
-        setZero({
-            food:'',
-            clothing:'',
-            travel:'',
-            dailyAccessories:'', 
-            extraExpenses:'', 
-            bonusReceived:''
-        })
+        
 
      }
 
@@ -73,7 +101,7 @@ export default function DailyTransaction(props) {
         axios.get(`/api/users/get/${localStorage.getItem('userID')}`)
         .then((res) => {
             setExpenseData(res.data);
-            
+    
         })
         .catch( (error) => {
             console.log(error);

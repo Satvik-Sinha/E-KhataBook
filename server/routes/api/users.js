@@ -79,7 +79,7 @@ router.post('/register', async (req, res) => {
     const age               = 0;
     const gender            = "-";
     const income            = 0;
-    const profilePicture    = "-";
+    const profilePicture    = "https://wallpaperaccess.com/full/467380.jpg";
     
     const food              = 0;
     const clothing          = 0;
@@ -90,6 +90,14 @@ router.post('/register', async (req, res) => {
     const loan              = [];
     const totalExpenses     = 0;
     const totalIncome       = 0;
+
+    var today = new Date();
+    var month = today.getMonth() + 1;
+    var fullDate = today.getDate() + '/' + month + '/' + today.getFullYear();  
+
+    var monthlyExpenses   = {};
+    monthlyExpenses[fullDate] = 0;
+    
 
     try{
         user = new User({
@@ -110,6 +118,7 @@ router.post('/register', async (req, res) => {
             loan,
             totalExpenses,
             totalIncome,
+            monthlyExpenses,
         });
         // console.log(age);
         await user.save();
@@ -157,6 +166,7 @@ router.put('/update/:id', (req, res) => {
         loan :             req.body.loan,
         totalExpenses :    req.body.totalExpenses,
         totalIncome :      req.body.totalIncome,
+        monthlyExpenses:   req.body.monthlyExpenses,
     }
     User.findByIdAndUpdate(req.params.id , user, function(err, updatedProfile){
         if(err){

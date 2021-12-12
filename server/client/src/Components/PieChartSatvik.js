@@ -6,7 +6,7 @@ import React,{useState, useEffect} from "react";
 
 
 function newfun(props){
-  console.log(props);
+  // console.log(props);
 
   return {
     labels: ['Income','Expenses','Balance'],
