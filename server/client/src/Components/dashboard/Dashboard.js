@@ -40,7 +40,9 @@ export const Dashboard = (props) => {
         // one problem remains that this will give error if 7 day week is in 2 diff months
         
         var today = new Date();
-        var month = today.getMonth() + 1;
+        var month = today.getMonth() + 1 + "";
+        
+        console.log(Intl.DateTimeFormat('en', { month: 'long' }).format(new Date(month)))
         var fullDate = '/' + month + '/' + today.getFullYear();  
 
         var currDay = today.getDate();
@@ -57,37 +59,37 @@ export const Dashboard = (props) => {
         const expenseData = [
             {
               height: monExpenses[bar[0]] === undefined ? 0 : monExpenses[bar[0]],
-              day: "Sun",
+              day: currDay - 6,
               colors: ["#ffd847", "#e0a106"]
             },
             {
               height: monExpenses[bar[1]] === undefined ? 0 : monExpenses[bar[1]],
-              day: "Mon",
+              day: currDay - 5,
               colors: ["#af8ebf", "#7b20a8"]
             },
             {
               height: monExpenses[bar[2]] === undefined ? 0 : monExpenses[bar[2]],
-              day: "Tue",
+              day: currDay - 4,
               colors: ["#add9c0", "#1da890"]
             },
             {
               height: monExpenses[bar[3]] === undefined ? 0 : monExpenses[bar[3]],
-              day: "Wed",
+              day: currDay - 3,
               colors: ["#cbd9ad", "#7ca81d"]
             },
             {
               height: monExpenses[bar[4]] === undefined ? 0 : monExpenses[bar[4]],
-              day: "Thur",
+              day: currDay - 2,
               colors: ["#d9c1ad", "#714511"]
             },
             {
               height: monExpenses[bar[5]] === undefined ? 0 : monExpenses[bar[5]],
-              day: "Fri",
+              day: currDay - 1,
               colors: ["#ba737a", "#851d28"]
             },
             {
               height: monExpenses[bar[6]] === undefined ? 0 : monExpenses[bar[6]],
-              day: "Sat",
+              day: currDay - 0,
               colors: ["#98a3d4", "#1d36a8"]
             }
           ];
@@ -112,7 +114,9 @@ export const Dashboard = (props) => {
             accData = {accData} />
             </div>
             <div className="firstBox">
-            <BarChart expenseData = {expenseData}/>
+            <BarChart 
+              expenseData = {expenseData} 
+              monthName = {Intl.DateTimeFormat('en', { month: 'long' }).format(new Date(month))}/>
             </div>
             <div className="firstBox">
             <PieChart ID={localStorage.getItem('userID')}

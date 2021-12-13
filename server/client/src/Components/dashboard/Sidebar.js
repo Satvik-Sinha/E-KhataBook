@@ -14,43 +14,74 @@ const Sidebar = (props) => {
   const UpdateFood = e =>{
       e.preventDefault();
 
+      var today = new Date();
+      var month = today.getMonth() + 1;
+      var fullDate = today.getDate() + '/' + month + '/' + today.getFullYear();
+
+      if(expenseData.monthlyExpenses[fullDate] === undefined){
+          expenseData.monthlyExpenses[fullDate] = user.food;
+      }else{
+          expenseData.monthlyExpenses[fullDate] += user.food;
+      }
       // console.log(expenseData.food + " " +user.food);
       axios.put(`/api/users/update/${localStorage.getItem('userID')}`, {
           food: expenseData.food + user.food,
           totalExpenses: expenseData.totalExpenses + user.food,
+          monthlyExpenses: expenseData.monthlyExpenses
       })
       .then(res => {
         //   alert("Data Updated Successfully");
-          window.location.reload(false);
+        console.log("Data Updated Successfully");
+        setZero({
+          food:'',
+        })
+        setUser({
+          food:0,
+        })
+
+        window.location.reload(false);
       })
       .catch(error =>{
           console.log(error);
-      })
-
-      setZero({
-          food:'',
       })
 
    }
   const UpdateDailyAccessories = e =>{
       e.preventDefault();
 
+      var today = new Date();
+      var month = today.getMonth() + 1;
+      var fullDate = today.getDate() + '/' + month + '/' + today.getFullYear();
+
+      if(expenseData.monthlyExpenses[fullDate] === undefined){
+          expenseData.monthlyExpenses[fullDate] = user.dailyAccessories;
+      }else{
+          expenseData.monthlyExpenses[fullDate] += user.dailyAccessories;
+      }
       // console.log(expenseData.food + " " +user.food);
       axios.put(`/api/users/update/${localStorage.getItem('userID')}`, {
           dailyAccessories: expenseData.dailyAccessories + user.dailyAccessories,
           totalExpenses: expenseData.totalExpenses+ user.dailyAccessories,
+          monthlyExpenses: expenseData.monthlyExpenses
       })
       .then(res => {
         //   alert("Data Updated Successfully");
-          window.location.reload(false);
+        console.log("Data Updated Successfully");
+        setZero({
+          dailyAccessories:'',
+        })
+        setUser({
+          dailyAccessories:0,
+        })
+
+        window.location.reload(false);
+
       })
       .catch(error =>{
           console.log(error);
       })
 
-      setZero({
-          dailyAccessories:'',
-      })
+      
 
    }
 

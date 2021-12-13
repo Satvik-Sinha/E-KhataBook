@@ -45,6 +45,7 @@ export default function BarChart(props) {
           );
         })}
       </WeekName>
+      <h2 style={{color: "#7b20a8"}}>{props.monthName}</h2>
     </Container>
   );
 }
