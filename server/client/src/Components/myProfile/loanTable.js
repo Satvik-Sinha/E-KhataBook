@@ -1,10 +1,20 @@
 import React from 'react';
 import axios from 'axios';
+const sgMail = require('@sendgrid/mail');
+
 
 export default class LoanTable extends React.Component {
+  
   constructor(props) {
     super(props);
-
+    this.msg = {
+      email: {
+        recipient: 'ankitkushawaha1000@gmail.com',
+        sender: 'ankitkushawaha1000@gmail.com',
+        subject: 'Bill Payment reminder',
+        text: 'tell me if you got this msg'
+      }
+    }
     this.state = {
       message1: "",
       message2: "",
@@ -23,6 +33,8 @@ export default class LoanTable extends React.Component {
     .catch( (error) => {
       console.log(error);
     })
+
+
   }
   
   updateLoanData(loanData){
@@ -53,6 +65,26 @@ export default class LoanTable extends React.Component {
       message3: event.target.value
     });
   }
+
+  async sendEmail(e){
+    e.preventDefault();
+
+
+      const msg={
+        recipient: 'ankitkushawaha1000@gmail.com',
+        sender: 'ankitkushawaha1000@gmail.com',
+        subject: 'Bill Payment reminder',
+        text: 'tell me if you got this msg'
+      }
+      try {
+        await axios.post("http://localhost:4000/send_mail", msg)
+        console.log("success")
+      } catch (error) {
+        console.log("not done")
+        console.error(error)
+      }
+  
+  };
 
   handleClick() {
     if(this.state.message1 && this.state.message2 && this.state.message3){
@@ -164,9 +196,17 @@ export default class LoanTable extends React.Component {
             });
   }
 
+
+
   render() {
     return (
         <div>
+            <button 
+            onClick={this.sendEmail}
+              class="btn btn-dark btn-sm"
+              >
+                  Send Email
+            </button>
             <h3 className="WelcomeText-profile">
                 Enter Loan/EMI
                 <div className="blackLine-profile"></div>
