@@ -5,6 +5,7 @@ const User = require('../../models/User')
 var defaultURL = require("../../config/default.json");
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const ExepenseData = User;
 
@@ -180,59 +181,6 @@ router.put('/update/:id', (req, res) => {
             res.statusCode === 200 ? res.json("profile updated") : res.json('oops something went wrong')
         }
     })
-
-
-    // User.findOne({__id: req.params.id}, (err, foundUser) =>{
-    //     if(err){
-    //         console.log(err);
-    //         // console.log("1st error");
-
-    //     }else{
-    //         const user = {
-    //             name:              req.body.name,
-    //             // username:          req.body.username,
-    //             age:               req.body.age,
-    //             income:            req.body.income,
-    //             password:          req.body.password,
-    //             gender:            req.body.gender,
-    //             food :             req.body.food,
-    //             clothing :         req.body.clothing,
-    //             travel :           req.body.travel,
-    //             dailyAccessories : req.body.dailyAccessories,
-    //             extraExpenses :    req.body.extraExpenses,
-    //             bonusReceived :    req.body.bonusReceived
-    //         }
-    //         User.findByIdAndUpdate(foundUser._id, user, function(err, updatedProfile){
-    //             if(err){
-    //                 console.log(err);
-    //                 // console.log("2nd error");
-    //             }else{
-    //                 console.log(user);
-    //                 res.statusCode === 200 ? res.json("profile updated") : res.json('oops something went wrong')
-    //             }
-    //         })
-
-            // below line is to create user if not found
-
-            // if(foundUser === null){
-            //     // User.create(user, function(err, createdProfile) {
-            //     //     if(err){ console.log(err);}
-            //     //     else {res.statusCode ===200 ? res.json("profile created") : res.json('oops something went wrong')};
-            //     // })
-            //     console.log("user not found");
-            // }else{
-            //     User.findByIdAndUpdate(foundUser._id, user, function(err, updatedProfile){
-            //         if(err){
-            //             console.log(err);
-            //         }else{
-            //             console.log(user);
-            //             res.statusCode === 200 ? res.json("profile updated") : res.json('oops something went wrong')
-            //         }
-            //     })
-            
-            // }
-    //     }
-    // });
 });
 
 //this will be used to delete given user
@@ -250,24 +198,29 @@ router.route('/delete/:id').delete((req, res, next) => {
 
 
 
-router.post('/login',(req,res) =>{
+router.post('/login',async(req,res) =>{
     const {email,password} = req.body;
-    
+    let token;
     if(!email || !password )
     {
         return res.status(400).json({error : "Field Incomplete"});
     }
-   const userLogin = User.findOne({email : email})
-    .then((userLogin) =>{
+   const userLogin =await User.findOne({email : email});
+    //then((userLogin) =>{
         if(userLogin)
         {
-            const match= bcrypt.compare(password,userLogin.password);
+            const match=await bcrypt.compare(password,userLogin.password);
             if(match)
             {
                 res.status(200).json({
                     message : "User Signin Successfully",
                     userID  : userLogin.id
                 });
+                 token =await userLogin.generateAuthToken();
+                 res.cookie("jwtoken",token,{
+                     expires:new Date(Date.now()+25892000000),
+                     httpOnly:true
+                 });
             }
             else
             {
@@ -279,7 +232,7 @@ router.post('/login',(req,res) =>{
             res.status(400).json({message : "Wrong Details"});
         }
        
-    }).catch((err) =>res.status(400).json({error : "Invalid Details"}));
+    
 });
  
 module.exports = router;

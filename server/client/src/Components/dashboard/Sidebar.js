@@ -144,7 +144,7 @@ const Sidebar = (props) => {
     // alert("Logout Successful");
     console.log("Logout Successful");
     localStorage.removeItem('userID');
-    history.push("/");
+    history.push('/',{replace:true });
 
   }
   return (

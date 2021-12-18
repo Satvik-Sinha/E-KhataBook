@@ -95,7 +95,7 @@ export const Login = () => {
                     </button>
                 </ButtonContainer>
 
-                <LoginWith>
+                {/* <LoginWith>
                     or Login With
                 </LoginWith>
                 
@@ -105,7 +105,7 @@ export const Login = () => {
                     </Icon>
                 </IconsContainer>
 
-                    <ForgotPassword>Forgot Password ?</ForgotPassword>
+                    <ForgotPassword>Forgot Password ?</ForgotPassword> */}
             </MainContainer>
             
             
@@ -117,7 +117,7 @@ const MainContainer = styled.div`
 display : flex;
 align-items : center;
 flex-direction : column;
-height : 80vh;
+height : 65vh;
 width : 30vw;
 background:rgba(255,255,255,0.15);
 box-shadow : 0 8px 32px 0 rgba(31,38,135,0.37);
