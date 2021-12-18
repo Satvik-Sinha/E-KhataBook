@@ -2,6 +2,9 @@ const express = require('express');
 const connectDB = require('./config/db');
 var cors = require('cors');
 // import connectDB from './config/db';
+const sgMail = require('@sendgrid/mail');
+// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+sgMail.setApiKey('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');
 
 const app = express();
 app.use(cors())
@@ -17,6 +20,19 @@ app.use('/api/users', require('./routes/api/users'))
 app.use('/api/auth', require('./routes/api/auth'))
 app.use('/api/profile', require('./routes/api/profile'))
 
+app.post("/send_mail", cors(), async (req, res) => {
+	// let { text } = req.body
+	const { recipient, sender, subject, text } = req.body;
+
+    console.log(req.body);
+
+    sgMail.send({
+        to: recipient, 
+        from: sender,
+        subject: subject,
+        text: text,
+    }).then(msg => console.log(text));
+})
 
 
 const PORT = process.env.PORT || 4000
