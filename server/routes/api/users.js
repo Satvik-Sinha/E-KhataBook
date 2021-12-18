@@ -4,6 +4,7 @@ const {check, validationResult } = require('express-validator/check')
 const User = require('../../models/User')
 var defaultURL = require("../../config/default.json");
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const ExepenseData = User;
 
@@ -121,6 +122,8 @@ router.post('/register', async (req, res) => {
             monthlyExpenses,
         });
         // console.log(age);
+
+
         await user.save();
         res.status(200).json({message : "User Registered"});
 
@@ -258,7 +261,8 @@ router.post('/login',(req,res) =>{
     .then((userLogin) =>{
         if(userLogin)
         {
-            if(password==userLogin.password)
+            const match= bcrypt.compare(password,userLogin.password);
+            if(match)
             {
                 res.status(200).json({
                     message : "User Signin Successfully",
