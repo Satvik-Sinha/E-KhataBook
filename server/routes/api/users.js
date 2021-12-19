@@ -218,7 +218,10 @@ router.post('/login',async(req,res) =>{
                 });
                  token =await userLogin.generateAuthToken();
                  console.log(token);
+<<<<<<< HEAD
                  
+=======
+>>>>>>> c5a2995e70ea4a9a62b03893c0c39ade7ba34e27
                  res.cookie("jwtoken",token,{
                      expires:new Date(Date.now()+25892000000),
                      httpOnly:true
