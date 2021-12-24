@@ -96,6 +96,9 @@ export const Dashboard = (props) => {
 
     return (
         <div className="mainContainer">
+          <h3 className="WelcomeText-profile">
+            Expenses Data
+          </h3>
             <div className="firstBox">
                 <div class="box">
                     <h3 style={{color:"#1d36a8"}}>${accData.totalIncome}</h3>
@@ -111,15 +114,23 @@ export const Dashboard = (props) => {
                     <p>Expenses</p>
                 </div>
             </div>
-            <div className="firstBox">
-            <BarChart 
-              expenseData = {expenseData} 
-              monthName = {Intl.DateTimeFormat('en', { month: 'long' }).format(new Date(month))}/>
+            <div className="firstBox2">
+            <h3 className="WelcomeText-profile">
+                Weakly Expense Visualisation through BarChart
+                <div className="blackLine-profile"></div>
+                <BarChart 
+                  expenseData = {expenseData} 
+                  monthName = {Intl.DateTimeFormat('en', { month: 'long' }).format(new Date(month))}/>
+            </h3>
             </div>
-            <div className="firstBox">
-            <PieChart ID={localStorage.getItem('accountID')}
-            accData = {accData} />
-            </div>
+            <h3 className="WelcomeText-profile">
+              Visualisation of each Expense through PieChart
+              <div className="firstBox">
+                <PieChart ID={localStorage.getItem('accountID')}
+                accData = {accData} />
+              </div>
+            </h3>
+            
 
         </div>
     )

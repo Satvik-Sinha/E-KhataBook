@@ -206,14 +206,14 @@ export default class LoanTable extends React.Component {
         <div>
 
             <h3 className="WelcomeText-profile">
-                Enter Loan/EMI
+                Enter Repayment
                 <div className="blackLine-profile"></div>
             </h3>
             <table className="">
                 <thead>
                     <tr>
                         <th>
-                            Loan Name
+                            Repayment Name
                         </th>
                         <th>
                             Amount
@@ -232,7 +232,7 @@ export default class LoanTable extends React.Component {
             </table>
             <input
                 type="text"
-                placeholder = "Loan Name"
+                placeholder = "Repayment Name"
                 value={this.state.message1}
                 onChange={this.updateMessage1.bind(this)}
             />
@@ -261,7 +261,7 @@ export default class LoanTable extends React.Component {
                 onClick={this.handleClick.bind(this)}
                 class="btn btn-dark btn-sm"
                 >
-                    Add Loan
+                    ADD  
               </button>
         </div>
     );

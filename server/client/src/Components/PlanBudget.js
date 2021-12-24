@@ -38,7 +38,7 @@ export const PlanBudget = () => {
                 <h4>Rent/Debts Repayment :- {(accData.totalIncome) * 0.3}</h4>
             </div>
             <div className="boxPlanBudget">
-                <iframe width="100%" height="95%" src="https://www.youtube.com/embed/j1Vwth0B8I8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="100%" height="98%" src="https://www.youtube.com/embed/j1Vwth0B8I8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
     )
