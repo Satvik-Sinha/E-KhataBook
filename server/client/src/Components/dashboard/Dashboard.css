@@ -1,14 +1,12 @@
 /*comment out from line no 3 to 52 to use Ankit's Navbar */
-/*.navbar {
+ .navbar {
     background-color: rgb(32, 32, 32);
     overflow: hidden;
-    box-shadow: 1px 1px #000000; 
+    box-shadow: 2px 2px #000000; 
     display: flex;
     border-radius: 10px;
-
-    position: fixed;
     top: 0;
-    width: 100%;
+    width: 99vw;
   
   } 
   /*

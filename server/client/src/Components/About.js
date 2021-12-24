@@ -5,11 +5,11 @@ import { ExternalLink } from 'react-external-link';
 import { UserContext } from "../App";
 import { useContext, useEffect } from "react";
 
-export const About = () => {
+export const About = (props) => {
     const GithubBackground="linear-gradient(to right,#171515 0%, #171515 100%)"
     const {state,dispatch} = useContext(UserContext);
     useEffect(() =>{
-    //   dispatch({type:"USER",payload : true});
+      dispatch({type:"USER",payload : props.value});
       console.log(state);
     }, [])
     

@@ -124,10 +124,11 @@ const Navbar = () => {
     return (
         <>
           <Nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark nav-pills">
-            
-          <NavLink to="#" >
-            <img src={logo} alt="logo" className="homeIcon"/>
-          </NavLink>
+          
+          <h4 width="50" height="50">
+            <img src={logo} width="40" height="40" class="d-inline-block align-center homeIcon" alt="logo"/>
+            Expense Tracker
+          </h4>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
