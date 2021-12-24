@@ -110,8 +110,6 @@ export const Dashboard = (props) => {
                     <h3 style={{color:"#e0a106"}}>${accData.totalExpenses}</h3>
                     <p>Expenses</p>
                 </div>
-                <PieChartSatvik ID={localStorage.getItem('accountID')}
-            accData = {accData} />
             </div>
             <div className="firstBox">
             <BarChart 

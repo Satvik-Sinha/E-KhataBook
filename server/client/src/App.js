@@ -50,11 +50,10 @@ const Routing = () =>{
       <Route path="/Dashboard">
       {isAuth? <Sidebar/>: <Home value={false}/> }
       {isAuth? <Dashboard/>: <Home value={false}/> }
-      
       </Route>
 
       <Route path="/PlanBudget">
-      
+      {isAuth? <PlanBudget value={true}/> : <Home value={false}/> }  
       </Route>
       
       <Route path="/About">
@@ -62,11 +61,11 @@ const Routing = () =>{
       </Route>
 
       <Route path="/Login">
-      <Login />
+      {isAuth? <Home value={true}/> : <Login value={false}/> } 
       </Route>
 
       <Route path="/Signup">
-      <Signup />
+      {isAuth? <Home value={true}/> : <Signup value={false}/> } 
       </Route>
 
       <Route path="/MyProfile">

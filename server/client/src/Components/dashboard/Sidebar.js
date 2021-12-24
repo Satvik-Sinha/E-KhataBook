@@ -81,8 +81,6 @@ const Sidebar = (props) => {
           console.log(error);
       })
 
-      
-
    }
 
   const {state,dispatch} = useContext(UserContext);
@@ -140,11 +138,6 @@ const Sidebar = (props) => {
       // console.log(user);
   }
 
-
-  
-
-
-
   const logOut = (event) =>{
     event.preventDefault();
 
@@ -155,6 +148,7 @@ const Sidebar = (props) => {
     localStorage.removeItem('accountID');
     localStorage.removeItem("isAuth");
     history.push('/',{replace:true });
+    window.location.reload(false);
 
   }
   return (
