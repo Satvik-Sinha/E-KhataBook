@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from 'react'
-import { Route, Switch } from "react-router-dom";
+import { Route,Redirect, Switch } from "react-router-dom";
 import "./App.css";
 import Navbar from './Components/Navbar';
 import Sidebar from './Components/dashboard/Sidebar';
@@ -15,7 +15,23 @@ import About from './Components/About';
 import {initialState,reducer} from "./reducer/UseReducer"
 
 export const UserContext = createContext();
+// const {state,dispatch} = useContext(UserContext);
+//working on this file this will be key
 
+// const ProtectedRoute 
+//   = ({ isAllowed, component: Component, ...props }) => 
+//   <Route
+//   {...props}
+//   render={(props) =>
+//     isAllowed ? <Component {...props} /> : <Redirect to="/Login" />, dispatch({type:"USER",payload : true})
+//   }
+// />
+// ;
+const isUser = localStorage.getItem("userID");
+var isAuth = false;
+if(isUser){
+  isAuth = true;
+}
 const Routing = () =>{
   return (
     <Switch>
@@ -24,20 +40,21 @@ const Routing = () =>{
       </Route>
 
       <Route path="/Home">
-      <Home value={true}/>
+      {isAuth? <Home value={true}/> : <Home value={false}/> }
       </Route>
 
       <Route path="/DailyTransaction">
-      <DailyTransaction />
+      {isAuth? <DailyTransaction/> : <Home value={false}/> }
       </Route>
 
       <Route path="/Dashboard">
-      <Sidebar/>
-      <Dashboard />
+      {isAuth? <Sidebar/>: <Home value={false}/> }
+      {isAuth? <Dashboard/>: <Home value={false}/> }
+      
       </Route>
 
       <Route path="/PlanBudget">
-      <PlanBudget />
+      {isAuth? <PlanBudget/> : <Home value={false}/> }
       </Route>
       
       <Route path="/About">
@@ -53,9 +70,9 @@ const Routing = () =>{
       </Route>
 
       <Route path="/MyProfile">
-      <MyProfile 
-        color = "rgb(79, 3, 102)"
-      />
+      {isAuth? <MyProfile 
+        color = "rgb(79, 3, 102)" /> : <Home value={false}/> }
+      
       </Route>
     </Switch>
   )
