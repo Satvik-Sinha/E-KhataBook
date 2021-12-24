@@ -30,7 +30,7 @@ export default function DailyTransaction(props) {
         console.log(user.clothing);
 
         console.log(expenseData.food + " " +user.food);
-        axios.put(`/api/users/update/${localStorage.getItem('userID')}`, {
+        axios.put(`/api/accounts/update/${localStorage.getItem('accountID')}`, {
             food: expenseData.food + user.food,
             clothing: expenseData.clothing + user.clothing,
             travel: expenseData.travel + user.travel,
@@ -98,7 +98,7 @@ export default function DailyTransaction(props) {
 
     useEffect(() => {
         // console.log(user);
-        axios.get(`/api/users/get/${localStorage.getItem('userID')}`)
+        axios.get(`/api/accounts/get/${localStorage.getItem('accountID')}`)
         .then((res) => {
             setExpenseData(res.data);
     
@@ -124,7 +124,7 @@ export default function DailyTransaction(props) {
     return (
         <div>
             <div className="firstBox">
-            <PieChartSatvik ID={localStorage.getItem('userID')}
+            <PieChartSatvik ID={localStorage.getItem('accountID')}
             accData = {expenseData} />
             </div>
             <form class="form-inline center_div">

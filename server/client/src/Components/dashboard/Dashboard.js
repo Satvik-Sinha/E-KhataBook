@@ -21,7 +21,7 @@ export const Dashboard = (props) => {
         useEffect(() => {
             // console.log(accData);
             console.log("dashboard randored");
-            axios.get(`/api/users/get/${localStorage.getItem('userID')}`)
+            axios.get(`/api/accounts/get/${localStorage.getItem('accountID')}`)
             .then((res) => {
                 setAccData(res.data);
                 setMonExpenses(res.data.monthlyExpenses)
@@ -110,7 +110,7 @@ export const Dashboard = (props) => {
                     <h3 style={{color:"#e0a106"}}>${accData.totalExpenses}</h3>
                     <p>Expenses</p>
                 </div>
-                <PieChartSatvik ID={localStorage.getItem('userID')}
+                <PieChartSatvik ID={localStorage.getItem('accountID')}
             accData = {accData} />
             </div>
             <div className="firstBox">
@@ -119,7 +119,7 @@ export const Dashboard = (props) => {
               monthName = {Intl.DateTimeFormat('en', { month: 'long' }).format(new Date(month))}/>
             </div>
             <div className="firstBox">
-            <PieChart ID={localStorage.getItem('userID')}
+            <PieChart ID={localStorage.getItem('accountID')}
             accData = {accData} />
             </div>
 

@@ -48,6 +48,19 @@ export const Login = () => {
             // window.alert("Sign In Successful");
             console.log("Sign In Successful");
             localStorage.setItem("userID", data.userID);
+
+            const res = await fetch("/api/accounts/login" , {
+                method : "POST",
+                headers:{
+                    "Content-Type" : "application/json"
+                },
+                body : JSON.stringify({
+                    email
+                })
+            });
+            const data1= await res.json();
+            localStorage.setItem("accountID", data1.accountID);
+            console.log(data1);
             history.push("/DashBoard");
         }
     }

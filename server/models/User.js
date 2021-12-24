@@ -37,36 +37,36 @@ const UserSchema = new mongoose.Schema({
     profilePicture:{
         type: String
     },
-    food:{
-        type: Number,
-    },
-    clothing:{
-        type: Number,
-    },
-    travel:{
-        type: Number,
-    },
-    dailyAccessories:{
-        type: Number,
-    },
-    extraExpenses:{
-        type: Number,
-    },
-    bonusReceived:{
-        type: Number,
-    },
+    // food:{
+    //     type: Number,
+    // },
+    // clothing:{
+    //     type: Number,
+    // },
+    // travel:{
+    //     type: Number,
+    // },
+    // dailyAccessories:{
+    //     type: Number,
+    // },
+    // extraExpenses:{
+    //     type: Number,
+    // },
+    // bonusReceived:{
+    //     type: Number,
+    // },
     loan:{
         type: Array,
     },
-    totalExpenses:{
-        type: Number,
-    },
-    totalIncome:{
-        type: Number,
-    },
-    monthlyExpenses:{
-        type: Object,
-    },
+    // totalExpenses:{
+    //     type: Number,
+    // },
+    // totalIncome:{
+    //     type: Number,
+    // },
+    // monthlyExpenses:{
+    //     type: Object,
+    // },
 })
 
 

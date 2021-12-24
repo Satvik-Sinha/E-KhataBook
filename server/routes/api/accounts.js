@@ -2,67 +2,35 @@ const express = require('express');
 const router = express.Router();
 const {check, validationResult } = require('express-validator/check')
 const User = require('../../models/User')
+const Account = require('../../models/Account')
 var defaultURL = require("../../config/default.json");
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const ExepenseData = User;
-
-//this is to get all the data present in database
-router.get('/', async (req, res) =>{
-
-    User.find()
-    .then(result => {
-        res.status(200).json({
-            userData: result
-        })
-    })
-    .catch(err => {
-        console.log(err.message);
-        res.status(500).json({
-            error: err
-        })
-    });
-});
+const ExepenseData = Account;
 
 //this is to post given data from signup page
 router.post('/', async (req, res) => {
 
-    const name = req.body.name;
+    
     const email = req.body.email;
-    const username = req.body.username;
-    const password = req.body.password;
-    var age = "NULL";
     var income = "NULL";
-    var profilePicture = "NULL";
-    if(!req.body.age){
-        console.log("Age Missing Update it in Your Profile Section")
-    }else{
-        age = req.body.age;
-    }
+    
+    
     if(!req.body.income){
         console.log("Income Missing Update it in Your Profile Section")
     }else{
         income = req.body.income;
     }
-    if(!req.body.profilePicture){
-        console.log("ProfilePicture Missing Update it in Your Profile Section")
-    }else{
-        profilePicture = req.body.profilePicture;
-    }
 
     try{
-        user = new User({
-            name,
+        account = new Account({
             email,
-            username,
-            password,
-            age,
             income
         });
         // console.log(age);
-        await user.save();
+        await account.save();
         res.send('User Registered');
 
     }catch(err){
@@ -74,22 +42,16 @@ router.post('/', async (req, res) => {
 router.post('/register', async (req, res) => {
     
     
-    const name              = req.body.name;
+   
     const email             = req.body.email;
-    const username          = req.body.username;
-    const password          = req.body.password;
-    const age               = 0;
-    const gender            = "-";
     const income            = 0;
-    const profilePicture    = "https://wallpaperaccess.com/full/467380.jpg";
-    
     const food              = 0;
     const clothing          = 0;
     const travel            = 0;
     const dailyAccessories  = 0;
     const extraExpenses     = 0;
     const bonusReceived     = 0;
-    const loan              = [];
+    
     const totalExpenses     = 0;
     const totalIncome       = 0;
 
@@ -102,22 +64,19 @@ router.post('/register', async (req, res) => {
     
 
     try{
-        user = new User({
-            name,
+        account = new Account({
+           
             email,
-            username,
-            password,
-            age,
-            gender,
+           
             income,
-            profilePicture,
+           
             food,
             clothing,
             travel,
             dailyAccessories,
             extraExpenses,
             bonusReceived,
-            loan,
+            
             totalExpenses,
             totalIncome,
             monthlyExpenses,
@@ -125,7 +84,7 @@ router.post('/register', async (req, res) => {
         // console.log(age);
 
 
-        await user.save();
+        await account.save();
         res.status(200).json({message : "User Registered"});
 
     }catch(err){
@@ -134,10 +93,27 @@ router.post('/register', async (req, res) => {
     }
 }); 
 
+//this is to get all the data present in database
+router.get('/', async (req, res) =>{
+
+    Account.find()
+    .then(result => {
+        res.status(200).json({
+            userData1: result
+        })
+    })
+    .catch(err => {
+        console.log(err.message);
+        res.status(500).json({
+            error: err
+        })
+    });
+});
+
 //this is to get data of a specific user
 router.get('/get/:id',(req, res) => {
     if(mongoose.Types.ObjectId.isValid(req.params.id)) {
-        User.findById(req.params.id, (error, data) => {
+        Account.findById(req.params.id, (error, data) => {
             if (error) {
                 // return next(error)
                 res.status(422).json({error : "user not find"});
@@ -153,14 +129,8 @@ router.get('/get/:id',(req, res) => {
 router.put('/update/:id', (req, res) => {
     console.log(req.body);
 
-    const user = {
-        name:              req.body.name,
-        username:          req.body.username,
-        password:          req.body.password,
-        age:               req.body.age,
-        gender:            req.body.gender,
+    const account = {
         income:            req.body.income,
-        profilePicture :   req.body.profilePicture,
         food :             req.body.food,
         clothing :         req.body.clothing,
         travel :           req.body.travel,
@@ -171,13 +141,14 @@ router.put('/update/:id', (req, res) => {
         totalExpenses :    req.body.totalExpenses,
         totalIncome :      req.body.totalIncome,
         monthlyExpenses:   req.body.monthlyExpenses,
+
     }
-    User.findByIdAndUpdate(req.params.id , user, function(err, updatedProfile){
+    Account.findByIdAndUpdate(req.params.id , account, function(err, updatedProfile){
         if(err){
             console.log(err);
             // console.log("2nd error");
         }else{
-            console.log(user);
+            console.log(account);
             res.statusCode === 200 ? res.json("profile updated") : res.json('oops something went wrong')
         }
     })
@@ -195,38 +166,23 @@ router.route('/delete/:id').delete((req, res, next) => {
         }
     })
 })
-
-
+ 
 
 router.post('/login',async(req,res) =>{
-    const {email,password} = req.body;
-    let token;
-    if(!email || !password )
+    const {email} = req.body;
+    
+    if(!email )
     {
         return res.status(400).json({error : "Field Incomplete"});
     }
-   const userLogin =await User.findOne({email : email});
+   const userLogin =await Account.findOne({email : email});
     //then((userLogin) =>{
         if(userLogin)
         {
-            const match=await bcrypt.compare(password,userLogin.password);
-            if(match)
-            {
-                res.status(200).json({
-                    message : "User Signin Successfully",
-                    userID  : userLogin.id
-                });
-                 token =await userLogin.generateAuthToken();
-                 //console.log(token);
-                //  res.cookie("jwtoken",token,{
-                //      expires:new Date(Date.now()+25892000000),
-                //      httpOnly:true
-                //  });
-            }
-            else
-            {
-                res.status(400).json({message : "Wrong Details"});
-            }
+            res.status(200).json({
+                message : "User Signin Successfully",
+                accountID  : userLogin.id
+            });
         }
         else
         {
@@ -235,6 +191,5 @@ router.post('/login',async(req,res) =>{
        
     
 });
- 
-module.exports = router;
 
+module.exports = router;

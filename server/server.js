@@ -20,6 +20,8 @@ app.use('/api/users', require('./routes/api/users'))
 app.use('/api/auth', require('./routes/api/auth'))
 app.use('/api/profile', require('./routes/api/profile'))
 
+app.use('/api/accounts', require('./routes/api/accounts'))
+
 app.post("/send_mail", cors(), async (req, res) => {
 	// let { text } = req.body
 	const { recipient, sender, subject, text } = req.body;

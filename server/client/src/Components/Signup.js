@@ -45,6 +45,18 @@ export const Signup = () => {
                     else{
                         window.alert("Registration Successful");
                         console.log("Registration Successful");
+
+                        const res = await fetch("/api/accounts/register" , {
+                            method : "POST",
+                            headers:{
+                                "Content-Type" : "application/json"
+                            },
+                            body : JSON.stringify({
+                                email
+                            })
+                            });
+            
+
                         history.push("/Login");
                     }
                 }else{

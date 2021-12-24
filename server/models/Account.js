@@ -26,9 +26,9 @@ const UserSchema = new mongoose.Schema({
     bonusReceived:{
         type: Number,
     },
-    loan:{
-        type: Array,
-    },
+    // loan:{
+    //     type: Array,
+    // },
     totalExpenses:{
         type: Number,
     },
@@ -40,4 +40,4 @@ const UserSchema = new mongoose.Schema({
     },
 })
 
-module.exports = User = mongoose.model('user', UserSchema);
+module.exports = Account = mongoose.model('account', UserSchema);

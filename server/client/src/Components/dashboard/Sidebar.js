@@ -24,7 +24,7 @@ const Sidebar = (props) => {
           expenseData.monthlyExpenses[fullDate] += user.food;
       }
       // console.log(expenseData.food + " " +user.food);
-      axios.put(`/api/users/update/${localStorage.getItem('userID')}`, {
+      axios.put(`/api/accounts/update/${localStorage.getItem('accountID')}`, {
           food: expenseData.food + user.food,
           totalExpenses: expenseData.totalExpenses + user.food,
           monthlyExpenses: expenseData.monthlyExpenses
@@ -59,7 +59,7 @@ const Sidebar = (props) => {
           expenseData.monthlyExpenses[fullDate] += user.dailyAccessories;
       }
       // console.log(expenseData.food + " " +user.food);
-      axios.put(`/api/users/update/${localStorage.getItem('userID')}`, {
+      axios.put(`/api/accounts/update/${localStorage.getItem('accountID')}`, {
           dailyAccessories: expenseData.dailyAccessories + user.dailyAccessories,
           totalExpenses: expenseData.totalExpenses+ user.dailyAccessories,
           monthlyExpenses: expenseData.monthlyExpenses
@@ -99,7 +99,7 @@ const Sidebar = (props) => {
       extraExpenses:0, 
       bonusReceived:0
   });
-  
+  var[userProfilePicture,setUserProfilePicture] = useState();
   var [expenseData,setExpenseData] = useState({});
   const [Zero, setZero] = useState({
       food:'',
@@ -113,9 +113,17 @@ const Sidebar = (props) => {
 
   useEffect(() => {
     //   console.log(user);
-      axios.get(`/api/users/get/${localStorage.getItem('userID')}`)
+      axios.get(`/api/accounts/get/${localStorage.getItem('accountID')}`)
       .then((res) => {
           setExpenseData(res.data);
+          
+      })
+      .catch( (error) => {
+          console.log(error);
+      })
+      axios.get(`/api/users/get/${localStorage.getItem('userID')}`)
+      .then((res) => {
+          setUserProfilePicture(res.data.profilePicture);
           
       })
       .catch( (error) => {
@@ -144,12 +152,13 @@ const Sidebar = (props) => {
     // alert("Logout Successful");
     console.log("Logout Successful");
     localStorage.removeItem('userID');
+    localStorage.removeItem('accountID');
     history.push('/',{replace:true });
 
   }
   return (
     <ul class="nav flex-column">
-        <div> <Image className="sidebar-img" src={expenseData.profilePicture} alt="new" roundedCircle/></div>
+        <div> <Image className="sidebar-img" src={userProfilePicture} alt="new" roundedCircle/></div>
         <h4 style={{color: "rgb(179, 77, 9)", margin:'.4em'}}>{expenseData.name}</h4>
         <li>
         <Link style={{margin:'1em'}} class="nav-link" to="MyProfile" type="button" class="btn btn-outline-secondary btn-sm">My Profile</Link>
