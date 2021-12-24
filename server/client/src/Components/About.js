@@ -9,7 +9,7 @@ export const About = () => {
     const GithubBackground="linear-gradient(to right,#171515 0%, #171515 100%)"
     const {state,dispatch} = useContext(UserContext);
     useEffect(() =>{
-      dispatch({type:"USER",payload : true});
+    //   dispatch({type:"USER",payload : true});
       console.log(state);
     }, [])
     
