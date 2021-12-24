@@ -54,11 +54,11 @@ const Routing = () =>{
       </Route>
 
       <Route path="/PlanBudget">
-      {isAuth? <PlanBudget/> : <Home value={false}/> }
+      
       </Route>
       
       <Route path="/About">
-      <About />
+      {isAuth? <About value={true}/> : <About value={false}/> }      
       </Route>
 
       <Route path="/Login">
