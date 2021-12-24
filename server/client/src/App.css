@@ -55,7 +55,19 @@
 }
 
 .center_div{
-  text-align: center;
+  padding: 1em;
+  margin:1em;
+  box-shadow: 2px 2px #000000; 
+  justify-content: center;
+  background-color:rgb(43, 39, 39);
+  border-radius: 10px;
+  width:auto;
+  height: fit-content;
+  align-items:center;
+  padding-left: 1em;
+  overflow: hidden;
+
+  /* text-align: center;
   padding: 1em;
   margin:1em;
   box-shadow: 1px 1px #000000; 
@@ -66,7 +78,7 @@
   height: fit-content;
   align-items:center;
   padding-left: 1em;
-  overflow: auto;
+  overflow: auto; */
 }
 
 .mainAbout{
@@ -139,8 +151,8 @@
   overflow: auto;
   padding: auto;
   margin: auto;
-  width: 35vw;
-  height: 50vh;
+  width: 40vw;
+  height: 60vh;
 }
 
 .titleNavbar{

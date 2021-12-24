@@ -122,16 +122,20 @@ export default function DailyTransaction(props) {
 
 
     return (
-        <div>
-            <div className="firstBox">
-            <PieChartSatvik ID={localStorage.getItem('accountID')}
-            accData = {expenseData} />
-            </div>
+        <div className= "mainContainer">
+            <h3 className="WelcomeText-profile">
+                Visualisation of each Expense through PieChart
+                <div className="firstBox">
+                    <PieChartSatvik ID={localStorage.getItem('accountID')}
+                    accData = {expenseData} />
+                </div>
+            </h3>
+            
             <form class="form-inline center_div">
-                <Category>
-                    <h3>Categories</h3>
-                </Category>
-                <CategoryInp>
+                <div>
+                    <h3>Enter Expense of following Categories</h3>
+                </div>
+                <div className="firstBox">
                     <div class="col-6">
                         <input 
                         type="number" 
@@ -212,26 +216,13 @@ export default function DailyTransaction(props) {
                             }}
                             />
                     </div>
-                </CategoryInp>
+                </div>
 
-                <CategoryBtn>
+                <div>
                     <button type="submit" name="submit" id="submit" value="submit"  onClick={UpdateData} class="btn btn-success my-1">Submit</button>
-                </CategoryBtn>
+                </div>
             </form>
           
         </div>
     )
 }
-const Category = styled.div `
-    padding-bottom : 1rem;
-    padding-top : 1rem;
-`;
-const CategoryInp = styled.div `
-    padding-left : 31em;
-    padding-bottom : 1.5rem;
-    padding-top : 1rem;
-    margin: auto;
-`;
-const CategoryBtn = styled.div `
-    padding-bottom : 2.5rem;
-`;

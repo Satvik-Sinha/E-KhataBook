@@ -36,7 +36,7 @@ const Routing = () =>{
   return (
     <Switch>
       <Route exact path="/">
-      <Home value={false}/>
+      {isAuth? <Home value={true}/> : <Home value={false}/> }
       </Route>
 
       <Route path="/Home">
