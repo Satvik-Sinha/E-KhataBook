@@ -197,47 +197,5 @@ router.route('/delete/:id').delete((req, res, next) => {
 })
 
 
-<<<<<<< HEAD
-
-router.post('/login',async(req,res) =>{
-    const {email,password} = req.body;
-    let token;
-    if(!email || !password )
-    {
-        return res.status(400).json({error : "Field Incomplete"});
-    }
-   const userLogin =await User.findOne({email : email});
-    //then((userLogin) =>{
-        if(userLogin)
-        {
-            const match=await bcrypt.compare(password,userLogin.password);
-            if(match)
-            {
-                res.status(200).json({
-                    message : "User Signin Successfully",
-                    userID  : userLogin.id
-                });
-                 token =await userLogin.generateAuthToken();
-                 //console.log(token);
-                //  res.cookie("jwtoken",token,{
-                //      expires:new Date(Date.now()+25892000000),
-                //      httpOnly:true
-                //  });
-            }
-            else
-            {
-                res.status(400).json({message : "Wrong Details"});
-            }
-        }
-        else
-        {
-            res.status(400).json({message : "Wrong Details"});
-        }
-       
-    
-});
- 
-=======
->>>>>>> 7fe4eb856bf098c0020ff3bced2d11c80afd0b6d
 module.exports = router;
 
