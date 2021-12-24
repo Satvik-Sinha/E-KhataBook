@@ -26,7 +26,6 @@
   },
   "dependencies": {
     "config": "^3.3.6",
-    "emailjs": "^3.7.0",
     "react-external-link": "^1.2.2"
   }
 }

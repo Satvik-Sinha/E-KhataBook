@@ -24,7 +24,7 @@ app.use('/api/accounts', require('./routes/api/accounts'))
 
 app.post("/send_mail", cors(), async (req, res) => {
 	// let { text } = req.body
-	const { recipient, sender, subject, text } = req.body;
+	const { recipient, sender, subject, text, html } = req.body;
 
     console.log(req.body);
 
@@ -33,6 +33,7 @@ app.post("/send_mail", cors(), async (req, res) => {
         from: sender,
         subject: subject,
         text: text,
+        html: html,
     }).then(msg => console.log(text));
 })
 

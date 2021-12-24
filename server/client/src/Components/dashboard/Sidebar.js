@@ -152,7 +152,11 @@ const Sidebar = (props) => {
     // alert("Logout Successful");
     console.log("Logout Successful");
     localStorage.removeItem('userID');
+<<<<<<< HEAD
     localStorage.removeItem('accountID');
+=======
+    localStorage.removeItem("isAuth");
+>>>>>>> 7fe4eb856bf098c0020ff3bced2d11c80afd0b6d
     history.push('/',{replace:true });
 
   }

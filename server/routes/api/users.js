@@ -197,6 +197,7 @@ router.route('/delete/:id').delete((req, res, next) => {
 })
 
 
+<<<<<<< HEAD
 
 router.post('/login',async(req,res) =>{
     const {email,password} = req.body;
@@ -236,5 +237,7 @@ router.post('/login',async(req,res) =>{
     
 });
  
+=======
+>>>>>>> 7fe4eb856bf098c0020ff3bced2d11c80afd0b6d
 module.exports = router;
 

@@ -28,7 +28,7 @@ export const Login = () => {
         e.preventDefault();
         const {email,password}=user;
 
-        const res = await fetch("/api/users/login" , {
+        const res = await fetch("/api/auth/login" , {
             method : "POST",
             headers:{
                 "Content-Type" : "application/json"
@@ -48,6 +48,7 @@ export const Login = () => {
             // window.alert("Sign In Successful");
             console.log("Sign In Successful");
             localStorage.setItem("userID", data.userID);
+<<<<<<< HEAD
 
             const res = await fetch("/api/accounts/login" , {
                 method : "POST",
@@ -61,7 +62,13 @@ export const Login = () => {
             const data1= await res.json();
             localStorage.setItem("accountID", data1.accountID);
             console.log(data1);
+=======
+            localStorage.setItem("isAuth", true);
+            localStorage.setItem("TOKEN", data.token);
+            // console.log("token : ", data.token);
+>>>>>>> 7fe4eb856bf098c0020ff3bced2d11c80afd0b6d
             history.push("/DashBoard");
+            window.location.reload(false);
         }
     }
 
