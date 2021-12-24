@@ -15,22 +15,18 @@ export const About = () => {
     
     return (
         <div className = "mainAbout">
-            <div className="IconsContainer">
+            <ExternalLink className="IconsContainer" href="https://github.com/ankitkushawaha1000">
                 <h1>Ankit Kushawaha</h1>
-                <ExternalLink href="https://github.com/ankitkushawaha1000" >
                     <Icon color={GithubBackground}>
                         <FaGithub />
-                    </Icon>
-                </ExternalLink>                  
-            </div>
-            <div className="IconsContainer">
+                    </Icon>            
+            </ExternalLink>
+            <ExternalLink className="IconsContainer" href="https://github.com/Satvik-Sinha">
                 <h1>Satvik Sinha</h1>
-                <ExternalLink href="https://github.com/Satvik-Sinha" >
                     <Icon color={GithubBackground}>
                         <FaGithub />
-                    </Icon>
-                </ExternalLink> 
-            </div>
+                    </Icon>            
+            </ExternalLink>
         </div>
     )
 }

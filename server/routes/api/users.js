@@ -198,43 +198,43 @@ router.route('/delete/:id').delete((req, res, next) => {
 
 
 
-router.post('/login',async(req,res) =>{
-    const {email,password} = req.body;
-    let token;
-    if(!email || !password )
-    {
-        return res.status(400).json({error : "Field Incomplete"});
-    }
-   const userLogin =await User.findOne({email : email});
-    //then((userLogin) =>{
-        if(userLogin)
-        {
-            const match=await bcrypt.compare(password,userLogin.password);
-            if(match)
-            {
-                res.status(200).json({
-                    message : "User Signin Successfully",
-                    userID  : userLogin.id
-                });
-                 token =await userLogin.generateAuthToken();
-                 console.log(token);
-                 res.cookie("jwtoken",token,{
-                     expires:new Date(Date.now()+25892000000),
-                     httpOnly:true
-                 });
-            }
-            else
-            {
-                res.status(400).json({message : "Wrong Details"});
-            }
-        }
-        else
-        {
-            res.status(400).json({message : "Wrong Details"});
-        }
+// router.post('/login',async(req,res) =>{
+//     const {email,password} = req.body;
+//     let token;
+//     if(!email || !password )
+//     {
+//         return res.status(400).json({error : "Field Incomplete"});
+//     }
+//    const userLogin =await User.findOne({email : email});
+//     //then((userLogin) =>{
+//         if(userLogin)
+//         {
+//             const match=await bcrypt.compare(password,userLogin.password);
+//             if(match)
+//             {
+//                 res.status(200).json({
+//                     message : "User Signin Successfully",
+//                     userID  : userLogin.id
+//                 });
+//                  token =await userLogin.generateAuthToken();
+//                  console.log(token);
+//                  res.cookie("jwtoken",token,{
+//                      expires:new Date(Date.now()+25892000000),
+//                      httpOnly:true
+//                  }); 
+//             }
+//             else
+//             {
+//                 res.status(400).json({message : "Wrong Password"});
+//             }
+//         }
+//         else
+//         {
+//             res.status(400).json({message : "Wrong Email ID"});
+//         }
        
     
-});
+// });
  
 module.exports = router;
 

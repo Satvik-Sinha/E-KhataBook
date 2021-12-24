@@ -28,7 +28,7 @@ export const Login = () => {
         e.preventDefault();
         const {email,password}=user;
 
-        const res = await fetch("/api/users/login" , {
+        const res = await fetch("/api/auth/login" , {
             method : "POST",
             headers:{
                 "Content-Type" : "application/json"
@@ -48,7 +48,11 @@ export const Login = () => {
             // window.alert("Sign In Successful");
             console.log("Sign In Successful");
             localStorage.setItem("userID", data.userID);
+            localStorage.setItem("isAuth", true);
+            localStorage.setItem("TOKEN", data.token);
+            // console.log("token : ", data.token);
             history.push("/DashBoard");
+            window.location.reload(false);
         }
     }
 

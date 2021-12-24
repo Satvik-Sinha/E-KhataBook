@@ -17,14 +17,10 @@ const UserSchema = new mongoose.Schema({
     password:{
         type: String,
     },
-    tokens:[
-        {
-            token:{
-                type: String,
-                required: true
-            }
-        }
-    ],
+
+    token:{
+        type: String,
+    },
     age:{
         type: Number
     },
@@ -84,8 +80,8 @@ UserSchema.methods.generateAuthToken = async function () {
     try{
         
         let token = jwt.sign({_id:this._id},"WEARETHEDEVELOPERSOFEXPENSETRACKERAKAEKHATABOOK");
-        this.tokens=this.tokens.concat({token:token});
-         this.save();
+        this.token= token;
+        this.save();
         return token;
     }catch(err){
         console.log(err);
