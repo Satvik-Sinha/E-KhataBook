@@ -124,7 +124,7 @@ export default function DailyTransaction(props) {
     return (
         <div className= "mainContainer">
             <h3 className="WelcomeText-profile">
-                Visualisation of each Expense through PieChart
+                Visualisation of Balance through PieChart
                 <div className="firstBox">
                     <PieChartSatvik ID={localStorage.getItem('accountID')}
                     accData = {expenseData} />
