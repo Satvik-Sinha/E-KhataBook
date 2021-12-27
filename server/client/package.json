@@ -2,7 +2,11 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+<<<<<<< HEAD
   "proxy": "http://localhost:4000",
+=======
+  "proxy": "http://localhost:5000",
+>>>>>>> 06e2593dd04cbbd602d40e25a081f53c19220182
   "dependencies": {
     "@sendgrid/mail": "^7.6.0",
     "@testing-library/jest-dom": "^5.14.1",
