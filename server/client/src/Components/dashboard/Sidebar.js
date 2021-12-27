@@ -97,6 +97,7 @@ const Sidebar = (props) => {
       extraExpenses:0, 
       bonusReceived:0
   });
+  
   var[userProfilePicture,setUserProfilePicture] = useState();
   var [expenseData,setExpenseData] = useState({});
   const [Zero, setZero] = useState({

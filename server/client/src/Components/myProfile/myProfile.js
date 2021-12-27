@@ -29,6 +29,10 @@ export const MyProfile = (props) => {
         gender:'',
         profilePicture:''
     });
+    const[incData, setIncData] = useState({
+        income:'',
+        totalIncome:''
+    });
     // var confPass ='';    
     useEffect(() => {
         axios.get(`/api/users/get/${localStorage.getItem('userID')}`)
@@ -38,13 +42,21 @@ export const MyProfile = (props) => {
         .catch( (error) => {
             console.log(error);
         })
-        
+        axios.get(`/api/accounts/get/${localStorage.getItem('accountID')}`)
+        .then((res) => {
+            setIncData(res.data.income);
+        })
+        .catch( (error) => {
+            console.log(error);
+        })
     }, [])
     
+    const [income, setIncome] = useState(false);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => {
         getUser();
+        setIncome(true);
         setShow(true);
     }
  //this function is to update the data already present
@@ -68,6 +80,7 @@ export const MyProfile = (props) => {
     const handleChange = event =>{
         const { value, name } = event.target;
         setAccData({...accData, [name]:value});
+        setIncData({...incData, [name]:value});
     }
 
     const handleSubmit = event => {
@@ -83,6 +96,16 @@ export const MyProfile = (props) => {
                     axios.put(`/api/users/update/${localStorage.getItem('userID')}`, accData)
                     .then(res => {
                         alert("Profile Updated Successfully");
+                    })
+                    .catch(error =>{
+                        console.log(error);
+                    })
+                    axios.put(`/api/accounts/update/${localStorage.getItem('accountID')}`, {
+                        income:incData.income,
+                        totalIncome:incData.income
+                    })
+                    .then(res => {
+                        
                     })
                     .catch(error =>{
                         console.log(error);

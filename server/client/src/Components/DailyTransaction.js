@@ -44,6 +44,7 @@ export default function DailyTransaction(props) {
         .then(res => {
             console.log("Data Updated Successfully");
             setUser({
+                
                 food:0,
                 clothing:0,
                 travel:0,
