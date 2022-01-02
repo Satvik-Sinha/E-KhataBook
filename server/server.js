@@ -3,8 +3,9 @@ const connectDB = require('./config/db');
 var cors = require('cors');
 // import connectDB from './config/db';
 const sgMail = require('@sendgrid/mail');
-// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-sgMail.setApiKey('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');
+
+//use your own api_key
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const app = express();
 app.use(cors())
