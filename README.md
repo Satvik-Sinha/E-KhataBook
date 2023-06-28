@@ -27,3 +27,10 @@ An Expense Tracking Web Application to track your expenses. Not a normal expense
 <h2 align="centre">Contributors :- </h2>
 <ul>Satvik Sinha</ul>
 <ul>Ankit Kushawaha</ul>
+
+LOGIN Page
+![image](https://github.com/ankitkushawaha1000/ExpenseTracker/assets/72067719/1db6fe6d-e3b9-46d5-b727-d8fa3078c2c8)
+
+Registration Page
+![image](https://github.com/ankitkushawaha1000/ExpenseTracker/assets/72067719/997e6099-d0b8-48cd-9abe-b9524685f75f)
+
